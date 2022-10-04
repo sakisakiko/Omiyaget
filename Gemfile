@@ -59,3 +59,6 @@ gem 'net-smtp'
 
 # deviseを
 gem 'devise'
+
+# enumを導入
+gem 'enum_help'

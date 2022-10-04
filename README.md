@@ -1,24 +1,37 @@
-# README
+# おみやGET!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+旅先などで実際に購入したお土産の情報を投稿し、共有できるサイト。
 
-Things you may want to cover:
+### テーマを選んだ理由
+私は旅先でお土産を買う際いつも悩んでしまいます。
+定番のお土産を購入しても良いのですが、誰かに渡すとなると前にもらったことがあるかも？と悩んだり、
+よく行く場所であると毎回結局同じものを購入してしまうということがあります。
+せっかくなら良いものを選びたいけれど調べると意外と難しい。
+そこで、他人がオススメするお土産を閲覧したり、自分がよかったと感じたお土産の情報を発信して
+お互いにシェアできれば旅行ももっと楽しくなるのではないかと思い、このテーマにしました。
 
-* Ruby version
+### ターゲットユーザ
+旅行に行く人
 
-* System dependencies
+### 主な利用シーン
+旅行先などでお土産を検索することができる。自分が購入したお土産の情報を発信することができる。
 
-* Configuration
+## 実装機能一覧
+<https://docs.google.com/spreadsheets/d/1PK4ZMlgzPtUXjw5JPEohkg76LgIGaD27McWG7Fa9zko/edit?usp=sharing>
 
-* Database creation
 
-* Database initialization
+## 設計書
+<...>
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。

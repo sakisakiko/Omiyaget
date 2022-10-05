@@ -1,5 +1,25 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'relationships/following'
+  end
+  namespace :public do
+    get 'bookmarks/index'
+  end
+  namespace :public do
+    get 'post_items/new'
+    get 'post_items/index'
+    get 'post_items/show'
+    get 'post_items/edit'
+  end
+  namespace :public do
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/unsubscrib'
+  end
+  namespace :public do
+    get 'homes/top'
+  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {

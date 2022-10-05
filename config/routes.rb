@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources:post_items,only:[:new,:create,:index,:show,:edit,:update]do
       resources:post_comments,only:[:create]
       resource:favorites,only:[:create,:destroy]
-      resources:bookmarks,only:[:create,:index,:destory,]
+      resources:bookmarks,only:[:create,:index,:destroy,]
     end
 
     get '/customers/unsubscribe'=>'customers#unsubscribe',as: 'unsubscribe'
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources:customers,only:[:index,:update]
     resources:categorys,only:[:index,:create,:edit,:update]
 
-    resources:post_items,only:[:index,:destory] do
+    resources:post_items,only:[:index,:destroy] do
      resources:post_comments,only:[:destroy]
     end
 

@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'post_items/index'
+  end
+  namespace :admin do
+    get 'cutomers/index'
+  end
+  namespace :admin do
+    get 'categorys/index'
+    get 'categorys/edit'
+  end
   namespace :public do
     get 'relationships/following'
   end

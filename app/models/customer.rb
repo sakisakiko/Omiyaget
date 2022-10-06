@@ -3,10 +3,10 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   
   # アソシエーション
-  has_many :post_items,dependent: destroy
-  has_many :bookmarks,dependent: destroy
-  has_many :post_comment,dependent: destroy
-  has_many :favorites,dependent: destry
+  has_many :post_items,dependent: :destroy
+  has_many :bookmarks,dependent: :destroy
+  has_many :post_comment,dependent: :destroy
+  has_many :favorites,dependent: :destroy
   
   #画像表示に必要な記述 
   has_one_attached:image

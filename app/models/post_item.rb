@@ -2,10 +2,10 @@ class PostItem < ApplicationRecord
   # アソシエーション
   belongs_to :customer
   belongs_to :category
-  has_many :bookmarks, dependent: destroy
-  has_many :post_tags, dependent: destroy
-  has_many :favorites,dependent: destroy
-  has_many :post_comments,dependent: destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :post_tags, dependent: :destroy
+  has_many :favorites,dependent: :destroy
+  has_many :post_comments,dependent: :destroy
   
   # 画像を保つための記述
   has_one_attached :image

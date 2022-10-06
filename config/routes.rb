@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources:customers,only:[:index,:update]
     resources:categorys,only:[:index,:create,:edit,:update]
 
-    resources:post_items,only:[:index,:destroy] do
+    resources:post_items,only:[:index,:destory] do
      resources:post_comments,only:[:destroy]
     end
 
@@ -42,7 +42,6 @@ devise_for :customers,skip: [:passwords], controllers: {
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-
 
 
 end

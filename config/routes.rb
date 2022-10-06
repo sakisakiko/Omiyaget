@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    get '/'=>'sessions#new', as: 'top'
+    # get '/'=>'sessions#new', as: 'top'
     resources:customers,only:[:index,:update]
     resources:categorys,only:[:index,:create,:edit,:update]
 

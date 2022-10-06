@@ -27,19 +27,19 @@ Rails.application.routes.draw do
     patch '/customers/withdraw'=>'customers#withdraw',as: 'withdraw'
     resources:customers,only:[:edit,:update]
 
-    get '/relationships/following '=>'registrations#following ',as: 'following'
+    get '/relationships/following '=>'registrations#following',as: 'following'
 
   end
 
 
   namespace :admin do
-    # get '/'=>'sessions#new', as: 'top'
     resources:customers,only:[:index,:update]
     resources:categorys,only:[:index,:create,:edit,:update]
-
-    resources:post_items,only:[:index,:destory] do
-     resources:post_comments,only:[:destroy]
-    end
+    
+    get '/review'=>'post_items#index',as: 'review'
+    delete '/review/destroy'=>'post_items#destroy',as: 'review_destroy'
+    
+    resources:post_comments,only:[:destroy]
 
   end
 

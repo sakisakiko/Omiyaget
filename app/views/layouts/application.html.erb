@@ -5,21 +5,78 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <!--FontAwesomeに必要な記述-->
     <script src="https://kit.fontawesome.com/1b65209b3e.js" crossorigin="anonymous"></script>
-    
+
      <%# bootstrapをアプリケーション全体に適応させる %>
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    
+
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+    <header class="fixed-top" style="height: 100px;">
+    <nav class="navbar navbar-expand-lg navbar navbar-dark mb-4" style="background-color: #FFDEAD;">
+      <div class= "container ">
+
+        <a class="navbar-brand" href= "サイトトップ（一覧画面のpath)"><%#= image_tag 'nagano_cake_logo.jpg'%>ロゴ</a>
+
+        <% if customer_signed_in? %>
+        <div class="mx-auto">
+          <p><%=current_customer.name %></p>
+        </div>
+        <% end %>
+
+        <div class="row d-flex align-items-end flex-column bd-highlight mb-2" style="height: 100px;" >
+          <div class="collapse navbar-collapse " id="navbarNavDropdown">
+            <% if customer_signed_in? %>
+              <ul class="navbar-nav p-1 bd-highlight">
+                <li><%=link_to "マイページ",user_page_path,class: "btn btn-outline-light mr-3"%></li>
+                <li><%=link_to "ブックマーク",post_item_bookmarks_path,class: "btn btn-outline-light mr-3" %></li>
+                <li><%=link_to "フォロー一覧",following_path,class: "btn btn-outline-light mr-3" %></li>
+                <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete,class: "btn btn-outline-light mr-3" %></li>
+              </ul>
+              <%#= image_tag 'nagano_cake_logo.jpg'%>
+              <!--↑プロフ画像-->
+              <%=link_to "お土産情報を投稿",new_post_item_path %>
+            <% elsif admin_signed_in? %>
+              <ul class="navbar-nav  p-1 bd-highlight ">
+                <li><%=link_to "会員一覧",admin_customers_path,class: "btn btn-outline-light mr-3"%></li>
+                <li><%=link_to "レビュー一覧",admin_review_path,class: "btn btn-outline-light mr-3"%></li>
+                <li><%=link_to "カテゴリ一覧",admin_categorys_path,class: "btn btn-outline-light mr-3"%></li>
+                <li><%=link_to "ログアウト",destroy_admin_session_path,method: :delete,class: "btn btn-outline-light mr-3"  %></li>
+              </ul>
+            <% else %>
+            <p>もっと便利に！</p>
+            <%=link_to "新規登録",new_customer_registration_path,class: "btn btn-outline-light mr-3"%></li>
+            <% end %>
+          </div>
+        </div>
+      </div><!--containar-->
+    </nav>
+  </header>
+
+
+
+
   <body>
     <%= yield %>
   </body>
-  
-  
-  
+
+
+
+    <footer class="fixed-bottom  text-white mt-5  " style="background-color:#FFDEAD; height: 70px;">
+     <div class="container">
+      <div class="row">
+       <div class="mx-auto d-flex align-items-center" style="height:70px;">
+        <p>©️2022 Sakiko Hanada</p>
+       </div>
+      </div>
+     </div>
+  </footer>
+
+
+
 </html>

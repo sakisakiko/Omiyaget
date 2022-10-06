@@ -69,9 +69,9 @@ ActiveRecord::Schema.define(version: 2022_10_05_065137) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
-    t.integer "prefecture", default: 48, null: false
+    t.integer "prefecture", null: false
     t.text "introduction", default: "", null: false
-    t.integer "gender", default: 3, null: false
+    t.integer "gender", null: false
     t.integer "is_deleted", default: 1, null: false
     t.integer "profile_image_id", null: false
     t.string "reset_password_token"

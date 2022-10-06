@@ -7,4 +7,11 @@ class Public::CustomersController < ApplicationController
 
   def unsubscrib
   end
+
+
+    private
+  def customer_params
+   params.require(:customer).permit(:email,:name,:prefecture,:gender)
+  end
+
 end

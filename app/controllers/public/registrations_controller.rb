@@ -51,8 +51,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
+  # ５５〜５７コメントアウトする
   # def after_sign_up_path_for(resource)
-  #   super(resource)
+  #   user_page_path(resource)
   # end
 
   # The path used after sign up for inactive accounts.

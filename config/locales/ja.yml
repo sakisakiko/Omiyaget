@@ -1,0 +1,8 @@
+  ja:
+    enums:
+      customer:
+        gender:
+          male: "男性"
+          female: "女性"
+          unanwer: "非公開"
+  

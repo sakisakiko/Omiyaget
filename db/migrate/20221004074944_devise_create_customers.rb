@@ -11,11 +11,10 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.text :introduction,        null: false, default: ""
       t.integer :gender,        null: false, default: ""
       t.integer :is_deleted,        null: false, default: "1"
-      t.integer :profile_image_id,        null: false, default: ""
-      
-      
-      
-      
+
+
+
+
 
       ## Recoverable
       t.string   :reset_password_token

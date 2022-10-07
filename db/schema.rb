@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 2022_10_05_065137) do
     t.text "introduction", default: "", null: false
     t.integer "gender", null: false
     t.integer "is_deleted", default: 1, null: false
-    t.integer "profile_image_id", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

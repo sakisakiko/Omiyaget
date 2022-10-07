@@ -1,2 +1,9 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<h2>ようこそ<%= image_tag 'omiyaget_logo.jpg'%>へ</h2>
+<p>おみやGET！ は旅先のお土産探しがもっと楽しくなるサービスです</p>
+<p>探す</p>
+<p>見つかる</p>
+<p>広がる</p>
+<p>さあ、始めましょう！</p>
+<%=link_to "新規登録",new_customer_registration_path %></br>
+<%=link_to "ログイン", new_customer_session_path %></br>
+まずはつかってみる<%#=link_to "ゲストログイン",guest_user_sign_in_path: :post %>

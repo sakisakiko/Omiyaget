@@ -1,0 +1,2 @@
+module GuestUser::CustomerHelper
+end

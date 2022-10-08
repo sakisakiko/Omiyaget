@@ -13,6 +13,14 @@ class Customer < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  #ゲストユーザーのemailとpasswordを設定
+  def self.guest
+    find_or_create_by(email: 'guest@examle.com') do |customer|
+      customer.encrypted_password=SecureRandom.urlsafe_base64
+    end
+  end
+    
 
    #バリデーション
   validates:introduction,length: {maximum: 200} #自己紹介（２００字以内）

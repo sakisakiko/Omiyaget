@@ -6,4 +6,8 @@
 <p>さあ、始めましょう！</p>
 <%=link_to "新規登録",new_customer_registration_path %></br>
 <%=link_to "ログイン", new_customer_session_path %></br>
-まずはつかってみる<%#=link_to "ゲストログイン",guest_user_sign_in_path: :post %>
+まずはつかってみる
+<%=form_with model: @customer,url: new_guest_sign_in_path do |f| %>
+ <%=f.submit 'ゲストログイン' %>
+<% end %>
+<%#=link_to "ゲストログイン",new_guest_sign_in_path: :post %>

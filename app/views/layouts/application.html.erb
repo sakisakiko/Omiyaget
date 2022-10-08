@@ -40,12 +40,14 @@
       </ul>
     <% else %>
       <p>もっと便利に！</p>
-      <%=link_to "新規登録",new_customer_registration_path %></li>
+      <li><%=link_to "新規登録",new_customer_registration_path %></li>
+      <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
     <% end %>
   </header>
 
 
   <body>
+    <%=flash[:notice] %>
     <%= yield %>
   </body>
 

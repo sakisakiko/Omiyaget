@@ -106,7 +106,8 @@ ActiveRecord::Schema.define(version: 2022_10_05_065137) do
     t.string "evaluation", default: "", null: false
     t.string "price", default: "", null: false
     t.string "shop", default: "", null: false
-    t.boolean "integer", default: true, null: false
+    t.boolean "release", default: true, null: false
+    t.integer "buy_prefecture", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

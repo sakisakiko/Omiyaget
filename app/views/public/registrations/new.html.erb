@@ -16,7 +16,6 @@
 
   <div class="prefecture">
     <%= f.label :出身地 %>
-    <%#= f.select :prefecture,Customer.prefectures.keys {}%>
     <%= f.select :prefecture, Customer.prefectures.keys.map {|k| [k]},include_blank: "--選択してください--" %>
   </div>
 

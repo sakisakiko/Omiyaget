@@ -9,7 +9,8 @@ class CreatePostItems < ActiveRecord::Migration[6.1]
       t.string :evaluation, null: false, default: ""
       t.string :price, null: false, default: ""
       t.string :shop, null: false, default: ""
-      t.boolean :integer, null: false, default: "1"
+      t.boolean :release, null: false, default: true
+      t.integer :buy_prefecture, null: false, default: ""
       t.timestamps
     end
   end

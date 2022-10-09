@@ -1,2 +1,64 @@
-<h1>Public::PostItems#new</h1>
-<p>Find me in app/views/public/post_items/new.html.erb</p>
+<h4>お土産情報登録</h4>
+<%=form_with model: @post_item,url:  post_items_path do |f| %>
+
+  <div class="post_image">
+    <%= f.label :商品画像 %>
+    <%= f.file_field :image,asset: "image/*"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :商品名 %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :カテゴリ %>
+    <%#=f.collection_select :category_id,Category.all, :id, :name,{prompt: "--選択してください--"}%>
+  </div>
+
+  <div class="field">
+    <%= f.label :タグを追加 %>
+    <%#= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :購入時価格（税込） %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :商品レビュー %>
+    <%= f.text_area :review,rows: "5"  %>
+  </div>
+
+  <div class="field">
+    <%= f.label :評価 %>
+    <%#= f.text_field :evaluation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :購入地域 %>
+    <%=f.select :buy_prefecture,PostItem.buy_prefecture.keys.map { |k| [k],include_blank: "--選択してください" %>
+    <%#= f.select :prefecture, Customer.prefectures.keys.map {|k| [k]},include_blank: "--選択してください--" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :購入店舗%>
+    <%= f.text_field :shop %>
+  </div>
+
+  <div class="field">
+    <%= f.label :公開ステータス%>
+    <%=f.radio_button :release, :true,checked: true %>
+    <%=f.rabel :release, "公開" %>
+    <%=f.radio_button :release, :false %>
+    <%=f.rabel :release, "非公開" %>
+  </div>
+
+
+  <div class="field">
+    <%= f.submit "投稿する" %>
+  </div>
+<% end %>
+
+

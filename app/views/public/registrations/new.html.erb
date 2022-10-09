@@ -16,6 +16,7 @@
 
   <div class="prefecture">
     <%= f.label :出身地 %>
+    <%#= f.select :prefecture,Customer.prefectures.keys {}%>
     <%= f.select :prefecture, Customer.prefectures.keys.map {|k| [k]},include_blank: "--選択してください--" %>
   </div>
 
@@ -47,4 +48,3 @@
 <h6>既に登録済みの方</h6>
 <%=link_to "こちら", new_customer_session_path %>からログインしてください
 
-<%#= render "public/shared/links" %>

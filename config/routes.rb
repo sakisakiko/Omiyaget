@@ -13,13 +13,8 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-
-  # # ゲストユーザー用
-  # devise_scope :guest_user do
-  #   post '/guest_users/sign_in'=>'sessions#new_guest',as: 'new_guest_sign_in'
-  # end
-
-
+  
+  
   scope module: :public do
     root to:"homes#top"
 

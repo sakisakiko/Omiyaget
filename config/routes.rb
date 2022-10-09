@@ -14,21 +14,17 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-
-
-  # ゲストユーザー用
-  # devise_scope :user do
-  #   post '/users/guest_sign_in', to: 'users/sessions#new_guest'
+  # # ゲストユーザー用
+  # devise_scope :guest_user do
+  #   post '/guest_users/sign_in'=>'sessions#new_guest',as: 'new_guest_sign_in'
   # end
-
-
 
 
   scope module: :public do
     root to:"homes#top"
 
-    # ゲストユーザー用
-    post '/homes/guest_sign_in'=>'homes#new_guest',as: 'new_guest_sign_in'
+     #ゲストユーザー用
+     post '/homes/guest_sign_in'=>'homes#new_guest',as: 'new_guest_sign_in'
 
     resources:post_items,only:[:new,:create,:index,:show,:edit,:update]do
       resources:post_comments,only:[:create]

@@ -1,0 +1,2 @@
+module GuestUsers::SessionsHelper
+end

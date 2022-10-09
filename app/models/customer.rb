@@ -14,14 +14,13 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  #ゲストユーザーのemailとpasswordを設定
-  def self.guest
-    find_or_create_by(email: 'guest@examle.com') do |customer|
-      customer.encrypted_password=SecureRandom.urlsafe_base64
+   #ゲストユーザーのemailとpasswordを設定
+   def self.guest
+     find_or_create_by(email: 'guest@examle.com', prefecture: 1, gender: 2) do |customer|
+       customer.password = SecureRandom.urlsafe_base64
     end
-  end
+   end
     
-
    #バリデーション
   validates:introduction,length: {maximum: 200} #自己紹介（２００字以内）
 
@@ -42,8 +41,6 @@ class Customer < ApplicationRecord
   # 性別:enum管理
   # male:男性、female:女性、unanswer:非公開
   enum gender:{male:0,female:1,unanwer:2}
-
-
 
 
   #プロフィール画像が設定されていないとき、デフォルトの画像が設定される

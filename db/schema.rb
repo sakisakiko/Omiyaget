@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_05_065137) do
+ActiveRecord::Schema.define(version: 2022_10_10_094628) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2022_10_05_065137) do
     t.string "name", default: "", null: false
     t.integer "image_id", null: false
     t.text "review", default: "", null: false
-    t.string "evaluation", default: "", null: false
+    t.float "evaluation", null: false
     t.string "price", default: "", null: false
     t.string "shop", default: "", null: false
     t.boolean "release", default: true, null: false
@@ -113,10 +113,13 @@ ActiveRecord::Schema.define(version: 2022_10_05_065137) do
   end
 
   create_table "post_tags", force: :cascade do |t|
-    t.integer "tag_id", null: false
-    t.integer "post_item_id", null: false
+    t.integer "post_item_id"
+    t.integer "tag_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_item_id", "tag_id"], name: "index_post_tags_on_post_item_id_and_tag_id", unique: true
+    t.index ["post_item_id"], name: "index_post_tags_on_post_item_id"
+    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -134,4 +137,6 @@ ActiveRecord::Schema.define(version: 2022_10_05_065137) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "post_tags", "post_items"
+  add_foreign_key "post_tags", "tags"
 end

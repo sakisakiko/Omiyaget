@@ -31,10 +31,25 @@
     <%= f.text_area :review,rows: "5"  %>
   </div>
 
-  <div class="field">
-    <%= f.label :評価 %>
-    <%#= f.text_field :evaluation %>
+    <!--<div class="form-group row" id="star">-->
+  <div class="form-group row" id="star">
+    <%= f.label :evaluation,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :evaluation, id: :review_star %>
   </div>
+
+  <!-- 評価javascript -->
+  <script>
+　$('#star').empty();
+   $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+ 　　scoreName: 'post_item[evaluation]',
+    half: false,
+  });
+  </script>
+
+
 
   <div class="field">
     <%= f.label :購入地域 %>

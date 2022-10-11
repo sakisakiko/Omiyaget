@@ -11,10 +11,11 @@
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= f.label :カテゴリ %>
-    <%#=f.collection_select :category_id,Category.all, :id, :name,{prompt: "--選択してください--"}%>
+  <div class="form-group row mx-auto">
+    <%=f.label :カテゴリ,class: "col-lg-2" %>
+    <%=f.collection_select :category_id,Category.all, :id, :name,{prompt: "--選択してください--"}%></br>
   </div>
+
 
   <div class="field">
     <%= f.label :タグを追加 %>
@@ -31,24 +32,21 @@
     <%= f.text_area :review,rows: "5"  %>
   </div>
 
-  <!--<div class="form-group row" id="star">-->
   <div class="form-group row" id="star">
-    <%= f.label :evaluation,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.label :evaluation,'評価'%>
     <%= f.hidden_field :evaluation, id: :review_star %>
-  </div>
 
-  <!-- 評価javascript -->
+     <!-- 評価javascript -->
   <script>
-　$('#star').empty();
-   $('#star').raty({
-    size     : 36,
+  $('#star').raty({
+    size     : 20,
     starOff:  '<%= asset_path('star-off.png') %>',
     starOn : '<%= asset_path('star-on.png') %>',
- 　　scoreName: 'post_item[evaluation]',
+    scoreName: 'post_item[evaluation]',
     half: false,
   });
   </script>
-
+  </div>
 
 
   <div class="field">

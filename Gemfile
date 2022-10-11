@@ -69,3 +69,6 @@ gem 'kaminari','~> 1.2.1'
 # kaminariにbootstrapを適応
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 
+#Slimのジェネレータを提供
+gem 'slim-rails'
+

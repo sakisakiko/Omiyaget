@@ -5,20 +5,23 @@ class Public::PostItemsController < ApplicationController
   end
 
   def create
-    @post_item=PostItem.new(post_item_porams)
-    @post_item.customer_id=current_customer.id
-    tag_list=params[:post_item][:name].split(',')
+    @post_item=current_customer.post_items.new(post_item_porams)
+    # @post_item.customer_id=current_customer.id
+    tag_list=params[:post_item][:tag_name].split(nil)
     if @post_item.save
-      @post_item. save_tag
+      @post_item.save_tag(tag_list)
       redirect_to post_item_path(@post_item.id)
     else
       render:new
     end
   end
-  
-  
+
+
 
   def index
+   @post_item=PostItem.new
+   @post_items=PostItem.all
+   @tag_list=Tag.all
   end
 
   def show

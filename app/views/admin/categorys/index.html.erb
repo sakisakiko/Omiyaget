@@ -1,2 +1,31 @@
-<h1>Admin::Categorys#index</h1>
-<p>Find me in app/views/admin/categorys/index.html.erb</p>
+<div class="container">
+
+  <h4 class="font-weight-bold mb-3">カテゴリ一覧・追加</h4>
+
+  <%= form_with model: @category, url:admin_categorys_path, method: :POST do |f| %>
+    <div class="form-group row mx-auto">
+      <%= f.label :カテゴリ,class: "col-lg-2" %>
+      <%=f.text_field:name,class: "col-lg-3 form-control" %>
+      <%=f.submit "新規登録",class: "col-lg-2 btn btn-success ml-5" %>
+    </div>
+  <% end %>
+
+  <table class="table col-lg-4 mt-5">
+    <thead>
+      <tr>
+        <th>カテゴリ一覧</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%=category.name %></td>
+        <td><%=link_to "編集する",edit_admin_category_path(category.id),class: " btn btn-success" %></td>
+        <td><%#=link_to"削除する",admin_category_path(category.id),method: :delete %><!--destroy不要あとでけす--></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>

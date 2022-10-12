@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
     t.integer "customer_id", null: false
     t.integer "category_id", null: false
     t.string "name", default: "", null: false
-    t.integer "image_id", null: false
     t.text "review", default: "", null: false
     t.float "evaluation", null: false
     t.string "price", default: "", null: false
@@ -130,7 +129,7 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name", default: "", null: false
+    t.string "tag_name", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

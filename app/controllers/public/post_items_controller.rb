@@ -5,14 +5,14 @@ class Public::PostItemsController < ApplicationController
   end
 
   def create
-    @post_item=current_customer.post_items.new(post_item_porams)
+    @post_item=current_customer.post_items.new(post_item_params)
     # @post_item.customer_id=current_customer.id
     tag_list=params[:post_item][:tag_name].split(nil)
     if @post_item.save
       @post_item.save_tag(tag_list)
       redirect_to post_item_path(@post_item.id)
     else
-      render:new
+      redirect_to new_post_item_path
     end
   end
 
@@ -32,7 +32,7 @@ class Public::PostItemsController < ApplicationController
 
 private
 def post_item_params
-params.require(:post_item).permit(:image,:customer_id,:category_id,:name,:image_id,:review,:evaluation,:price,:shop,:release,:buy_prefecture)
+params.require(:post_item).permit(:image,:customer_id,:category_id,:name,:review,:evaluation,:price,:shop,:release,:buy_prefecture)
 end
 
 

@@ -1,2 +1,64 @@
-<h1>Public::PostItems#show</h1>
-<p>Find me in app/views/public/post_items/show.html.erb</p>
+<p>プロフィール画像が入ります</p>
+<% if @post_item.customer_id==current_customer.id %>
+<h4>投稿したお土産</h4>
+<% else %>
+<h4><%=@post_item.customer.name %>さんの投稿したお土産</h4>
+<% end %>
+
+<%=image_tag @post_item.get_image(150,150) %>
+<table>
+  <thead>
+    <tr>
+    <th><%=@post_item.name %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>購入価格：</td>
+      <td><%=@post_item.price %>円  ※価格は参考として下さい</td>
+    </tr>
+    <tr>
+      <td>購入地域：</td>
+      <td><%=@post_item.buy_prefecture%></td>
+    </tr>
+    <tr>
+      <td>購入店舗：</td>
+      <td><%=@post_item.shop %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class= "tag">
+<% @post_tags.each do |tag| %>
+  <%=tag.tag_name%>
+<% end %>
+</div>
+
+<div id="star-evaluation<%= @post_item.id %>">
+　<p>お土産のレビュー</p>
+  <!-- 星レビュー表示javascript -->
+  <script>
+  $('#star-evaluation<%= @post_item.id %>').raty({
+    size     : 20,
+    starOff:  '<%= asset_path('star-off.jpg') %>',
+    starOn : '<%= asset_path('star-on.jpg') %>',
+    half: false,
+    readOnly: true,
+    score: <%= @post_item.evaluation %>,
+  });
+  </script>
+</div>
+
+<div>
+<%=@post_item.review %>
+</div>
+<p>投稿日:<%=@post_item.created_at.strftime('%Y/%m/%d') %></p>
+
+
+
+
+
+
+
+
+

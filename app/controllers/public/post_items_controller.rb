@@ -21,13 +21,22 @@ class Public::PostItemsController < ApplicationController
   def index
    @post_item=PostItem.new
    @post_items=PostItem.all
-   @tag_list=Tag.all
+  # @tag_list=Tag.all
   end
 
   def show
+    @post_item=PostItem.find(params[:id])
+    @post_tags=@post_item.tags
   end
 
   def edit
+    @post_item=PostItem.find(params[:id])
+  end
+
+  def update
+    @post_item=PostItem.find(params[:id])
+    @post_item.update(params_post_item)
+    redirect_to post_item_path(@post_item.id)
   end
 
   def destroy # 不要（あとで削除）

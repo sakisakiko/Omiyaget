@@ -1,2 +1,26 @@
-<h1>Public::PostItems#index</h1>
-<p>Find me in app/views/public/post_items/index.html.erb</p>
+<div class="main-visual">
+  <p>さぁ、あなた好みのお土産を探してみましょう！</p>
+</div>
+
+<div class="main">
+  <div class="mainbar">
+    <h3>新着のおみやげ</h3>
+    <p>キーワード検索</p>
+    <% @post_items.each do |post_item| %>
+      <%=link_to post_item_path(post_item.id) do %>
+       <%=image_tag post_item.get_image(150,150) %>
+      <% end %>
+      <%=post_item.name %>
+      <%=post_item.buy_prefecture %>
+      <%=link_to"削除する",post_item_path(post_item.id),method: :delete %><!--destroy不要あとでけす--></br>
+    <% end %>
+  </div>
+
+
+
+  <div class="sidebar">
+    <h4>絞り込み</h4>
+    <h5>カテゴリ</h5>
+    <h5>地域</h5>
+  </div>
+</div>

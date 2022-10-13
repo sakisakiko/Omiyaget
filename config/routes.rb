@@ -13,15 +13,15 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
-  
+
+
   scope module: :public do
     root to:"homes#top"
 
      #ゲストユーザー用
      post '/homes/guest_sign_in'=>'homes#new_guest',as: 'new_guest_sign_in'
-
-    resources:post_items,only:[:new,:create,:index,:show,:edit,:update]do
+  # post_itemsのdestroy不要。後削除
+    resources:post_items,only:[:new,:create,:index,:show,:edit,:update,:destroy]do
       resources:post_comments,only:[:create]
       resource:favorites,only:[:create,:destroy]
       resources:bookmarks,only:[:create,:index,:destroy,]

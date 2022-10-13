@@ -30,6 +30,14 @@ class Public::PostItemsController < ApplicationController
   def edit
   end
 
+  def destroy # 不要（あとで削除）
+    @post_item=current_customer.post_items.find(params[:id])
+    @post_item.destroy
+    redirect_to post_items_path
+  end
+
+
+
 private
 def post_item_params
 params.require(:post_item).permit(:image,:customer_id,:category_id,:name,:review,:evaluation,:price,:shop,:release,:buy_prefecture)

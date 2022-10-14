@@ -4,6 +4,7 @@
 
 <div class="main">
   <div class="mainbar">
+    <%= flash[:notice] %>　<!--フラッシュメッセージ-->
     <h3>新着のおみやげ</h3>
     <p>キーワード検索</p>
     <% @post_items.each do |post_item| %>

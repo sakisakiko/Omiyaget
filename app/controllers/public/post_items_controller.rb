@@ -40,12 +40,14 @@ class Public::PostItemsController < ApplicationController
     tag_list=params[:post_item][:tag_name].split(nil)
     @post_item.update(post_item_params)
     @post_item.save_tag(tag_list)
+    flash[:notice] = "お土産情報を変更しました。"
     redirect_to post_item_path(@post_item.id)
   end
 
-  def destroy #
+  def destroy 
     @post_item=current_customer.post_items.find(params[:id])
     @post_item.destroy
+    flash[:notice] = "お土産を削除しました。"
     redirect_to post_items_path
   end
 

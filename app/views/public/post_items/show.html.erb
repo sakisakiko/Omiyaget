@@ -1,6 +1,7 @@
 <p>プロフィール画像が入ります</p>
 <% if @post_item.customer_id==current_customer.id %>
 <h4>投稿したお土産</h4>
+<%= flash[:notice] %>　<!--フラッシュメッセージ-->
 <%=link_to "編集",edit_post_item_path(@post_item.id) %></br>
 <% else %>
 <h4><%=@post_item.customer.name %>さんの投稿したお土産</h4>

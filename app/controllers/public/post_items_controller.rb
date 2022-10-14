@@ -43,7 +43,7 @@ class Public::PostItemsController < ApplicationController
     redirect_to post_item_path(@post_item.id)
   end
 
-  def destroy # 不要（あとで削除）
+  def destroy #
     @post_item=current_customer.post_items.find(params[:id])
     @post_item.destroy
     redirect_to post_items_path

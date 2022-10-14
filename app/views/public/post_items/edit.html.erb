@@ -75,5 +75,6 @@
     <%= f.submit "変更する" %>
   </div>
 <% end %>
+<%=link_to "このお土産を削除",post_item_path(@post_item.id),method: :delete,"data-confirm" => "このお土産情報を削除します。削除した情報は元に戻せません。よろしいですか？" %>
 
 

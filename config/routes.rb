@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
      #ゲストユーザー用
      post '/homes/guest_sign_in'=>'homes#new_guest',as: 'new_guest_sign_in'
-  # post_itemsのdestroy不要。後削除
+     
     resources:post_items,only:[:new,:create,:index,:show,:edit,:update,:destroy]do
       resources:post_comments,only:[:create]
       resource:favorites,only:[:create,:destroy]

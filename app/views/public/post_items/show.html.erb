@@ -1,9 +1,11 @@
 <p>プロフィール画像が入ります</p>
 <% if @post_item.customer_id==current_customer.id %>
 <h4>投稿したお土産</h4>
+<%=link_to "編集",edit_post_item_path(@post_item.id) %></br>
 <% else %>
 <h4><%=@post_item.customer.name %>さんの投稿したお土産</h4>
 <% end %>
+
 
 <%=image_tag @post_item.get_image(150,150) %>
 <table>
@@ -35,7 +37,7 @@
 </div>
 
 <div id="star-evaluation<%= @post_item.id %>">
-　<p>お土産のレビュー</p>
+<p>お土産のレビュー</p>
   <!-- 星レビュー表示javascript -->
   <script>
   $('#star-evaluation<%= @post_item.id %>').raty({

@@ -20,16 +20,15 @@ Rails.application.routes.draw do
 
      #ゲストユーザー用
      post '/homes/guest_sign_in'=>'homes#new_guest',as: 'new_guest_sign_in'
-     
+
     resources:post_items,only:[:new,:create,:index,:show,:edit,:update,:destroy]do
       resources:post_comments,only:[:create]
       resource:favorites,only:[:create,:destroy]
       resources:bookmarks,only:[:create,:index,:destroy,]
     end
-    get '/customers/user_page'=>'customers#show',as: 'user_page'
     get '/customers/unsubscribe'=>'customers#unsubscribe',as: 'unsubscribe'
     patch '/customers/withdraw'=>'customers#withdraw',as: 'withdraw'
-    resources:customers,only:[:edit,:update]
+    resources:customers,only:[:show,:edit,:update]
 
     get '/relationships/following '=>'registrations#following',as: 'following'
 

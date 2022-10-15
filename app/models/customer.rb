@@ -9,18 +9,18 @@ class Customer < ApplicationRecord
   has_many :favorites,dependent: :destroy
 
   #画像表示に必要な記述
-  has_one_attached:image
+  has_one_attached:profile_image
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
    #ゲストユーザーのemailとpasswordを設定
    def self.guest
      find_or_create_by(email: 'guest@examle.com', prefecture: 1, gender: 2) do |customer|
        customer.password = SecureRandom.urlsafe_base64
     end
    end
-    
+
    #バリデーション
   validates:introduction,length: {maximum: 200} #自己紹介（２００字以内）
 
@@ -46,10 +46,11 @@ class Customer < ApplicationRecord
   #プロフィール画像が設定されていないとき、デフォルトの画像が設定される
   def  get_profile_image(width,height)
     unless profile_image.attached?
-      file_path=Rails.root.join('app/assets/images/user_icon.jpeg')
-      profile_image.attach(io: File.open(file_path), filename: 'default-profile-image.jpg', content_type: 'image/jpeg')
+      file_path=Rails.root.join('app/assets/images/user_icon.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
       profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
 end
+

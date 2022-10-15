@@ -1,2 +1,21 @@
-<h4>Public::Customers#show</h4>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<!--<h5>マイページ</h5>-->
+<div>
+<%=image_tag @customer.get_profile_image(80,80) %>
+<%#=link_to "プロフィール編集",edit_customer_path(@customer.id) %></br>
+<%=@customer.name %></br>
+性別：<%=@customer.gender_i18n %>
+出身地：<%=@customer.prefecture %></br>
+＜自己紹介＞</br>
+<%=@customer.introduction %>
+</div>
+
+
+<div>
+  <h5>投稿したお土産</h5>
+    <% @post_items.each do |post_item| %>
+    
+      <%=image_tag post_item.get_image(150,150) %>
+      <%=post_item.name %>
+      <%=post_item.buy_prefecture %>
+    <% end %>
+  </div>

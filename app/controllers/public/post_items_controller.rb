@@ -27,7 +27,6 @@ class Public::PostItemsController < ApplicationController
   def show
     @post_item=PostItem.find(params[:id])
     @post_tags=@post_item.tags
-
   end
 
   def edit

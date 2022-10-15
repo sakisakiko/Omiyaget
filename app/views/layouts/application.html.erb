@@ -26,17 +26,17 @@
 
       <% if current_customer.email == 'guest@examle.com'  %>
         <%=link_to "トップへ戻る",destroy_customer_session_path,method: :delete %>
+        <%=image_tag @customer.get_profile_image(65,65) %>
       <% else %>
 
     <ul>
-      <li><%=link_to "マイページ",user_page_path %></li>
+      <li><%=link_to "マイページ",customer_path(current_customer.id) %></li>
       <li>ブックマーク<%#=link_to "ブックマーク",post_item_bookmarks_path%></li>
       <li>フォロー一覧<%#=link_to "フォロー一覧",following_path %></li>
       <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
     </ul>
-    <p><%=current_customer.name %></p>
-    <%#= image_tag current_customer.get_profile_image(50,50) %>
-    <!--↑プロフ画像-->
+    <%=current_customer.name %>
+    <%=image_tag current_customer.get_profile_image(65,65) %>
     <%=link_to "お土産情報を投稿",new_post_item_path %>
     <%end%>
 
@@ -47,6 +47,8 @@
         <li><%=link_to "カテゴリ一覧",admin_categorys_path %></li>
         <li><%=link_to "ログアウト",destroy_admin_session_path,method: :delete %></li>
       </ul>
+       <p>管理者</p>
+       <%= image_tag 'admin_icon.jpg',size: "65x65" %>
     <% else %>
 
     <% end %>

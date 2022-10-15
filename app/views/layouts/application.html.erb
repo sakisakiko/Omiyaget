@@ -26,7 +26,7 @@
 
       <% if current_customer.email == 'guest@examle.com'  %>
         <%=link_to "トップへ戻る",destroy_customer_session_path,method: :delete %>
-        <%=image_tag @customer.get_profile_image(65,65) %>
+        　<%=image_tag @customer.get_profile_image(65,65) %>
       <% else %>
 
     <ul>
@@ -36,7 +36,9 @@
       <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
     </ul>
     <%=current_customer.name %>
-    <%=image_tag current_customer.get_profile_image(65,65) %>
+    <%=link_to customer_path(current_customer.id) do %>
+     <%=image_tag current_customer.get_profile_image(65,65) %>
+    <% end %>
     <%=link_to "お土産情報を投稿",new_post_item_path %>
     <%end%>
 

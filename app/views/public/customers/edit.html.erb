@@ -1,2 +1,41 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<h4>プロフィール編集</h4>
+
+<%=form_with model: @customer,url: customer_path(@customer.id) do |f| %>
+
+  <div class="post_image">
+    <%= f.label :プロフィール画像 %>
+    <%= f.file_field :profile_image,asset: "image/*"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :ニックネーム %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :メールアドレス %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="prefecture">
+    <%= f.label :出身地 %>
+    <%#= f.select :prefecture,Customer.prefectures.keys {}%>
+    <%= f.select :prefecture, Customer.prefectures.keys.map {|k| [k]} %>
+  </div>
+
+  <div class="gender">
+    <%= f.label :性別 %>
+    <%= f.select :gender, Customer.genders_i18n.keys.map {|k| [Customer.genders_i18n[k], k]}%>
+  </div>
+
+  <div class="field">
+    <%= f.label :自己紹介 %>
+    <%= f.text_area :introduction %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "編集内容を保存" %>
+  </div>
+<% end %>
+<%=link_to "退会する", unsubscribe_path %>

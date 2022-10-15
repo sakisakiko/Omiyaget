@@ -1,7 +1,7 @@
 <!--<h5>マイページ</h5>-->
 <div>
-<%=image_tag @customer.get_profile_image(80,80) %>
-<%#=link_to "プロフィール編集",edit_customer_path(@customer.id) %></br>
+<%=image_tag @customer.get_profile_image(100,100) %>
+<%=link_to "プロフィール編集",edit_customer_path(@customer.id) %></br>
 <%=@customer.name %></br>
 性別：<%=@customer.gender_i18n %>
 出身地：<%=@customer.prefecture %></br>
@@ -13,9 +13,10 @@
 <div>
   <h5>投稿したお土産</h5>
     <% @post_items.each do |post_item| %>
-    
+    <%=link_to edit_post_item_path(post_item.id) do %>
       <%=image_tag post_item.get_image(150,150) %>
       <%=post_item.name %>
+    <% end %>
       <%=post_item.buy_prefecture %>
     <% end %>
   </div>

@@ -1,10 +1,10 @@
-<%= flash[:notice] %>　<!--フラッシュメッセージ-->
+<%#= flash[:notice] %>　<!--フラッシュメッセージ-->
 
 <%=link_to customer_path(@post_item.customer.id) do %>
  <%=image_tag @post_item.customer.get_profile_image(80,80) %>
 <% end %>
 <% if @post_item.customer_id==current_customer.id %>
- <%=link_to "編集",edit_post_item_path(@post_item.id) %></br>
+ <%=link_to "お土産情報編集",edit_post_item_path(@post_item.id) %></br>
   <h4>投稿したお土産</h4>
 <% else %>
   <h4><%=@post_item.customer.name %>さんの投稿したお土産</h4>

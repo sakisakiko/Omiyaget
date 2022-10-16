@@ -1,0 +1,11 @@
+<%=image_tag 'attention.jpg',size: "150x150" %>
+<p>本当に退会しますか？</p>
+<p>退会すると、会員登録情報や</br>
+これまでの投稿、ブックマークなど<span>すべての情報</span>が破棄されます。</br>
+退会する場合は、「退会する」をクリックして下さい。</p>
+
+<%=link_to "退会しない",customer_path(current_customer.id) %>
+<%=form_with model: @customer,url: withdraw_path,method: :patch do |f| %>
+ <%=f.submit "退会する","data-confirm"=>"退会します。宜しいですか？" %>
+<% end %>
+

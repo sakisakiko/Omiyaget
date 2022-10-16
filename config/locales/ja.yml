@@ -5,4 +5,8 @@
           male: "男性"
           female: "女性"
           unanwer: "非公開"
-  
+        is_deleted:
+          false: "有効"
+          true: "退会"
+          stop: "利用停止中"
+

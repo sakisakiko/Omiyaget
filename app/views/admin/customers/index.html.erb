@@ -16,18 +16,24 @@
 
       <!--ゲストユーザーは一覧に表示しない-->
        <% if customer.email == 'guest@examle.com' %>
+        <tr>
+        <td>1</td>
+         <td>※ゲストユーザー</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
        <% else %>
       <tr>
         <td><%=customer.id %></td>
-         <td><%#=link_to admin_customer_path(customer.id) do %><%=customer.name %><%# end %></td>
+         <td><%=link_to customer_path(customer.id) do %><%=customer.name %><% end %></td>
         <td><%=customer.email%></td>
-        <td>ステータスが入ります<%# if customer.is_deleted == true %>
-        <!--   <span class="font-weight-bold" style="color:#DDDDDD;">退会</span>-->
-        <!--   <#% else %>-->
-        <!--   <span class="text-success font-weight-bold">有効</span>-->
-        <!--   <#% end %>-->
+        <td><%=customer.is_deleted_i18n%>
         </td>
-        <td>ステータスが入ります  更新ボタン</td>
+        <%=form_with url: admin_customer_path(customer.id),method: :patch do |f| %>
+         <td><%= f.select :is_deleted, [["有効","false"], ["利用停止中","stop"]] %>
+        <%=f.submit "更新する" %></td>
+        <% end %>
       </tr>
       <% end %>
       <% end %>

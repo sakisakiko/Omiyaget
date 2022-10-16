@@ -44,7 +44,8 @@ class Customer < ApplicationRecord
 
   # 退会フラグ:enum管理
   # false:有効、true:退会、stop:利用停止中
-  enum is_deleted:{false:1,true:2,stop:3}
+  enum is_deleted:{false:1, true:2, stop:3}
+  #enum is_deleted:{false: "1", true: "2", stop: "3"}
 
 
   #プロフィール画像が設定されていないとき、デフォルトの画像が設定される

@@ -1,4 +1,16 @@
 class Public::CustomersController < ApplicationController
+   before_filter :check_login
+
+   def check_login
+     if current_customer==true
+       if current_customer.is_deleted=="stop"
+         redirect_to  destroy_customer_session_path
+       else
+       end
+     end
+   end
+
+
   def show
     @customer=Customer.find(params[:id])
     @post_items=@customer.post_items
@@ -18,17 +30,17 @@ class Public::CustomersController < ApplicationController
     @customer=current_customer
   end
 
-   def withdraw
-     @customer=current_customer
-     @customer.update(is_deleted=="2")
-     reset_session
-     redirect_to root_path
+  def withdraw
+    @customer=current_customer
+    @customer.update(is_deleted: 2)
+    reset_session
+    redirect_to root_path
   end
 
 
   private
   def customer_params
-   params.require(:customer).permit(:email,:name,:prefecture,:gender,:profile_image,:image,:introduction)
+   params.require(:customer).permit(:email,:name,:prefecture,:gender,:profile_image,:image,:introduction,:is_deleted)
   end
 
 end

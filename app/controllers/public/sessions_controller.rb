@@ -55,7 +55,7 @@ class Public::SessionsController < Devise::SessionsController
         redirect_to new_customer_registration_path
     elsif @customer.valid_password?(params[:customer][:password])&&(@customer.status=="stop")
         flash[:notice] = "このアカウントは現在利用停止されています。お問合せフォームからご連絡下さい。"
-        redirect_to new_customer_registration_path
+        redirect_to new_customer_session_path
     end
   end
 

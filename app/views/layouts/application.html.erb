@@ -26,7 +26,7 @@
 
       <% if current_customer.email == 'guest@examle.com'  %>
         <%=link_to "トップへ戻る",destroy_customer_session_path,method: :delete %>
-         <%=image_tag @customer.get_profile_image(65,65) %>
+        <%= image_tag 'user_icon.jpg',size: "50x50" %>
       <% else %>
 
     <ul>
@@ -58,7 +58,6 @@
 
 
   <body>
-    <%=flash[:notice] %>
     <%= yield %>
   </body>
 

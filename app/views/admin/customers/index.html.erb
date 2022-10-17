@@ -28,7 +28,7 @@
         <td><%=customer.id %></td>
          <td><%=link_to customer_path(customer.id) do %><%=customer.name %><% end %></td>
         <td><%=customer.email%></td>
-        <td><%=customer.is_deleted_i18n%>
+        <td><%=customer.status_i18n%>
         </td>
         <%=form_with url: admin_customer_path(customer.id),method: :patch do |f| %>
          <td><%= f.select :status, [["有効","enrolled"], ["利用停止中","stop"]] %>

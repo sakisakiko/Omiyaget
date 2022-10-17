@@ -1,5 +1,5 @@
 <h4>ログイン</h4>
-
+<%=flash[:notice] %>
 <%#= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <%=form_with model: @customer,url: customer_session_path do |f| %>
   <div class="field">

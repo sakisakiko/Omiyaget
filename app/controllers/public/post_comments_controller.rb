@@ -8,6 +8,16 @@ def create
   redirect_to post_item_path(post_item.id)
 end
 
+def destroy
+  post_item=PostItem.find(params[:post_item_id])
+  comment=PostComment.find(params[:id])
+  comment.destroy
+  redirect_to post_item_path(post_item.id)
+end
+
+
+
+
 private
 
 def post_comment_params

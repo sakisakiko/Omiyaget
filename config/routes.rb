@@ -22,7 +22,7 @@ Rails.application.routes.draw do
      post '/homes/guest_sign_in'=>'homes#new_guest',as: 'new_guest_sign_in'
 
     resources:post_items,only:[:new,:create,:index,:show,:edit,:update,:destroy]do
-      resources:post_comments,only:[:create]
+      resources:post_comments,only:[:create,:destroy]
       resource:favorites,only:[:create,:destroy]
       resources:bookmarks,only:[:create,:index,:destroy,]
     end

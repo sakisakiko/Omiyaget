@@ -1,14 +1,23 @@
-<%#= flash[:notice] %>　<!--フラッシュメッセージ-->
+<%= flash[:notice] %>　<!--フラッシュメッセージ-->
 
 <%=link_to customer_path(@post_item.customer.id) do %>
  <%=image_tag @post_item.customer.get_profile_image(80,80) %>
 <% end %>
-<% if @post_item.customer_id==current_customer.id %>
- <%=link_to "お土産情報編集",edit_post_item_path(@post_item.id) %></br>
-  <h4>投稿したお土産</h4>
-<% else %>
+
+
+<!--お土産編集は自分の商品のみ表示-->
+<% if customer_signed_in? %>
+  <% if @post_item.customer_id==current_customer.id %>
+    <%=link_to "お土産情報編集",edit_post_item_path(@post_item.id) %></br>
+    <h4>投稿したお土産</h4>
+  <% else %>
+    <h4><%=@post_item.customer.name %>さんの投稿したお土産</h4>
+  <% end %>
+<% elsif admin_signed_in? %>
   <h4><%=@post_item.customer.name %>さんの投稿したお土産</h4>
+<% else %>
 <% end %>
+
 
 
 <%=image_tag @post_item.get_image(150,150) %>
@@ -63,22 +72,30 @@
   <p><i class="fa-solid fa-comment"></i>コメント:<%=@post_item.post_comments.count %></p>
 </div>
 
-
-<div>
-  <p>コメント</p>
-  <%=image_tag current_customer.get_profile_image(80,80) %>
-  <%=form_with model:[@post_item,@post_comment] do |f| %>
-  <%= f.text_area :comment %>
-  <%=f.submit "送信" %>
-  <% end %>
-</div>
+<% if customer_signed_in? %>
+<!--コメント入力欄、管理者ログイン時は表示しない-->
+  <div>
+    <p>コメント</p>
+    <%=image_tag current_customer.get_profile_image(80,80) %>
+    <%=form_with model:[@post_item,@post_comment] do |f| %>
+    <%= f.text_area :comment %>
+    <%=f.submit "送信" %>
+    <% end %>
+  </div>
+<% else %>
+<% end %>
 
 <div>
   <% @post_comments.each do |post_comment| %>
     <%=image_tag post_comment.customer.get_profile_image(80,80) %>
     <%=post_comment.customer.name %>
     <%=post_comment.created_at.strftime('%Y/%m/%d') %></br>
-    <%=post_comment.comment %></br>
+    <%=post_comment.comment %>
+    <% if admin_signed_in? %>
+    <!--コメントの削除は管理者のみ表示-->
+    <%=link_to "コメントを削除", post_item_post_comment_path(@post_item.id,post_comment.id),method: :delete,"data-confirm"=>"管理者権限で不適切なコメントを削除します。宜しいですか？" %></br>
+    <% else %>
+    <% end %></br>
   <% end %>
 </div>
 

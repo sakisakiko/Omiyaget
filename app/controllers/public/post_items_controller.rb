@@ -27,6 +27,8 @@ class Public::PostItemsController < ApplicationController
   def show
     @post_item=PostItem.find(params[:id])
     @post_tags=@post_item.tags
+    @post_comment=PostComment.new
+    @post_comments=@post_item.post_comments
   end
 
   def edit
@@ -43,7 +45,7 @@ class Public::PostItemsController < ApplicationController
     redirect_to post_item_path(@post_item.id)
   end
 
-  def destroy 
+  def destroy
     @post_item=current_customer.post_items.find(params[:id])
     @post_item.destroy
     flash[:notice] = "お土産を削除しました。"
@@ -54,7 +56,8 @@ class Public::PostItemsController < ApplicationController
 
 private
 def post_item_params
-params.require(:post_item).permit(:image,:customer_id,:category_id,:name,:review,:evaluation,:price,:shop,:release,:buy_prefecture)
+params.require(:post_item).permit(:image,:customer_id,:category_id,:name,
+:review,:evaluation,:price,:shop,:release,:buy_prefecture)
 end
 
 

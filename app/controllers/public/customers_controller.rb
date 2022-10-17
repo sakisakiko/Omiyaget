@@ -3,7 +3,7 @@ class Public::CustomersController < ApplicationController
 
    def check_login
      if current_customer==true
-       if current_customer.is_deleted=="stop"
+       if current_customer.status=="stop"
          redirect_to  destroy_customer_session_path
        else
        end

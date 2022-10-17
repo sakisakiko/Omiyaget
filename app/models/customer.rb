@@ -42,10 +42,9 @@ class Customer < ApplicationRecord
   # male:男性、female:女性、unanswer:非公開
   enum gender:{male:0,female:1,unanwer:2}
 
-  # 退会フラグ:enum管理
-  # false:有効、true:退会、stop:利用停止中
-  enum is_deleted:{false:1, true:2, stop:3}
-  #enum is_deleted:{false: "1", true: "2", stop: "3"}
+  # 会員ステータス:enum管理
+  # enrolled:有効、deleted:退会、stop:利用停止中
+  enum status:{enrolled:1, deleted:2, stop:3}
 
 
   #プロフィール画像が設定されていないとき、デフォルトの画像が設定される

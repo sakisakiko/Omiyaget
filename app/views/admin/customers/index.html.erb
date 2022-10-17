@@ -31,7 +31,7 @@
         <td><%=customer.is_deleted_i18n%>
         </td>
         <%=form_with url: admin_customer_path(customer.id),method: :patch do |f| %>
-         <td><%= f.select :is_deleted, [["有効","false"], ["利用停止中","stop"]] %>
+         <td><%= f.select :status, [["有効","enrolled"], ["利用停止中","stop"]] %>
         <%=f.submit "更新する" %></td>
         <% end %>
       </tr>

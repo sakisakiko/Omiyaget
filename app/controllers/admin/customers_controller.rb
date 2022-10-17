@@ -11,7 +11,7 @@ class Admin::CustomersController < ApplicationController
 
   private
   def customer_params
-  params.permit(:is_deleted)
+  params.permit(:status)
   end
 
 end

@@ -1,2 +1,43 @@
-<h1>Admin::PostItems#index</h1>
-<p>Find me in app/views/admin/post_items/index.html.erb</p>
+<h4>レビュー一覧</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>ユーザー</th>
+      <th>お土産</th>
+      <th>お土産レビュー</th>
+      <th>レビュー削除</th>
+      <th></th>
+    </tr>
+  </thead>
+
+<% @post_items.each do |post_item| %>
+  <tbody>
+    <tr>
+      <td><%= post_item.id%></td>
+      <td><%=image_tag post_item.customer.get_profile_image(70,70) %> <%=post_item.customer.name %></td>
+      <td><%=image_tag post_item.get_image(70,70) %> <%=post_item.name %></td>
+      <td><%=post_item.review %><br>
+        <div id="star-evaluation<%= post_item.id %>">
+          <!-- 星レビュー表示javascript -->
+          <script>
+          $('#star-evaluation<%= post_item.id %>').empty();
+          $('#star-evaluation<%= post_item.id %>')
+          .raty({
+            size     : 20,
+            starOff:  '<%= asset_path('star-off.jpg') %>',
+            starOn : '<%= asset_path('star-on.jpg') %>',
+            half: false,
+            readOnly: true,
+            score: <%= post_item.evaluation %>,
+          });
+          </script>
+        </div>
+      </td>
+      <td><%=link_to"レビュー削除",admin_review_destroy_path(post_item.id),method: :delete,"data-confirm"=>"管理者権限でこのレビューを削除します。宜しいですか？" %></td>
+    </tr>
+  </tbody>
+<% end %>
+</table>
+

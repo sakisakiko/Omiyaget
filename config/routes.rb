@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     # destroy不要。動作など確認後削除
 
     get '/review'=>'post_items#index',as: 'review'
-    delete '/review/destroy'=>'post_items#destroy',as: 'review_destroy'
+    delete '/review/destroy/:id'=>'post_items#destroy',as: 'review_destroy'
 
     resources:post_comments,only:[:destroy]
 

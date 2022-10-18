@@ -68,12 +68,36 @@
 <div>
   <%=@post_item.review %>
   <p>投稿日:<%=@post_item.created_at.strftime('%Y/%m/%d') %></p>
-  <p><i class="fa-solid fa-thumbs-up"></i>参考になった</p>
-  <p><i class="fa-solid fa-comment"></i>コメント:<%=@post_item.post_comments.count %></p>
+
+<!--いいね表示※自分のお土産＆管理者ログイン時はいいねの数のみ表示（いいねはできない）-->
+<% if customer_signed_in? %>
+  <% if @post_item.customer_id!=current_customer.id %>
+    <% if @post_item.favorited_by?(current_customer) %>
+      <%= link_to post_item_favorites_path(@post_item), method: :delete do %>
+        <%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %>
+      <% end %>
+    <% else %>
+      <%=link_to  post_item_favorites_path(@post_item),method: :post do %>
+        <%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %>
+      <% end %>
+    <% end %>
+  <% else%>
+    <%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %>
+  <% end %>
+<% else %>
+  <%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %>
+<% end %>
+
+
+
+  <p><%= image_tag 'comment_icon.jpg',size: "20x20" %>コメント:<%=@post_item.post_comments.count %></p>
 </div>
 
+
+
+
+<!--コメント入力欄※管理者ログイン時は表示しない-->
 <% if customer_signed_in? %>
-<!--コメント入力欄、管理者ログイン時は表示しない-->
   <div>
     <p>コメント</p>
     <%=image_tag current_customer.get_profile_image(80,80) %>

@@ -56,6 +56,12 @@ class PostItem < ApplicationRecord
   end
 
 
+  # いいねされたユーザーidがfavoritesテーブルに存在するか確認
+  def favorited_by?(customer)
+    favorites.exists?(customer_id: customer.id)
+  end
+
+
 
   #お土産の商品画像が投稿されていなかった場合デフォルト画像を設定
   def  get_image(width,height)

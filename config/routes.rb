@@ -28,7 +28,8 @@ Rails.application.routes.draw do
     end
     get '/customers/unsubscribe'=>'customers#unsubscribe',as: 'unsubscribe'
     patch '/customers/withdraw'=>'customers#withdraw',as: 'withdraw'
-    
+
+
     resources:customers,only:[:show,:edit,:update] do
       resource :relationships,only:[:create,:destroy]
        get :followeds, on: :member

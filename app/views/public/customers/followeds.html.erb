@@ -1,0 +1,29 @@
+<h4>フォローユーザー一覧</h4>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>フォローユーザー</th>
+      <th>自己紹介</th>
+      <th></th>
+    </tr>
+  </thead>
+<tbody>
+<% @customers.each do |customer| %>
+  <tr>
+    <td><%=image_tag customer.get_profile_image(70,70)%></br><%=customer.name %></td>
+    <td><%=customer.introduction %></td>
+    <td>
+    <% if customer.is_followed_by?(current_customer) %>
+      <%=link_to customer_relationships_path(customer),method: :delete do %>
+        <button class="btn btn-secondary">フォロー解除</button>
+      <% end %>
+    <% else %>
+      <%=link_to customer_relationships_path(customer),method: :post do %>
+        <button class="btn btn-success">フォロー</button>
+      <% end %>
+    <% end %>
+    </td>
+  </tr>
+<% end %>
+</tbody>
+</table>

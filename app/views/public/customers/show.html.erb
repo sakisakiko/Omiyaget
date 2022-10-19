@@ -1,7 +1,28 @@
-<!--<h5>マイページ</h5>-->
 <div>
-<%=image_tag @customer.get_profile_image(100,100) %>
-<%=link_to "プロフィール編集",edit_customer_path(@customer.id) %></br>
+<% if customer_signed_in? %>
+　<% if @customer==current_customer %>
+    <h5>マイページ</h5>
+    <%=image_tag current_customer.get_profile_image(100,100) %>
+    <%=link_to "プロフィール編集",edit_customer_path(@customer.id),class: "btn btn-primary" %></br>
+　<% else %>
+
+
+    <%=image_tag @customer.get_profile_image(100,100) %>
+    <% if @customer.is_followed_by?(current_customer) %>
+      <%=link_to customer_relationships_path(@customer),method: :delete do %>
+        <button class="btn btn-secondary">フォロー解除</button>
+      <% end %>
+    <% else %>
+      <%=link_to customer_relationships_path(@customer),method: :post do %>
+        <button class="btn btn-success">フォロー</button>
+      <% end %>
+    <% end %>
+  <% end %>
+<% else %>
+ <%=image_tag @customer.get_profile_image(100,100) %>
+<% end %>
+
+
 <%=@customer.name %></br>
 性別：<%=@customer.gender_i18n %>
 出身地：<%=@customer.prefecture %></br>

@@ -8,6 +8,14 @@ class Customer < ApplicationRecord
   has_many :post_comment,dependent: :destroy
   has_many :favorites,dependent: :destroy
 
+  has_many :relationships,dependent: :destroy, foreign_key: :followed_id
+  has_many :followeds, through: :relationships, source: :follower
+
+
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: :follower_id
+  has_many :followers, through: :reverse_of_relationships, source: :followed
+
+
   #画像表示に必要な記述
   has_one_attached:profile_image
 
@@ -20,6 +28,16 @@ class Customer < ApplicationRecord
        customer.password = SecureRandom.urlsafe_base64
     end
    end
+
+
+    #フォローされているか否かを判定するメソッド
+
+    def is_followed_by?(customer)
+        reverse_of_relationships.find_by(followed_id: customer.id).present?
+    end
+
+
+
 
    #バリデーション
   validates:introduction,length: {maximum: 200} #自己紹介（２００字以内）

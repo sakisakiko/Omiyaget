@@ -19,28 +19,35 @@
 
 
   <header>
-    <%=link_to post_items_path do %><%= image_tag 'omiyaget_logo.jpg'%><% end %>
+    <%=link_to root_path do %><%= image_tag 'omiyaget_logo.jpg'%><% end %>
 
 
     <% if customer_signed_in? %>
 
       <% if current_customer.email == 'guest@examle.com'  %>
-        <%=link_to "トップへ戻る",destroy_customer_session_path,method: :delete %>
-        <%= image_tag 'user_icon.jpg',size: "50x50" %>
+        <ul>
+          <li><%=link_to "お土産ー覧",post_items_path %></li>
+           <li><%=link_to "新規登録",new_customer_registration_path %></li>
+          <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
+      　</ul>
+      　　<P>ゲストユーザー</P>
+          <%= image_tag 'user_icon.jpg',size: "50x50" %>
       <% else %>
 
-    <ul>
-      <li><%=link_to "マイページ",customer_path(current_customer.id) %></li>
-      <li>ブックマーク<%#=link_to "ブックマーク",post_item_bookmarks_path%></li>
-      <li>フォロー一覧<%#=link_to "フォロー一覧",following_path %></li>
-      <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
-    </ul>
-    <%=current_customer.name %>
-    <%=link_to customer_path(current_customer.id) do %>
-     <%=image_tag current_customer.get_profile_image(65,65) %>
-    <% end %>
-    <%=link_to "お土産情報を投稿",new_post_item_path %>
-    <%end%>
+        <ul>
+          <li><%=link_to "マイページ",customer_path(current_customer.id) %></li>
+          <li><%=link_to "お土産ー覧",post_items_path %></li>
+          <li>ブックマーク<%#=link_to "ブックマーク",post_item_bookmarks_path%></li>
+          <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
+        </ul>
+        <%=link_to "お土産情報を投稿",new_post_item_path %>
+        <%=current_customer.name %>
+        <%=link_to customer_path(current_customer.id) do %>
+         <%=image_tag current_customer.get_profile_image(65,65) %>
+        <% end %>
+        <p><%=link_to current_customer.followings.count,followings_customer_path(current_customer) %>フォロー</p>
+        <p><%=link_to current_customer.followers.count,followers_customer_path(current_customer)%>フォロワー</p>
+      <%end%>
 
     <% elsif admin_signed_in? %>
       <ul>

@@ -11,20 +11,8 @@
     <%=link_to "お土産情報編集",edit_post_item_path(@post_item.id),class:"btn btn-primary" %></br>
     <h4>投稿したお土産</h4>
   <% else %>
-
-      <% if @post_item.customer.is_followed_by?(current_customer) %>
-        <%=link_to customer_relationships_path(@post_item.customer),method: :delete do %>
-          <button class="btn btn-secondary">フォロー解除</button>
-        <% end %>
-      <% else %>
-        <%=link_to customer_relationships_path(@post_item.customer),method: :post do %>
-          <button class="btn btn-success">フォロー</button>
-        <% end %>
-      <% end %>
-
     <h4><%=@post_item.customer.name %>さんの投稿したお土産</h4>
   <% end %>
-
 <% elsif admin_signed_in? %>
   <h4><%=@post_item.customer.name %>さんの投稿したお土産</h4>
 <%else %>

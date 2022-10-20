@@ -37,12 +37,12 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  def followeds
+  def followings
     customer=Customer.find(params[:id])
-    @customers=customer.followeds
+    @customers=customer.followings
   end
 
-  def follower
+  def followers
     customer=Customer.find(params[:id])
     @customers=customer.followers
   end

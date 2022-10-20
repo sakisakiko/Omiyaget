@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
     resources:customers,only:[:show,:edit,:update] do
       resource :relationships,only:[:create,:destroy]
-       get :followeds, on: :member
+       get :followings, on: :member
        get :followers, on: :member
     end
 

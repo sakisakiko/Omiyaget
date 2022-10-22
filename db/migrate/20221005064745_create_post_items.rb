@@ -4,7 +4,7 @@ class CreatePostItems < ActiveRecord::Migration[6.1]
       t.integer :customer_id, null: false, default: ""
       t.integer :category_id, null: false, default: ""
       t.string :name, null: false, default: ""
-      t.text :review, null: false, default: ""
+      t.text :review, default: ""
       t.float :evaluation, null: false, default: ""
       t.string :price, null: false, default: ""
       t.string :shop, null: false, default: ""

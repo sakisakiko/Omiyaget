@@ -23,9 +23,7 @@ test:
 # production:
 #   <<: *default
 #   database: db/production.sqlite3
-  
-  
-  production:
+production:
   <<: *default
   database: <%= ENV['DB_DATABASE'] %>
   adapter: mysql2

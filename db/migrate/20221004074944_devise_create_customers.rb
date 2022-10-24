@@ -8,8 +8,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :encrypted_password, null: false, default: ""
       t.string :name,              null: false, default: ""
       t.integer :prefecture,        null: false, default: 0
-      t.text :introduction
-      t.integer :gender,        null: false, default: 0
+      t.string :introduction,       default: ""
+      t.integer :gender,        null: false
       t.integer :status,        null: false, default: 1
 
 

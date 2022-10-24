@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
     t.integer "prefecture", default: 0, null: false
-    t.text "27"
-    t.integer "gender", default: 0, null: false
+    t.string "introduction", default: ""
+    t.integer "gender", null: false
     t.integer "status", default: 1, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
   create_table "post_comments", force: :cascade do |t|
     t.integer "customer_id", default: 0, null: false
     t.integer "post_item_id", default: 0, null: false
-    t.text "comment"
+    t.string "comment", default: ""
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
     t.integer "customer_id", default: 0, null: false
     t.integer "category_id", default: 0, null: false
     t.string "name", default: "", null: false
-    t.text "review"
+    t.text "review", null: false
     t.float "evaluation", default: 0.0, null: false
     t.string "price", default: "", null: false
     t.string "shop", default: "", null: false

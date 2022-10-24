@@ -24,7 +24,7 @@ class Customer < ApplicationRecord
 
    #ゲストユーザーのemailとpasswordを設定
    def self.guest
-     find_or_create_by(email: 'guest@examle.com', prefecture: 1, gender: 2) do |customer|
+     find_or_create_by(id: 1,email: 'guest@examle.com', prefecture: 1, gender: 2) do |customer|
        customer.password = SecureRandom.urlsafe_base64
     end
    end
@@ -34,8 +34,6 @@ class Customer < ApplicationRecord
     def is_following_by?(customer)
         reverse_of_relationships.find_by(following_id: customer.id).present?
     end
-
-
 
 
    #バリデーション

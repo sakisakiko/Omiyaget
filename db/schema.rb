@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "post_item_id", null: false
+    t.integer "customer_id", default: 0, null: false
+    t.integer "post_item_id", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
     t.integer "prefecture", default: 0, null: false
-    t.text "introduction", null: false
+    t.text "27"
     t.integer "gender", default: 0, null: false
     t.integer "status", default: 1, null: false
     t.string "reset_password_token"
@@ -83,30 +83,30 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
   end
 
   create_table "favorites", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "post_item_id", null: false
+    t.integer "customer_id", default: 0, null: false
+    t.integer "post_item_id", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "post_comments", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "post_item_id", null: false
-    t.text "comment", default: "", null: false
+    t.integer "customer_id", default: 0, null: false
+    t.integer "post_item_id", default: 0, null: false
+    t.text "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "post_items", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "category_id", null: false
+    t.integer "customer_id", default: 0, null: false
+    t.integer "category_id", default: 0, null: false
     t.string "name", default: "", null: false
-    t.text "review", default: ""
-    t.float "evaluation", null: false
+    t.text "review"
+    t.float "evaluation", default: 0.0, null: false
     t.string "price", default: "", null: false
     t.string "shop", default: "", null: false
     t.boolean "release", default: true, null: false
-    t.integer "buy_prefecture", null: false
+    t.integer "buy_prefecture", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -117,13 +117,11 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_item_id", "tag_id"], name: "index_post_tags_on_post_item_id_and_tag_id", unique: true
-    t.index ["post_item_id"], name: "index_post_tags_on_post_item_id"
-    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id", null: false
-    t.integer "following_id", null: false
+    t.integer "follower_id", default: 0, null: false
+    t.integer "following_id", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -136,6 +134,4 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "post_tags", "post_items"
-  add_foreign_key "post_tags", "tags"
 end

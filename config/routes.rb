@@ -25,6 +25,9 @@ Rails.application.routes.draw do
       resources:post_comments,only:[:create,:destroy]
       resource:favorites,only:[:create,:destroy]
       resources:bookmarks,only:[:create,:index,:destroy,]
+      collection do
+        get 'search'
+      end
     end
     get '/customers/unsubscribe'=>'customers#unsubscribe',as: 'unsubscribe'
     patch '/customers/withdraw'=>'customers#withdraw',as: 'withdraw'

@@ -16,13 +16,21 @@ class Public::PostItemsController < ApplicationController
     end
   end
 
-
-
   def index
    @post_item=PostItem.new
    @post_items=PostItem.all
   # @tag_list=Tag.all
   end
+
+  def search
+      if params[:keyword].present?
+       @post_items = PostItem.where('buy_prefecture LIKE ?', "%#{params[:keyword]}%")
+       @keyword = params[:keyword]
+      else
+        @post_items = PostItem.all
+      end
+  end
+
 
   def show
     @post_item=PostItem.find(params[:id])
@@ -51,6 +59,7 @@ class Public::PostItemsController < ApplicationController
     flash[:notice] = "お土産を削除しました。"
     redirect_to post_items_path
   end
+
 
 
 

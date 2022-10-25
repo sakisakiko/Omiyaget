@@ -1,0 +1,6 @@
+<h2>検索結果 "<%= @keyword%>"</h2>
+  <ul>
+    <% @post_items.each do |post_item| %>
+     <%=post_item.name %>
+    <% end %>
+  </ul>

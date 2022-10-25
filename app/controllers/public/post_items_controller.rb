@@ -21,16 +21,18 @@ class Public::PostItemsController < ApplicationController
    @post_items=PostItem.all
   # @tag_list=Tag.all
   end
-  
-  
+
+
 
   def search
-      if params[:keyword].present?
-       @post_items = PostItem.where('buy_prefecture LIKE ?', "%#{params[:keyword]}%")
-       @keyword = params[:keyword]
-      else
-        @post_items = PostItem.all
-      end
+    if params[:keyword].present?
+      tag = Tag.find_by(tag_name: params[:keyword])
+      @post_items = tag.present? ? tag.post_items : PostItem.all
+      # @post_items = PostItem.where('buy_prefecture LIKE?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @post_items = PostItem.all
+    end
   end
 
 
@@ -68,7 +70,7 @@ class Public::PostItemsController < ApplicationController
 private
 def post_item_params
 params.require(:post_item).permit(:image,:customer_id,:category_id,:name,
-:review,:evaluation,:price,:shop,:release,:buy_prefecture)
+:review,:evaluation,:price,:shop,:release,:buy_prefecture,:keyword)
 end
 
 

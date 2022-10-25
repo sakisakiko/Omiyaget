@@ -1,6 +1,9 @@
 <h2>検索結果 "<%= @keyword%>"</h2>
-  <ul>
     <% @post_items.each do |post_item| %>
-     <%=post_item.name %>
+      <%=link_to post_item_path(post_item.id) do %>
+       <%=image_tag post_item.get_image(150,150) %>
+      <% end %>
+      <%=post_item.name %>
+      <%=post_item.buy_prefecture %>
     <% end %>
-  </ul>
+  </div>

@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 2022_10_10_094628) do
     t.integer "customer_id", default: 0, null: false
     t.integer "category_id", default: 0, null: false
     t.string "name", default: "", null: false
-    t.text "review", null: false
+    t.text "review"
     t.float "evaluation", default: 0.0, null: false
     t.string "price", default: "", null: false
     t.string "shop", default: "", null: false

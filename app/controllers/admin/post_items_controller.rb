@@ -4,11 +4,10 @@ class Admin::PostItemsController < ApplicationController
     @post_items=PostItem.all
   end
 
-  def destroy
-    # レビューを探してレビューをけす
-    post_item=PostItem.find(params[:id])
-    @review=post_item.review
-    @review.destroy
+  def update
+    @post_item=PostItem.find(params[:id])
+    @post_item.review=""
+    @post_item.save!
     redirect_to admin_review_path
   end
 

@@ -21,6 +21,8 @@ class Public::PostItemsController < ApplicationController
    @post_items=PostItem.all
   # @tag_list=Tag.all
   end
+  
+  
 
   def search
       if params[:keyword].present?

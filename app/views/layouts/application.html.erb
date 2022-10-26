@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <!--<link rel="stylesheet" href="application.css"/>-->
 
     <!--FontAwesomeに必要な記述-->
     <script src="https://kit.fontawesome.com/1b65209b3e.js" crossorigin="anonymous"></script>
@@ -19,48 +20,67 @@
 
 
   <header>
-    <%=link_to root_path do %><%= image_tag 'omiyaget_logo.jpg'%><% end %>
+    <div class="logo" >
+      <%=link_to root_path do %><%= image_tag 'omiyaget_logo.jpg'%><% end %>
+    </div>
 
 
     <% if customer_signed_in? %>
 
       <% if current_customer.email == 'guest@examle.com'  %>
-        <ul>
-          <li><%=link_to "お土産ー覧",post_items_path %></li>
-           <li><%=link_to "新規登録",new_customer_registration_path %></li>
-          <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
-      　</ul>
+      <div class="gest_nav">
+        <div class="navbar">
+          <ul>
+            <li><%=link_to "お土産ー覧",post_items_path %></li>
+             <li><%=link_to "新規登録",new_customer_registration_path %></li>
+            <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
+        　</ul>
+        </div>
+        <div class="header_icon">
       　　<P>ゲストユーザー</P>
           <%= image_tag 'user_icon.jpg',size: "50x50" %>
+        </div>
+      </div>
       <% else %>
-
-        <ul>
-          <li><%=link_to "マイページ",customer_path(current_customer.id) %></li>
-          <li><%=link_to "お土産ー覧",post_items_path %></li>
-          <li>ブックマーク<%#=link_to "ブックマーク",post_item_bookmarks_path%></li>
-          <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
-        </ul>
-        <%=link_to "お土産情報を投稿",new_post_item_path %>
-        <%=current_customer.name %>
-        <%=link_to customer_path(current_customer.id) do %>
-         <%=image_tag current_customer.get_profile_image(65,65) %>
-        <% end %>
-        <p><%=link_to current_customer.followings.count,followings_customer_path(current_customer) %>フォロー</p>
-        <p><%=link_to current_customer.followers.count,followers_customer_path(current_customer)%>フォロワー</p>
+      <div class="customer_nav">
+        <div class="navbar">
+          <ul>
+            <li><%=link_to "マイページ",customer_path(current_customer.id) %></li>
+            <li><%=link_to "お土産ー覧",post_items_path %></li>
+            <li>ブックマーク<%#=link_to "ブックマーク",post_item_bookmarks_path%></li>
+            <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
+          </ul>
+          <%=link_to "お土産情報を投稿",new_post_item_path %>
+        </div>
+        <div class="header_icon">
+          <%=current_customer.name %>
+          <%=link_to customer_path(current_customer.id) do %>
+           <%=image_tag current_customer.get_profile_image(65,65) %>
+          <% end %>
+          <p><%=link_to current_customer.followings.count,followings_customer_path(current_customer) %>フォロー</p>
+          <p><%=link_to current_customer.followers.count,followers_customer_path(current_customer)%>フォロワー</p>
+        </div>
       <%end%>
+      </div>
 
     <% elsif admin_signed_in? %>
+    <div class="admin_nav">
+      <div class="navbar">
       <ul>
         <li><%=link_to "会員一覧",admin_customers_path%></li>
         <li><%=link_to "レビュー一覧",admin_review_path %></li>
         <li><%=link_to "カテゴリ一覧",admin_categorys_path %></li>
         <li><%=link_to "ログアウト",destroy_admin_session_path,method: :delete %></li>
       </ul>
+      </div>
+      <div class="header_icon">
        <p>管理者</p>
        <%= image_tag 'admin_icon.jpg',size: "65x65" %>
+      </div>
     <% else %>
 
     <% end %>
+    </div>
   </header>
 
 

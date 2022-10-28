@@ -46,14 +46,6 @@ class Public::PostItemsController < ApplicationController
   end
 
   def category_search
-    # @post_items = PostItem.where('category_id LIKE ?', "%#{params[:category_id]}%")
-    # render :index
-
-    # if params[:category_id].present?
-    #   @post_items = PostItem.where('category_id LIKE ?', "%#{params[:]}%")
-    # else
-    #   @users = User.none
-    # end
     @category=Category.find(params[:id])
     @post_item= PostItem.find_by(category_id: params[:id])
     @post_items = PostItem.where(category_id: params[:id]).order('created_at DESC')

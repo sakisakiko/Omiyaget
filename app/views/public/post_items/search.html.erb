@@ -1,4 +1,8 @@
-<h2>検索結果 "<%= @keyword%>"</h2>
+<h2>検索結果
+  <% @keyword.split(/[[:blank:]]+/).each do |keyword| %>
+    "<%= keyword%>"
+  <% end %>
+</h2>
     <% @post_items.each do |post_item| %>
       <%=link_to post_item_path(post_item.id) do %>
        <%=image_tag post_item.get_image(150,150) %>
@@ -7,3 +11,4 @@
       <%=post_item.buy_prefecture %>
     <% end %>
   </div>
+  

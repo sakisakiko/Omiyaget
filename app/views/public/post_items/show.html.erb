@@ -43,10 +43,13 @@
   </tbody>
 </table>
 
+<!--タグの表示-->
 <div class= "tag">
-<% @post_tags.each do |tag| %>
-  <%=tag.tag_name%>
+<%@post_tags.each do |tag| %>
+  <p>#<%=tag.tag_name%></p>
 <% end %>
+
+
 </div>
 <div id="star-evaluation<%= @post_item.id %>">
 <p>お土産のレビュー</p>

@@ -7,7 +7,7 @@ class Public::PostItemsController < ApplicationController
   def create
     @post_item=current_customer.post_items.new(post_item_params)
     # @post_item.customer_id=current_customer.id
-    tag_list=params[:post_item][:tag_name].split(nil)
+    tag_list=params[:post_item][:tag_name].split(/[[:blank:]]+/)
     if @post_item.save
       @post_item.save_tag(tag_list)
       redirect_to post_item_path(@post_item.id)
@@ -19,21 +19,36 @@ class Public::PostItemsController < ApplicationController
   def index
    @post_item=PostItem.new
    @post_items=PostItem.all
-  # @tag_list=Tag.all
+   @categories=Category.all
   end
-
 
 
   def search
     if params[:keyword].present?
-      tag = Tag.find_by(tag_name: params[:keyword])
-      @post_items = tag.present? ? tag.post_items : PostItem.all
-      # @post_items = PostItem.where('buy_prefecture LIKE?', "%#{params[:keyword]}%")
+      # tag = Tag.find_by(tag_name: params[:keyword])
+      @post_items= []
+      # 分割したキーワードごとに検索
+      params[:keyword].split(/[[:blank:]]+/).each do |keyword|
+        next if keyword == ""
+        tags = Tag.where('tag_name LIKE(?)', "%#{keyword}%")
+        tags.each do |tag|
+          if tag.present?
+            @post_items += tag.post_items
+          end
+        end
+      end
+      @post_items.uniq!
+
       @keyword = params[:keyword]
     else
       @post_items = PostItem.all
     end
+
+    @post_items = PostItem.where('category_id LIKE ?', "%#{params[:category_id]}%")
+    render :index
+
   end
+
 
 
   def show
@@ -45,12 +60,12 @@ class Public::PostItemsController < ApplicationController
 
   def edit
     @post_item=PostItem.find(params[:id])
-    @tag_list=@post_item.tags.pluck(:tag_name).join(',')
+    @tag_list=@post_item.tags.pluck(:tag_name).join('　')
   end
 
   def update
     @post_item=PostItem.find(params[:id])
-    tag_list=params[:post_item][:tag_name].split(nil)
+    tag_list=params[:post_item][:tag_name].split(/[[:blank:]]+/)
     @post_item.update(post_item_params)
     @post_item.save_tag(tag_list)
     flash[:notice] = "お土産情報を変更しました。"

@@ -6,8 +6,8 @@
   <div class="mainbar">
     <%= flash[:notice] %><!--フラッシュメッセージ-->
     <h3>新着のおみやげ</h3>
-    <p>キーワード検索</p>
-    
+    <p>タグ検索</p>
+
     <!--検索-->
     <div class="search" >
       <%=form_with url: search_post_items_path, local: true,method: :get do |f| %>
@@ -15,8 +15,8 @@
        <%=f.submit "検索" %>
       <% end %>
     </div>
-    
-    
+
+
     <% @post_items.each do |post_item| %>
       <%=link_to post_item_path(post_item.id) do %>
        <%=image_tag post_item.get_image(150,150) %>
@@ -31,6 +31,10 @@
 
   <div class="sidebar">
     <h4>絞り込み</h4>
+¥
+    <% @categories.each do |category| %>
+    <%= category.name %>
+    <% end %>
     <h5>カテゴリ</h5>
     <h5>地域</h5>
   </div>

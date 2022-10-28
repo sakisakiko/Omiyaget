@@ -1,0 +1,13 @@
+<%if @post_item.present? %>
+<h4>カテゴリー「<%= @post_item.category.name %>」</h4>
+<p><%=@post_items.count %>件ヒットしました</p>
+    <% @post_items.each do |post_item| %>
+      <%=link_to post_item_path(post_item.id) do %>
+       <%=image_tag post_item.get_image(150,150) %>
+      <% end %>
+      <%=post_item.name %>
+      <%=post_item.buy_prefecture %>
+    <%end %>
+<% else %>
+<h4>カテゴリー「<%=@category.name%>」はヒットしませんでした</h4>
+<% end %>

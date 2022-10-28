@@ -18,8 +18,11 @@ Rails.application.routes.draw do
   scope module: :public do
     root to:"homes#top"
 
-     #ゲストユーザー用
-     post '/homes/guest_sign_in'=>'homes#new_guest',as: 'new_guest_sign_in'
+    #ゲストユーザー用
+    post '/homes/guest_sign_in'=>'homes#new_guest',as: 'new_guest_sign_in'
+
+    #カテゴリー絞り込み検索用
+    get '/post_items/category/:id'=>'post_items#category_search',as: 'post_items_category_search'
 
     resources:post_items,only:[:new,:create,:index,:show,:edit,:update,:destroy]do
       resources:post_comments,only:[:create,:destroy]

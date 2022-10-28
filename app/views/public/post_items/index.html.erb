@@ -1,6 +1,8 @@
+<!--部分テンプレート-->
 <div class="main-visual">
   <p>さぁ、あなた好みのお土産を探してみましょう！</p>
 </div>
+<!--ここまで-->
 
 <div class="main">
   <div class="mainbar">
@@ -28,14 +30,16 @@
   </div>
 
 
-
+<!--部分テンプレート-->
   <div class="sidebar">
-    <h4>絞り込み</h4>
-¥
-    <% @categories.each do |category| %>
-    <%= category.name %>
-    <% end %>
+    <h4>絞り込み検索</h4>
     <h5>カテゴリ</h5>
+    <% @categories.each do |category| %>
+      <%=link_to post_items_category_search_path(category.id) do %>
+        <%= category.name%>
+      <% end %>
+    <% end %>
     <h5>地域</h5>
   </div>
 </div>
+<!--ここまで-->

@@ -37,7 +37,7 @@ class Customer < ApplicationRecord
 
 
    #バリデーション
-  validates:introduction,length: {maximum: 200} #自己紹介（２００字以内）
+  # validates:introduction,length: {maximum: 200} #自己紹介（２００字以内）
 
   #出身地の都道府県:enum管理
    enum prefecture:{

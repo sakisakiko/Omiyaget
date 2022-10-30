@@ -21,7 +21,7 @@
 
   <div class="gender">
     <%= f.label :性別 %>
-    <%= f.select :gender, Customer.genders_i18n.keys.map {|k| [Customer.genders_i18n[k], k]},include_blank: "--選択してください--" %>
+    <%= f.select :gender, Customer.genders_i18n.keys.map {|k| [Customer.genders_i18n[k], k]}%>
   </div>
 
 

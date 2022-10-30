@@ -9,7 +9,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.string :name,              null: false, default: ""
       t.integer :prefecture,        null: false, default: 0
       t.string :introduction,       default: ""
-      t.integer :gender,        null: false
+      t.integer :gender,        null: false, default: 0
       t.integer :status,        null: false, default: 1
 
 

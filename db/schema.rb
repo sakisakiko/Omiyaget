@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2022_10_29_032704) do
     t.string "name", default: "", null: false
     t.integer "prefecture", default: 0, null: false
     t.string "introduction", default: ""
-    t.integer "gender", null: false
+    t.integer "gender", default: 0, null: false
     t.integer "status", default: 1, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

@@ -54,8 +54,8 @@ class Customer < ApplicationRecord
 
 
   # 性別:enum管理
-  # male:男性、female:女性、unanswer:非公開
-  enum gender:{male:1,female:2,unanwer:3}
+  # （unselected:--選択してください--（未選択）、male:男性、female:女性、unanswer:非公開）
+  enum gender:{unselected:0,male:1,female:2,unanwer:3}
 
   # 会員ステータス:enum管理
   # enrolled:有効、deleted:退会、stop:利用停止中

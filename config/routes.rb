@@ -21,8 +21,10 @@ Rails.application.routes.draw do
     #ゲストユーザー用
     post '/homes/guest_sign_in'=>'homes#new_guest',as: 'new_guest_sign_in'
 
-    #カテゴリー絞り込み検索用
+    #カテゴリー絞り込み検索
     get '/post_items/category/:id'=>'post_items#category_search',as: 'post_items_category_search'
+    #購入地域（都道府県）絞り込み検索
+    get '/post_items/prefecture'=>'post_items#prefecture_search',as: 'post_items_prefecture_search'
 
     resources:post_items,only:[:new,:create,:index,:show,:edit,:update,:destroy]do
       resources:post_comments,only:[:create,:destroy]

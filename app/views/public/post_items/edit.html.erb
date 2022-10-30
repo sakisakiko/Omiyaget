@@ -54,7 +54,7 @@
 
   <div class="field">
     <%= f.label :購入地域 %>
-    <%=f.select :buy_prefecture,PostItem.buy_prefectures.keys.map { |k| [k]},include_blank: "--選択してください" %>
+     <%=f.collection_select :buy_prefecture_id,BuyPrefecture.all, :id, :name,{prompt: "--選択してください--"}%>
   </div>
 
   <div class="field">

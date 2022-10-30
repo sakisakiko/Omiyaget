@@ -45,11 +45,20 @@ class Public::PostItemsController < ApplicationController
     end
   end
 
+
   def category_search
     @category=Category.find(params[:id])
     @post_item= PostItem.find_by(category_id: params[:id])
     @post_items = PostItem.where(category_id: params[:id]).order('created_at DESC')
   end
+
+
+  def prefecture_search
+    @post_items = PostItem.where('buy_prefecture_id LIKE?', "%#{params[:buy_prefecture_id]}%")
+    @post_item= PostItem.find_by(buy_prefecture_id: params[:buy_prefecture_id])
+    @buy_prefecture = BuyPrefecture.find(params[:buy_prefecture_id])
+  end
+
 
 
 
@@ -87,7 +96,7 @@ class Public::PostItemsController < ApplicationController
 private
 def post_item_params
 params.require(:post_item).permit(:image,:customer_id,:category_id,:name,
-:review,:evaluation,:price,:shop,:release,:buy_prefecture,:keyword)
+:review,:evaluation,:price,:shop,:release,:keyword,:buy_prefecture_id)
 end
 
 

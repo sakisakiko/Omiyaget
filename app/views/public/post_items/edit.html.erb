@@ -42,6 +42,7 @@
 
   <!-- 星レビュー表示javascript -->
   <script>
+   $('#star-evaluation<%= @post_item.id %>').empty();
   $('#star-evaluation<%= @post_item.id %>').raty({
     size     : 20,
     starOff:  '<%= asset_path('star-off.jpg') %>',

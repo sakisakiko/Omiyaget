@@ -23,6 +23,25 @@
       <%=link_to post_item_path(post_item.id) do %>
        <%=image_tag post_item.get_image(150,150) %>
       <% end %>
+
+      <% if customer_signed_in? %>
+        <% if current_customer.email!='guest@examle.com' %>
+        <!--ログインしたユーザーがゲストユーザーでないときブックマークアイコン表示-->
+         <% if post_item.customer_id!=current_customer.id %>
+        <!--自分の投稿したお土産はブックマークできない-->
+            <% if post_item.bookmarked_by?(current_customer) %>
+             <%=link_to "★",post_item_bookmarks_path(post_item.id),method: :delete %>
+            <% else %>
+             <%=link_to "☆",post_item_bookmarks_path(post_item.id),method: :post %>
+            <% end %>
+          <% else %>
+          ☆
+          <% end %>
+        <% else %>
+        <% end %>
+      <% else %>
+      <% end %>
+
       <%=post_item.name %>
       <%=post_item.buy_prefecture.name %>
     <% end %>

@@ -48,7 +48,7 @@
           <ul>
             <li><%=link_to "マイページ",customer_path(current_customer.id) %></li>
             <li><%=link_to "お土産ー覧",post_items_path %></li>
-            <li>ブックマーク<%#=link_to "ブックマーク",post_item_bookmarks_path%></li>
+            <li><%=link_to "ブックマーク",bookmarks_index_path %></li>
             <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
           </ul>
           <%=link_to "お土産情報を投稿",new_post_item_path %>

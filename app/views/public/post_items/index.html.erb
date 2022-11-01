@@ -30,12 +30,15 @@
          <% if post_item.customer_id!=current_customer.id %>
         <!--自分の投稿したお土産はブックマークできない-->
             <% if post_item.bookmarked_by?(current_customer) %>
-             <%=link_to "★",post_item_bookmarks_path(post_item.id),method: :delete %>
+             <%=link_to post_item_bookmarks_path(post_item.id),method: :delete do %>
+               <%= image_tag 'bookmark_on.jpg',size: "30x30"%>
+             <% end %>
             <% else %>
-             <%=link_to "☆",post_item_bookmarks_path(post_item.id),method: :post %>
+             <%=link_to post_item_bookmarks_path(post_item.id),method: :post do %>
+              <%= image_tag 'bookmark_off.jpg',size: "30x30"%>
+            <% end %>
             <% end %>
           <% else %>
-          ☆
           <% end %>
         <% else %>
         <% end %>

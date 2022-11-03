@@ -32,19 +32,20 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer=current_customer
-    @customer.update(is_deleted: 2)
+    @customer.update(status: 2)
     reset_session
     redirect_to root_path
   end
 
   def followings
     customer=Customer.find(params[:id])
-    @customers=customer.followings
+    @customers=customer.followings.where(customers: {status: "enrolled"})
+
   end
 
   def followers
     customer=Customer.find(params[:id])
-    @customers=customer.followers
+    @customers=customer.followers.where(customers: {status: "enrolled"})
   end
 
 

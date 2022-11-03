@@ -47,8 +47,8 @@ class Public::SessionsController < Devise::SessionsController
       # アカウントを取得できなかった場合、このメソッドを終了する
     return if !@customer
     #【処理２】取得したアカウントのパスワードと入力されたパスワードが一致しているか確認
-    #【処理３】退会フラグがtrue（退会済）のとき
-    if @customer.valid_password?(params[:customer][:password])&&(@customer.status=="enr")
+    #【処理３】退会フラグがdeleted（退会済）のとき
+    if @customer.valid_password?(params[:customer][:password])&&(@customer.status=="deleted")
       # フラッシュメッセージ
         flash[:notice] = "既に退会済みです。再度登録をしてご利用ください。"
       # 新規登録画面へリダイレクト

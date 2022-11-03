@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     #購入地域（都道府県）絞り込み検索
     get '/post_items/prefecture'=>'post_items#prefecture_search',as: 'post_items_prefecture_search'
 
-    #購入地域（都道府県）絞り込み検索
+    #ブックマーク一覧
     get '/bookmarks/index'=>'bookmarks#index',as: 'bookmarks_index'
 
     resources:post_items,only:[:new,:create,:index,:show,:edit,:update,:destroy]do

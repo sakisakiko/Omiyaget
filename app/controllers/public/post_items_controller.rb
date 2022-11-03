@@ -18,8 +18,9 @@ class Public::PostItemsController < ApplicationController
 
   def index
    @post_item=PostItem.new
-   @post_items=PostItem.where(release: true)
-  # 公開がtrueのもののみ
+   @post_items =   PostItem.joins(:customer).where(customers: {status: "enrolled"},release: true)
+  # お土産の投稿者のステータスがenrolled(有効)場合のお土産のみ表示かつ
+  # 表示されたお土産は公開ステータスがtrueである
    @categories=Category.all
   end
 
@@ -27,35 +28,37 @@ class Public::PostItemsController < ApplicationController
   def search
     if params[:keyword].present?
       # tag = Tag.find_by(tag_name: params[:keyword])
-      @post_items= []
+      @post_items=[]
       # 分割したキーワードごとに検索
-      params[:keyword].split(/[[:blank:]]+/).each do |keyword|
-        next if keyword == ""
-        tags = Tag.where('tag_name LIKE(?)', "%#{keyword}%")
-        tags.each do |tag|
-          if tag.present?
-            @post_items += tag.post_items
+        params[:keyword].split(/[[:blank:]]+/).each do |keyword|
+          next if keyword == ""
+          tags = Tag.where('tag_name LIKE(?)', "%#{keyword}%")
+          tags.each do |tag|
+            if tag.present?
+              @post_items += tag.post_items.joins(:customer).where(customers: {status: "enrolled"},release: true)
+            end
           end
         end
-      end
-      @post_items.uniq!
+        @post_items.uniq!
 
-      @keyword = params[:keyword]
-    else
-      @post_items = PostItem.all
-    end
+        @keyword = params[:keyword]
+      else
+         @post_items =   PostItem.joins(:customer).where(customers: {status: "enrolled"},release: true)
+      end
   end
 
 
   def category_search
     @category=Category.find(params[:id])
     @post_item= PostItem.find_by(category_id: params[:id])
-    @post_items = PostItem.where(category_id: params[:id]).order('created_at DESC')
+    @post_items =   PostItem.joins(:customer).where(customers: {status: "enrolled"},release: true,category_id: params[:id]).order('created_at DESC')
+    # @post_items = PostItem.where(category_id: params[:id]).order('created_at DESC')
   end
 
 
   def prefecture_search
-    @post_items = PostItem.where('buy_prefecture_id LIKE?', "%#{params[:buy_prefecture_id]}%")
+    @post_items = PostItem.joins(:customer).where(buy_prefecture_id: params[:buy_prefecture_id],customers: {status: "enrolled"},release: true)
+    # @post_items = PostItem.where(['buy_prefecture_id LIKE?', "%#{params[:buy_prefecture_id]}%")
     @post_item= PostItem.find_by(buy_prefecture_id: params[:buy_prefecture_id])
     @buy_prefecture = BuyPrefecture.find(params[:buy_prefecture_id])
   end
@@ -67,7 +70,7 @@ class Public::PostItemsController < ApplicationController
     @post_item=PostItem.find(params[:id])
     @post_tags=@post_item.tags
     @post_comment=PostComment.new
-    @post_comments=@post_item.post_comments
+    @post_comments= PostComment.joins(:customer).where(customers: {status: "enrolled"})
   end
 
   def edit

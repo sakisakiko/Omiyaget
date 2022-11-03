@@ -96,7 +96,7 @@ class Public::PostItemsController < ApplicationController
 private
 def post_item_params
 params.require(:post_item).permit(:image,:customer_id,:category_id,:name,
-:review,:evaluation,:price,:shop,:release,:keyword,:buy_prefecture_id)
+:review,:evaluation,:price,:shop,:release,:keyword,:buy_prefecture_id,:lat,:lng)
 end
 
 

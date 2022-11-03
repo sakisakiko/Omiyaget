@@ -54,6 +54,12 @@ class PostItem < ApplicationRecord
   end
 
 
+ # 購入した店名を登録した際にgeocoderが緯度、経度のカラムに自動的に値を入れる
+  geocoded_by :shop
+  after_validation :geocode, if: :shop_changed?
+
+
+
 
   #お土産の商品画像が投稿されていなかった場合デフォルト画像を設定
   def  get_image(width,height)

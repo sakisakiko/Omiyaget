@@ -88,7 +88,7 @@
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename:"sample-user5.jpg")
     },
-    
+
     {email: 'yamada@test.com',
     name: '山田',
     password: '12g1035',
@@ -98,7 +98,7 @@
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user6.jpg"), filename:"sample-user6.jpg")
     },
-    
+
     {email: 'sakura@test.com',
     name: 'さくら',
     password: '12g1035',
@@ -108,7 +108,7 @@
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user7.jpg"), filename:"sample-user7.jpg")
     },
-    
+
     {email: 'yukia@test.com',
     name: 'ユウキ',
     password: '12g1035',
@@ -118,7 +118,7 @@
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user8.jpg"), filename:"sample-user8.jpg")
     },
-    
+
     {email: 'maeda@test.com',
     name: '前田響',
     password: '12g1035',
@@ -128,7 +128,7 @@
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user9.jpg"), filename:"sample-user9.jpg")
     },
-    
+
     {email: 'mido@test.com',
     name: 'MIDO',
     password: '12g1035',
@@ -138,7 +138,7 @@
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user10.jpg"), filename:"sample-user10.jpg")
     },
-    
+
     {email: 'hanako@test.com',
     name: 'ハナコ',
     password: '12g1035',
@@ -229,8 +229,8 @@ PostItem.create!(
     {customer_id: 5,
     category_id: 2,
     name: "りくろーおじさんのチーズケーキ",
-    review: "濃厚なチョコレートのが最高に美味しいです！",
-    evaluation: 5,
+    review: "ふわっとしていてさっぱりとしたチーズケーキでとても美味しいです。ケーキ屋さんのチーズケーキとは違うので別物と思って食べると良いとおもいます。",
+    evaluation: 4,
     price: 865,
     shop: "JR新大阪駅中央口",
     buy_prefecture_id: 27,

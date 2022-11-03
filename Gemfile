@@ -70,6 +70,9 @@ gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 #Slimのジェネレータを提供
 gem 'slim-rails'
 
+# googleマップ表示の為
+gem "geocoder"
+
 
 # MySQLを利用するために必要なgem
 # 環境変数を管理するGem追加。「dotenv-rails」プロジェクトごとにファイルベースで環境変数を管理できる

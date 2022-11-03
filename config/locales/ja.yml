@@ -10,4 +10,9 @@
           enrolled: "有効"
           deleted: "退会"
           stop: "利用停止中"
+      # post_item:
+      #   release:
+      #     true: "--選択してください--"
+      #     false: "男性"
+
 

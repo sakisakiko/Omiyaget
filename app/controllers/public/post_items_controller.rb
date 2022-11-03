@@ -18,7 +18,8 @@ class Public::PostItemsController < ApplicationController
 
   def index
    @post_item=PostItem.new
-   @post_items=PostItem.all
+   @post_items=PostItem.where(release: true)
+  # 公開がtrueのもののみ
    @categories=Category.all
   end
 

@@ -25,8 +25,8 @@ class Public::BookmarksController < ApplicationController
 
 
   def index
-    # @bookmarks=Bookmark.joins(:customer,:post_item).where(post_item.customers: {status: "enrolled"},post_items:{release: true})
-     @bookmarks=Bookmark.joins(:post_item).where(post_items:{release: true})
+    # @bookmarks=Bookmark.joins(:post_item,:customer).where(post_items:{release: true},status: "enrolled")
+    @bookmarks=Bookmark.joins(:post_item).where(post_items: {release: true},customer_id: current_customer.id)
   end
 
 

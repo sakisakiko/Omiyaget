@@ -63,12 +63,13 @@ class Customer < ApplicationRecord
 
 
   #プロフィール画像が設定されていないとき、デフォルトの画像が設定される
-  def  get_profile_image(width,height)
+  def get_profile_image
     unless profile_image.attached?
       file_path=Rails.root.join('app/assets/images/user_icon.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-      profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image
+    # profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
 end

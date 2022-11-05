@@ -1,16 +1,5 @@
 class Public::CustomersController < ApplicationController
-  # before_filter :check_login
-
-  # def check_login
-  #   if current_customer==true
-  #     if current_customer.status=="stop"
-  #       redirect_to  destroy_customer_session_path
-  #     else
-  #     end
-  #   end
-  # end
-
-
+ 
   def show
     @customer=Customer.find(params[:id])
     @post_items=@customer.post_items

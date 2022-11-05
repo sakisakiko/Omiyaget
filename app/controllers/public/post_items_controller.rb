@@ -43,7 +43,7 @@ class Public::PostItemsController < ApplicationController
 
         @keyword = params[:keyword]
       else
-         @post_items =   PostItem.joins(:customer).where(customers: {status: "enrolled"},release: true)
+        @post_items =   PostItem.joins(:customer).where(customers: {status: "enrolled"},release: true)
       end
   end
 

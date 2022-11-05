@@ -2,12 +2,14 @@
 <% if customer_signed_in? %>
 　<% if @customer==current_customer %>
     <h5>マイページ</h5>
-    <%=image_tag current_customer.get_profile_image(100,100) %>
+    <%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed, class: "rounded-circle" %>
+    <%#=image_tag current_customer.get_profile_image(100,100) %>
     <%=link_to "プロフィール編集",edit_customer_path(@customer.id),class: "btn btn-primary" %></br>
 　<% else %>
 
     <h5><%=@customer.name %>さんのプロフィール</h5>
-    <%=image_tag @customer.get_profile_image(100,100) %>
+    <%=image_tag @customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed, class: "rounded-circle" %>
+    <%#=image_tag @customer.get_profile_image(100,100) %>
     <% if @customer.is_following_by?(current_customer) %>
       <%=link_to customer_relationships_path(@customer),method: :delete do %>
         <button class="btn btn-secondary">フォロー解除</button>

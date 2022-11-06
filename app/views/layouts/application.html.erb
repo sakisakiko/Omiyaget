@@ -95,6 +95,10 @@ aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navig
 <!--管理者-->
 
 <% else %>
+<ul class="navbar-nav ml-auto">
+<li class="nav-item"><%=link_to new_customer_registration_path,class: " text-dark" do %><i class="fa-solid fa-user-plus"></i>新規登録<% end %></li>
+<li class="nav-item"><%=link_to new_customer_session_path,class: " text-dark" do %><i class="fa-solid fa-right-to-bracket"></i>ログイン<% end %></li>
+</ul>
 <% end %>
 
 </div>

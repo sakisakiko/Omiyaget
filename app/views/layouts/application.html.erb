@@ -10,84 +10,97 @@
     <!--FontAwesomeに必要な記述-->
     <script src="https://kit.fontawesome.com/1b65209b3e.js" crossorigin="anonymous"></script>
 
-    <!--googleマップ表示に必要な記述-->
-    <!--<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>-->
-    <%#= javascript_pack_tag 'index', 'data-turbolinks-track': 'reload' %>
-    <!--<script src="./index.js"></script>-->
 
-
-
-    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
 
-  <header>
-    <div class="logo" >
-      <%=link_to root_path do %><%= image_tag 'omiyaget_logo.jpg'%><% end %>
-    </div>
+<header class="shadow">
+
+<nav class="navbar navbar-expand-lg navbar-light " >
+<!--<div class="container">-->
+
+<!--ロゴ-->
+<a class="logo ml-5" href="/"><%= image_tag 'omiyaget_logo.jpg'%></a>
 
 
-    <% if customer_signed_in? %>
+<button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
 
-      <% if current_customer.email == 'guest@examle.com'  %>
-      <div class="gest_nav">
-        <div class="navbar">
-          <ul>
-            <li><%=link_to "お土産ー覧",post_items_path %></li>
-             <li><%=link_to "新規登録",new_customer_registration_path %></li>
-            <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
-        　</ul>
-        </div>
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+
+<% if customer_signed_in? %>
+<% if current_customer.email == 'guest@examle.com'  %>
+<ul class="navbar-nav ml-auto">
+<li class="nav-item"><%=link_to post_items_path,class: " text-dark" do %><i class="fa-solid fa-gifts"></i> お土産ー覧<% end %></li>
+<li class="nav-item"><%=link_to new_customer_registration_path,class: " text-dark" do %><i class="fa-solid fa-user-plus"></i>新規登録<% end %></li>
+<li class="nav-item"><%=link_to destroy_customer_session_path,method: :delete,class: " text-dark" do  %><i class="fa-solid fa-right-from-bracket"></i> ログアウト<% end %></li>
+</ul>
+
+<!--ゲストユーザー-->
         <div class="header_icon">
-      　　<P>ゲストユーザー</P>
-          <%= image_tag 'user_icon.jpg',size: "50x50" %>
+          <%= image_tag 'user_icon.jpg',size: "65x65", class: "rounded-circle" %>
+          <p style="display:inline-block">ゲストユーザー</P>
         </div>
-      </div>
-      <% else %>
-      <div class="customer_nav">
-        <div class="navbar">
-          <ul>
-            <li><%=link_to "マイページ",customer_path(current_customer.id) %></li>
-            <li><%=link_to "お土産ー覧",post_items_path %></li>
-            <li><%=link_to "ブックマーク",bookmarks_index_path %></li>
-            <li><%=link_to "ログアウト",destroy_customer_session_path,method: :delete %></li>
-          </ul>
-          <%=link_to "お土産情報を投稿",new_post_item_path %>
-        </div>
+<!--ゲストユーザー-->
+
+<% else %>
+<ul class="navbar-nav ml-auto">
+<li class="nav-item"><%=link_to customer_path(current_customer.id),class: " text-dark" do%><i class="fa-solid fa-user"></i> マイページ<% end %></li>
+<li class="nav-item"><%=link_to post_items_path,class:" text-dark" do %><i class="fa-solid fa-gifts"></i>お土産ー覧<% end %></li>
+<li class="nav-item"><%=link_to bookmarks_index_path,class: " text-dark" do %><i class="fa-solid fa-heart"></i>ブックマーク<% end %></li>
+<li class="nav-item"><%=link_to destroy_customer_session_path,method: :delete,class: " text-dark" do %><i class="fa-solid fa-right-from-bracket"></i>ログアウト<% end %></li>
+<li class="nav-item"><%=link_to new_post_item_path,class:"text-dark" do %><i class="fa-solid fa-pen-to-square"></i>お土産情報を投稿<% end %></li>
+</ul>
+
+
+<!--会員-->
         <div class="header_icon">
-          <%=current_customer.name %>
           <%=link_to customer_path(current_customer.id) do %>
-           <%#=image_tag current_customer.get_profile_image(65,65), class: "rounded-circle" %>
-           <%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"65x65^", crop:"65x65+0+0").processed, class: "rounded-circle" %>
+          <%#=image_tag current_customer.get_profile_image(65,65), class: "rounded-circle" %>
+          <%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed, class: "rounded-circle" %>
           <% end %>
-          <p><%=link_to current_customer.followings.where(customers: {status: "enrolled"}).count,followings_customer_path(current_customer) %>フォロー</p>
-          <p><%=link_to current_customer.followers.where(customers: {status: "enrolled"}).count,followers_customer_path(current_customer)%>フォロワー</p>
+          <%=current_customer.name%>
+          </br>
+          <p class="nav-follow"><%=link_to  followings_customer_path(current_customer) do %>
+          　<%=current_customer.followings.where(customers: {status: "enrolled"}).count %>フォロー<% end %>
+          </p>
+          <p class="nav-follow"><%=link_to followers_customer_path(current_customer) do%>
+          <%=current_customer.followers.where(customers: {status: "enrolled"}).count %>フォロワー<% end %>
+          </p>
         </div>
-      <%end%>
-      </div>
+  <!--会員-->
 
-    <% elsif admin_signed_in? %>
-    <div class="admin_nav">
-      <div class="navbar">
-      <ul>
-        <li><%=link_to "お土産ー覧",post_items_path %></li>
-        <li><%=link_to "会員一覧",admin_customers_path%></li>
-        <li><%=link_to "レビュー一覧",admin_review_path %></li>
-        <li><%=link_to "カテゴリ一覧",admin_categorys_path %></li>
-        <li><%=link_to "ログアウト",destroy_admin_session_path,method: :delete %></li>
-      </ul>
-      </div>
+<%end%>
+
+<% elsif admin_signed_in? %>
+<ul class="navbar-nav ml-auto">
+<li class="nav-item"><%=link_to post_items_path,class: " text-dark" do%><i class="fa-solid fa-gifts"></i> お土産ー覧<% end %></li>
+<li class="nav-item"><%=link_to admin_customers_path,class: " text-dark" do%><i class="fa-solid fa-users"></i> 会員一覧<% end %></li>
+<li class="nav-item"><%=link_to admin_review_path,class: " text-dark" do %><i class="fa-solid fa-star"></i>レビュー一覧<% end %></li>
+<li class="nav-item"><%=link_to admin_categorys_path,class: " text-dark" do%><i class="fa-solid fa-file"></i>カテゴリ一覧<% end %></li>
+<li class="nav-item"><%=link_to destroy_admin_session_path,method: :delete,class: " text-dark" do%><i class="fa-solid fa-right-from-bracket"></i>ログアウト<% end %></li>
+</ul>
+
+<!--管理者-->
       <div class="header_icon">
-       <p>管理者</p>
-       <%= image_tag 'admin_icon.jpg',size: "65x65" %>
+         <%= image_tag 'admin_icon.jpg',size: "65x65", class: "rounded-circle" %>
+         <p style="display:inline-block">管理者</p>
       </div>
-    <% else %>
+<!--管理者-->
 
-    <% end %>
-    </div>
-  </header>
+<% else %>
+<% end %>
+
+</div>
+</nav>
+</header>
+
 
 
   <body>

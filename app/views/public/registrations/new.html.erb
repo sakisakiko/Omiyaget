@@ -1,7 +1,9 @@
+<div class="container">
 <h4>新規会員登録画面</h4>
 <%=flash[:notice] %>
 <%=form_with model: @customer,url: customer_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
+
 
   <div class="field">
     <%= f.label :ニックネーム %>
@@ -42,6 +44,7 @@
     <%= f.submit "新規登録" %>
   </div>
 <% end %>
+</div>
 
 
 <h6>既に登録済みの方</h6>

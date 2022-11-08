@@ -1,52 +1,86 @@
 <div class="container">
-<h4>新規会員登録画面</h4>
-<%=flash[:notice] %>
+<div class="sign-up-card-container my-5 mx-auto pt-3">
+
+<div  class="sign-up-title">
+<h4><strong>新規登録</strong></h4>
+</div>
+
+<p class="sign-up-frach"><%=flash[:notice] %></p>
+
+
 <%=form_with model: @customer,url: customer_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
 
-  <div class="field">
-    <%= f.label :ニックネーム %>
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+<div class="sign_up_card_body mx-auto">
+<table class="sign-up-table table-bordered  x-auto">
+<tbody>
 
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<tr>
+<th>ニックネーム</th>
+<td><%= f.text_field :name, autofocus: true, autocomplete: "name",
+class: "form-control form-control-sm col-11 mx-auto ",placeholder:"例：おみやげ太郎" %></td>
+</tr>
 
-  <div class="prefecture">
-    <%= f.label :出身地 %>
-    <%#= f.select :prefecture,Customer.prefectures.keys {}%>
-    <%= f.select :prefecture, Customer.prefectures.keys.map {|k| [k]},include_blank: "--選択してください--" %>
-  </div>
+<tr>
+<th>メールアドレス</th>
+<td><%= f.email_field :email, autofocus: true, autocomplete: "email",
+class: "form-control form-control-sm col-11 mx-auto",
+placeholder:"例：×××@×××.com" %></td>
+</tr>
 
-  <div class="gender">
-    <%= f.label :性別 %>
-    <%= f.select :gender, Customer.genders_i18n.keys.map {|k| [Customer.genders_i18n[k], k]}%>
-  </div>
+<tr>
+<th>出身地</th>
+<td><%= f.select :prefecture, Customer.prefectures.keys.map {|k| [k]},
+{prompt: "--選択してください--"},
+class:"form-control form-control-sm col-11 mx-auto"%></td>
+</tr>
+
+<tr>
+<th>性別</th>
+<td><%= f.select :gender, Customer.genders_i18n.keys.map {|k| [Customer.genders_i18n[k], k]},
+{prompt: "--選択してください--"},class:"form-control form-control-sm col-11 mx-auto"%></td>
+</tr>
+
+<tr>
+<th>パスワード</th>
+<td>
+    <%= f.password_field :password, autocomplete: "new-password",
+    class: "form-control form-control-sm col-11 mx-auto",
+    placeholder:"例：パスワードを入力(６文字以上)"%>
+</td>
+</tr>
+
+<tr>
+<th>パスワード(確認用)</th>
+<td><%= f.password_field :password_confirmation, autocomplete: "new-password",
+class: "form-control form-control-sm col-11 mx-auto",
+placeholder:"例：パスワードを入力(確認用)"%></td>
+</tr>
 
 
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+</tbody>
+</table>
 
-  <div class="field">
-    <%= f.label :パスワード（確認用）%>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録" %>
+  <div class="row">
+    <%= f.submit "新規登録",class:"btn btn-success mx-auto my-3" %>
   </div>
 <% end %>
+
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-4 col-sm-6 mx-auto">
+<div class="sign-in-link">
+<h6><strong>既に登録済みの方</strong></h6>
+<p><%=link_to "こちら", new_customer_session_path %>からログインしてください</p>
+</div>
+</div>
 </div>
 
 
-<h6>既に登録済みの方</h6>
-<%=link_to "こちら", new_customer_session_path %>からログインしてください
+
+</div>
+
 

@@ -2,3 +2,47 @@
 //   background-color:;
 // }
 
+.sign-up-card-container{
+  max-width: 800px;
+  border: 5px solid #6666CC ;
+  // background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+.sign-up-title{
+ color:  #6666CC ;
+ text-align: center;
+ border-bottom: solid #6666CC ;
+
+}
+
+.sign-up-table{
+  width: 80% ;
+	margin: 0 auto;
+}
+
+.sign-up-table tr{
+  border-top: 1px solid #e5e5e5;
+  line-height: 3.5em;
+	}
+
+.sign-up-table th{
+  width: 40%;/*横幅*/
+	background-color:#ebedf5;/*ブルーグレー*/
+  line-height: 3.5em;
+  font-size: 15px ;
+  text-align: left;
+	}
+
+.sign-up-table span{
+  // font-size: 12px ;
+	}
+
+
+.sign-up-table td{
+ border: 1px solid #d8d8d8;
+ background-color: white;
+	}
+
+ .sign-in-link {
+ text-align: center;
+ }

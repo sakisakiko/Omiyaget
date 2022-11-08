@@ -1,0 +1,41 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.sign-in-card-container{
+  max-width: 800px;
+  border: 5px solid #FF9900 ;
+}
+
+.sign-in-title{
+ color:  #FF9900 ;
+ text-align: center;
+ border-bottom: solid #FF9900 ;
+
+}
+
+.sign-in-table{
+  width: 80% ;
+	margin: 0 auto;
+}
+
+.sign-in-table tr{
+  border-top: 1px solid #e5e5e5;
+  line-height: 3.5em;
+	}
+
+.sign-in-table th{
+  width: 40%;/*横幅*/
+	background-color:#ebedf5;/*ブルーグレー*/
+  line-height: 3.5em;
+  font-size: 15px ;
+  text-align: left;
+	}
+
+.sign-in-table td{
+ border: 1px solid #d8d8d8;
+	}
+
+ .sign-up-link {
+ text-align: center;
+ }

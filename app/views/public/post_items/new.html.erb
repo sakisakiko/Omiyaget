@@ -1,78 +1,133 @@
-<h4>お土産情報登録</h4>
+
+
+<div class="post-title-visual">
+<div class="post-title ">
+<h3>お土産を投稿</h3>
+</div>
+</div>
+
+<div class="container">
+<div class="post-card-container my-5 mx-auto py-5">
+
 <%=form_with model: @post_item,url:  post_items_path do |f| %>
 
-  <div class="post_image">
-    <%= f.label :商品画像 %>
-    <%= f.file_field :image,asset: "image/*"%>
+<div class="post-card-body mx-auto">
+
+<table class="post-table table-bordered　mx-auto">
+<tbody>
+
+<tr>
+<th>お土産画像</th>
+<td><%= f.file_field :image,asset: "image/*",class:"ml-3",style:"line-height: 1.5em;"%></td>
+</tr>
+
+<tr>
+<th>お土産の品名</th>
+<td><%= f.text_field :name,class:"form-control form-control-sm col-11 mx-auto",
+placeholder:"お土産の品名を入力"%></td>
+</tr>
+
+<tr>
+<th>カテゴリ</th>
+<td><%=f.collection_select :category_id,Category.all, :id, :name,
+{prompt: "--選択してください--"},
+class:"form-control form-control-sm col-11 mx-auto"%></td>
+</tr>
+
+
+<tr>
+<th>タグを追加
+<!--<span></br>※スペースを入力で複数のタグ追加。</br>-->
+<!--※例：お菓子  伝統工芸  割れ物</span>-->
+</th>
+<td><%= f.text_field :tag_name,class:"form-control form-control-sm col-11 mx-auto",
+placeholder:"例：伝統工芸　割れ物　(※スペースでタグを追加)"%></td>
+</tr>
+
+
+<tr>
+  <th>購入時価格（税込）</th>
+  <td>
+  <div class="form-inline">
+  <%= f.text_field :price,class:"form-control form-control-sm col-6 ml-3",
+  placeholder:"例：1000"%>円
   </div>
-
-  <div class="field">
-    <%= f.label :商品名 %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="form-group row mx-auto">
-    <%=f.label :カテゴリ,class: "col-lg-2" %>
-    <%=f.collection_select :category_id,Category.all, :id, :name,{prompt: "--選択してください--"}%></br>
-  </div>
+  </td>
+</tr>
 
 
-  <div class="field">
-    <%= f.label :タグを追加 %></br>
-    ※スペースを入力で複数のタグ追加。
-    </br>※例：お菓子  伝統工芸  割れ物
-    <%= f.text_field :tag_name %>
-  </div>
+<tr>
+  <th>レビュー </th>
+  <td class="py-3"><%= f.text_area :review,rows: "5",class:"form-control form-control-sm col-11 mx-auto my-auto",
+  placeholder: "お土産のレビューを記載して下さい（200字以内）"%></td>
+</tr>
 
-  <div class="field">
-    <%= f.label :購入時価格（税込） %>
-    <%= f.text_field :price %>円
-  </div>
 
-  <div class="field">
-    <%= f.label :商品レビュー %>
-    <%= f.text_area :review,rows: "5"  %>
-  </div>
+<tr>
+<th><%= f.label :evaluation,'評価'%><%= f.hidden_field :evaluation, id: :review_star %></th>
+<td>
 
-  <div class="form-group row" id="star">
-    <%= f.label :evaluation,'評価'%>
-    <%= f.hidden_field :evaluation, id: :review_star %>
+<div class="form-group row ml-3 mt-3" style="line-height: 1.5em" id="star">
 
-     <!-- 評価javascript -->
+<!-- 評価javascript -->
   <script>
-  $('#star').raty({
-    size     : 20,
-    starOff:  '<%= asset_path('star-off.jpg') %>',
-    starOn : '<%= asset_path('star-on.jpg') %>',
-    scoreName: 'post_item[evaluation]',
-    half: false,
-  });
+    $('#star').raty({
+      size     : 16,
+      starOff:  '<%= asset_path('star-off.jpg') %>',
+      starOn : '<%= asset_path('star-on.jpg') %>',
+      scoreName: 'post_item[evaluation]',
+      half: false,
+    });
   </script>
-  </div>
+</div>
+</td>
+</tr>
+
+<tr>
+  <th>購入地域</th>
+  <td><%=f.collection_select :buy_prefecture_id,BuyPrefecture.all, :id, :name,{prompt: "--選択してください--"},
+  class:"form-control form-control-sm col-11 mx-auto"%></td>
+</tr>
 
 
-  <div class="field">
-    <%= f.label :購入地域 %>
-    <%=f.collection_select :buy_prefecture_id,BuyPrefecture.all, :id, :name,{prompt: "--選択してください--"}%>
-  </div>
+<tr>
+  <th>購入店舗</th>
+  <td><%= f.text_field :shop,class:"form-control form-control-sm col-11 mx-auto",
+  placeholder: "購入した店舗名"
+  %></td>
+</tr>
 
-  <div class="field">
-    <%= f.label :購入店舗%>
-    <%= f.text_field :shop %>
-  </div>
+<tr>
+  <th>公開設定</th>
+  <td>
+    <div class="release-button ml-3">
+      <%=f.radio_button :release, :true,checked: true %>
+      <%=f.label :release, "公開" %>
+      <%=f.radio_button :release, :false %>
+      <%=f.label :release, "非公開" %>
+    </div>
+  </td>
+</tr>
 
-  <div class="field">
-    <%= f.label :公開ステータス%>
-    <%=f.radio_button :release, :true,checked: true %>
-    <%=f.label :release, "公開" %>
-    <%=f.radio_button :release, :false %>
-    <%=f.label :release, "非公開" %>
-  </div>
+</tbody>
+</table>
+</div>
 
 
-  <div class="field">
-    <%= f.submit "投稿する" %>
-  </div>
+<div class="row">
+<div class="col-md-4 col-sm-6 mx-auto">
+<div class="post-button">
+  <%= f.submit "投稿する",class:"btn btn-warning mt-3" %>
+</div>
+</div>
+</div>
+
+
 <% end %>
+
+
+
+</div>
+</div>
 
 

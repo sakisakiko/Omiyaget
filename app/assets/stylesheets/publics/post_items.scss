@@ -1,3 +1,87 @@
 // Place all the styles related to the public/post_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.post-card-container{
+  max-width: 800px;
+  background-color:#FAEBD7;
+  position: relative;
+  border: 4px solid #CC3300;
+}
+
+.post-card-container:before {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  content: '';
+  border: 4px dotted #CC3300;
+}
+
+.post-title-visual{
+  width: 100%;
+  height: 180px;
+  position: relative;
+  background-image: image-url('post-top-image.jpg') ;
+  background-size: cover;
+}
+
+.post-title-visual::before{
+  /* 透過した黒を上から重ねるイメージ */
+  background-color: rgba(0,0,0,0.2);
+  /* 自由に位置指定 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+}
+
+// .post-title {
+
+
+// }
+
+.post-title h3{
+  width: 100%;
+  position: absolute;
+  color: white;
+  text-align: center;
+  line-height: 180px;
+}
+
+
+.post-table{
+  width: 80% ;
+	margin: 0 auto;
+}
+
+.post-table tr{
+  border-top: 1px solid #F4A460;
+  line-height: 3em;
+	}
+
+.post-table th{
+  width: 40%;/*横幅*/
+  background-color:#FFCC66;
+  // background-color:#ebedf5;/*ブルーグレー*/
+  line-height: 3em;
+  font-size: 15px ;
+  text-align: left;
+}
+
+.form-group{
+ width: 60%;
+}
+
+.post-table td{
+border: 1px solid #d8d8d8;
+background-color: white;
+}
+
+.post-button{
+ text-align: center;
+ }
+

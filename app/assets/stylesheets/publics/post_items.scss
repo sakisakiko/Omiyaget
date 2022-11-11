@@ -155,7 +155,49 @@ background-color: white;
   display: inline-block;
 }
 
+ //ここから [post-item show.html]
 
+// .post-show-title{
+//   display: inline-block;
+// }
+
+.tag-box{
+width: 600px;
+border: 1px solid #dee2e6;
+border-radius: 2px;
+margin-left: 15px;
+}
+
+.tag p{
+margin-left: 15px;
+font-size: 18px;
+}
+
+.review p{
+margin: 15px;
+font-size: 18px;
+}
+
+.review-box{
+width: 85%;
+border: 1px solid;
+border-radius: 2px;
+}
+
+.current-comment p{
+font-size: 18px;
+}
+
+.current-comment-box{
+width: 350px;
+}
+
+.post-comment-box{
+width: 350px;
+height: 50px;
+border: 1px solid;
+border-radius: 2px;
+}
 
 
 

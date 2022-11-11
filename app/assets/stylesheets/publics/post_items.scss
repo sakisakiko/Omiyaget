@@ -146,10 +146,6 @@ text-align: center;
 
  //ここから [post-item show.html]
 
-// .post-show-title{
-//   display: inline-block;
-// }
-
 .tag-box{
 width: 600px;
 border: 1px solid #dee2e6;
@@ -193,3 +189,48 @@ border-radius: 2px;
   margin-top: 40px;
   margin-left: 20px;
 }
+
+ //ここから [post-item edit.html]
+
+
+
+ .post-edit-card-container{
+  max-width: 800px;
+  background-color:#FAEBD7;
+  border: 4px dashed #2E8B57;
+}
+
+.post-edit-title h3{
+  text-align: center;
+  border-bottom: 4px solid #2E8B57;
+}
+
+.post-edit-table{
+  width: 80% ;
+	margin: 0 auto;
+}
+
+.post-edit-table tr{
+  border-top: 1px solid #F4A460;
+  line-height: 3em;
+	}
+
+.post-edit-table th{
+  width: 40%;/*横幅*/
+  background-color:#3CB371;
+  line-height: 3em;
+  font-size: 15px ;
+  text-align: left;
+  color: white;
+}
+
+.post-edit-table td{
+border: 1px solid #d8d8d8;
+background-color: white;
+}
+
+.post-edit-table span{
+  margin-left: 10px;
+}
+
+

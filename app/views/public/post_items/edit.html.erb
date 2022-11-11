@@ -1,81 +1,125 @@
-<h4>お土産情報編集</h4>
-<%=form_with model: @post_item,url: post_item_path(@post_item.id) do |f| %>
-
-  <div class="post_image">
-    <%= f.label :商品画像 %>
-    <%= f.file_field :image,asset: "image/*"%>
-  </div>
-
-  <div class="field">
-    <%= f.label :商品名 %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="form-group row mx-auto">
-    <%=f.label :カテゴリ,class: "col-lg-2" %>
-    <%=f.collection_select :category_id,Category.all, :id, :name,{prompt: "--選択してください--"}%></br>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :タグを編集 %>
-    ※スペースで区切って下さい
-    <%= f.text_field :tag_name,value: @tag_list%>
-  </div>
-
-  <div class="field">
-    <%= f.label :購入時価格（税込） %>
-    <%= f.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :商品レビュー %>
-    <%= f.text_area :review,rows: "5"  %>
-  </div>
 
 
 
-<div id="star-evaluation<%= @post_item.id %>">
-    <%= f.label :evaluation,'評価'%>
-    <%= f.hidden_field :evaluation, id: :review_star %>
 
 
-  <!-- 星レビュー表示javascript -->
-  <script>
-   $('#star-evaluation<%= @post_item.id %>').empty();
-  $('#star-evaluation<%= @post_item.id %>').raty({
-    size     : 20,
-    starOff:  '<%= asset_path('star-off.jpg') %>',
-    starOn : '<%= asset_path('star-on.jpg') %>',
-    half: false,
-    score: <%= @post_item.evaluation %>,
-  });
-  </script>
+<div class="container">
+
+ <div class="post-edit-title">
+ <h3 class="mt-5">お土産情報編集</h3>
 </div>
 
-  <div class="field">
-    <%= f.label :購入地域 %>
-     <%=f.collection_select :buy_prefecture_id,BuyPrefecture.all, :id, :name,{prompt: "--選択してください--"}%>
-  </div>
 
-  <div class="field">
-    <%= f.label :購入店舗%>
-    <%= f.text_field :shop %>
-  </div>
+<div class="post-edit-card-container  my-5 mx-auto py-5">
+<%=form_with model: @post_item,url: post_item_path(@post_item.id) do |f| %>
 
-  <div class="field">
-    <%= f.label :公開ステータス%>
-    <%=f.radio_button :release, :true,checked: true %>
-    <%=f.label :release, "公開" %>
-    <%=f.radio_button :release, :false %>
-    <%=f.label :release, "非公開" %>
+<div class="post-card-body mx-auto">
+<table class="post-edit-table table-bordered mx-auto">
+
+<tbody>
+
+<tr>
+<th><span>商品画像<span></th>
+<td><%= f.file_field :image,asset: "image/*",class:"ml-3",style:"line-height: 1.5em;"%></td>
+</tr>
+
+<tr>
+<th><span>商品名</span></th>
+<td><%= f.text_field :name,class:"form-control form-control-sm col-11 mx-auto" %></td>
+</tr>
+
+<tr>
+<th><span>カテゴリ</span></th>
+<td><%=f.collection_select :category_id,Category.all, :id, :name,{prompt: "--選択してください--"},
+class:"form-control form-control-sm col-11 mx-auto"%></td>
+</tr>
+
+<tr>
+<th><span>タグを編集</span></th>
+<td><%= f.text_field :tag_name,value: @tag_list,class:"form-control form-control-sm col-11 mx-auto",
+placeholder:"例：伝統工芸　割れ物　(※スペースでタグを追加)"%></td>
+</tr>
+
+<tr>
+<th><span>購入時価格（税込）</span></th>
+  <td>
+  <div class="form-inline">
+  <%= f.text_field :price,class:"form-control form-control-sm col-6 ml-3"%>円
   </div>
+  </td>
+
+<tr>
+<th><span>商品レビュー</span></th>
+<td><%= f.text_area :review,rows: "5",class:"form-control form-control-sm col-11 mx-auto my-3",
+  placeholder: "お土産のレビューを記載して下さい（200字以内）"%></td>
+</tr>
+
+<tr>
+<th><span><%= f.label :evaluation,'評価'%></span><%= f.hidden_field :evaluation, id: :review_star %></th>
+<td>
+
+<div class="form-group row ml-3 mt-3" style="line-height: 1.5em" id="star">
+
+<!-- 評価javascript -->
+  <script>
+    $('#star').raty({
+      size     : 16,
+      starOff:  '<%= asset_path('star-off.jpg') %>',
+      starOn : '<%= asset_path('star-on.jpg') %>',
+      scoreName: 'post_item[evaluation]',
+      half: false,
+    });
+  </script>
+</div>
+</td>
+</tr>
 
 
-  <div class="field">
-    <%= f.submit "変更する" %>
-  </div>
+<tr>
+<th><span>購入地域</span> </th>
+<td><%=f.collection_select :buy_prefecture_id,BuyPrefecture.all, :id, :name,{prompt: "--選択してください--"},
+  class:"form-control form-control-sm col-11 mx-auto"%></td>
+</tr>
+
+<tr>
+<th><span>購入店舗</span></th>
+<td><%= f.text_field :shop,class:"form-control form-control-sm col-11 mx-auto"%></td>
+</tr>
+
+<tr>
+<th><span>公開設定</span></th>
+<td>
+<div class="release-button ml-3">
+<%=f.radio_button :release, :true,checked: true %>
+<%=f.label :release, "公開" %>
+<%=f.radio_button :release, :false %>
+<%=f.label :release, "非公開" %>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+
+
+
+
+<div class="field d-flex justify-content-center">
+  <%= f.submit "変更する",class:"btn btn-primary mt-4 col-3" %>
+</div>
+
+<div class="field d-flex justify-content-center">
+<%=link_to "このお土産を削除",post_item_path(@post_item.id),method: :delete,
+class:"btn btn-danger  mt-4 col-3",
+"data-confirm" => "このお土産情報を削除します。削除した情報は元に戻せません。よろしいですか？" %>
+</div>
+
+
 <% end %>
-<%=link_to "このお土産を削除",post_item_path(@post_item.id),method: :delete,"data-confirm" => "このお土産情報を削除します。削除した情報は元に戻せません。よろしいですか？" %>
 
 
+</div>
+</div>

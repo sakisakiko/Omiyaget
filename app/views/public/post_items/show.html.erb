@@ -28,27 +28,48 @@
  <div class="card mb-3" style="max-width: 600px;">
   <div class="row no-gutters">
     <div class="col-md-4">
-     <div class="card-image" style="background-color:#B0C4DE"><%=image_tag @post_item.get_image(150,150),class:"mx-3 my-3" %></div>
+     <div class="card-image" style="background-color:#B0C4DE">
+        <% if customer_signed_in? %>
+        <% if current_customer.email!='guest@examle.com' %>
+        <!--ログインしたユーザーがゲストユーザーでないときブックマークアイコン表示-->
+         <% if @post_item.customer_id!=current_customer.id %>
+        <!--自分の投稿したお土産はブックマークできない-->
+            <% if @post_item.bookmarked_by?(current_customer) %>
+             <%=link_to post_item_bookmarks_path(@post_item.id),method: :delete do %>
+               <%= image_tag 'bookmark_on.jpg',size: "30x30",class:"ml-3 mt-2"%>
+                <span style="color:black">ブックマーク</span>
+             <% end %>
+            <% else %>
+             <%=link_to post_item_bookmarks_path(@post_item.id),method: :post do %>
+              <%= image_tag 'bookmark_off.jpg',size: "30x30",class:"ml-3 mt-2"%>
+              <span style="color:black">ブックマーク解除</span>
+            <% end %>
+            <% end %>
+          <% else %>
+          <% end %>
+        <% else %>
+        <% end %>
+      <% else %>
+      <% end %>
+
+       <%=image_tag @post_item.get_image(150,150),class:"mx-3 my-3" %>
+     </div>
   </div>
   <div class="col-md-8">
   <div class="card-body">
-  <table>
-  <thead>
-    <tr>
-    <th><%=@post_item.name %></th>
-    </tr>
-  </thead>
+  <table class="post-show-table">
   <tbody>
+    <p style="font-size:18px"><strong><%=@post_item.name %></strong></p>
     <tr>
-      <td>購入価格：</td>
-      <td><%=@post_item.price %>円  ※価格は参考として下さい</td>
+      <th>購入価格：</th>
+      <td><%=@post_item.price %>円  <span style="font-size:12px">※価格は参考として下さい</span></td>
     </tr>
     <tr>
-      <td>購入地域：</td>
+      <th>購入地域：</th>
       <td><%=@post_item.buy_prefecture.name%></td>
     </tr>
     <tr>
-      <td>購入店舗：</td>
+      <th>購入店舗：</th>
       <td><%=@post_item.shop %></td>
     </tr>
   </tbody>

@@ -15,28 +15,28 @@
             </tr>
 
             <tr>
-            <th><span>商品名</span></th>
-            <td><%= f.text_field :name,class:"form-control form-control-sm col-11 mx-auto" %></td>
+              <th><span>商品名</span></th>
+              <td><%= f.text_field :name,class:"form-control form-control-sm col-11 mx-auto" %></td>
             </tr>
 
             <tr>
-            <th><span>カテゴリ</span></th>
-            <td><%=f.collection_select :category_id,Category.all, :id, :name,{prompt: "--選択してください--"},
-            class:"form-control form-control-sm col-11 mx-auto"%></td>
+              <th><span>カテゴリ</span></th>
+              <td><%=f.collection_select :category_id,Category.all, :id, :name,{prompt: "--選択してください--"},
+              class:"form-control form-control-sm col-11 mx-auto"%></td>
             </tr>
 
             <tr>
-            <th><span>タグを編集</span></th>
-            <td><%= f.text_field :tag_name,value: @tag_list,class:"form-control form-control-sm col-11 mx-auto",
-            placeholder:"例：伝統工芸　割れ物　(※スペースでタグを追加)"%></td>
+              <th><span>タグを編集</span></th>
+              <td><%= f.text_field :tag_name,value: @tag_list,class:"form-control form-control-sm col-11 mx-auto",
+              placeholder:"例：伝統工芸　割れ物　(※スペースでタグを追加)"%></td>
             </tr>
 
             <tr>
-            <th><span>購入時価格（税込）</span></th>
+              <th><span>購入時価格（税込）</span></th>
               <td>
-              <div class="form-inline">
-              <%= f.text_field :price,class:"form-control form-control-sm col-6 ml-3"%>円
-              </div>
+                <div class="form-inline">
+                <%= f.text_field :price,class:"form-control form-control-sm col-6 ml-3"%>円
+                </div>
               </td>
             </tr>
 

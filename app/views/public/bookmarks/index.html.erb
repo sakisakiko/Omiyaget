@@ -1,6 +1,52 @@
-<h4>ブックマーク中のお土産</h4>
-<% @bookmarks.each do |bookmark| %>
-<%=image_tag bookmark.post_item.get_image(150,150) %>
-<%=bookmark.post_item.name %>
-<%=bookmark.post_item.buy_prefecture.name %>
-<% end %>
+<div class="container">
+
+  <% if @bookmarks.present? %>
+    <h4 class="mt-4"><strong>ブックマーク中のお土産</strong></h4>
+    <div class="row">
+    <% @bookmarks.each do |bookmark| %>
+      <table class="bookmark-item-contents">
+        <tbody>
+          <tr>
+            <td>
+              <%=link_to post_item_bookmarks_path(bookmark.post_item_id),method: :delete do %>
+                <%= image_tag 'bookmark_on.jpg',size: "30x30"%>
+                <div class="btn btn-outline-info">ブックマーク解除</div>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            <%=link_to post_item_path(bookmark.customer_id) do %>
+              <%=image_tag bookmark.post_item.get_image(150,150) %>
+            <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            <%=bookmark.post_item.name %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            【<%=bookmark.post_item.buy_prefecture.name %>】
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+    </div><!--rowのdiv-->
+  <% else %>
+    <div class="mx-auto">
+      <h4 class="mt-4" style="text-align:center"><strong>ブックマーク中のお土産</strong></h4>
+      <p style="margin:15px; font-size:18px; text-align:center ">現在ブックマークしているお土産はありません</p>
+    </div>
+  <% end %>
+
+</div><!--containerのdiv-->
+
+
+
+
+
+
+

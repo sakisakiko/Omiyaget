@@ -1,283 +1,272 @@
 <div class="container">
-
 <%= flash[:notice] %>　<!--フラッシュメッセージ-->
-
-
-<div class="row  mx-auto">  <!--row2-->
-<div class="post-show-main col-8 mx-auto"> <!--col8-->
-
-<div class="row ml-1 mb-2"> <!--row1-->
-<%=link_to customer_path(@post_item.customer.id) do %>
- <%=image_tag @post_item.customer.get_profile_image.variant(gravity: :center, resize:"80x80^", crop:"80x80+0+0").processed %>
-<% end %>
-<!--お土産編集は自分の商品のみ表示-->
-<%if customer_signed_in? %>
-  <% if @post_item.customer_id==current_customer.id %>
-    <h4 class="my-4 mx-3">投稿したお土産</h4>
-    <%=link_to "お土産情報編集",edit_post_item_path(@post_item.id),class:"btn btn-primary my-4 " %></br>
-  <% else %>
-    <h4 class="my-4 mx-3"><%=@post_item.customer.name %>さんの投稿したお土産</h4>
-  <% end %>
-<% elsif admin_signed_in? %>
-  <h4  class="my-4 mx-3"><%=@post_item.customer.name %>さんの投稿したお土産</h4>
-<%else %>
-<%end %>
-</div>
-
-
- <div class="card mb-3" style="max-width: 600px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-     <div class="card-image" style="background-color:#B0C4DE">
-        <% if customer_signed_in? %>
-        <% if current_customer.email!='guest@examle.com' %>
-        <!--ログインしたユーザーがゲストユーザーでないときブックマークアイコン表示-->
-         <% if @post_item.customer_id!=current_customer.id %>
-        <!--自分の投稿したお土産はブックマークできない-->
-            <% if @post_item.bookmarked_by?(current_customer) %>
-             <%=link_to post_item_bookmarks_path(@post_item.id),method: :delete do %>
-               <%= image_tag 'bookmark_on.jpg',size: "30x30",class:"ml-3 mt-2"%>
-                <span style="color:black">ブックマーク</span>
-             <% end %>
-            <% else %>
-             <%=link_to post_item_bookmarks_path(@post_item.id),method: :post do %>
-              <%= image_tag 'bookmark_off.jpg',size: "30x30",class:"ml-3 mt-2"%>
-              <span style="color:black">ブックマーク解除</span>
-            <% end %>
-            <% end %>
-          <% else %>
-          <% end %>
-        <% else %>
-        <% end %>
-      <% else %>
+  <div class="row  mx-auto">  <!--row-->
+    <div class="post-show-main col-8 mx-auto"> <!--col8-->
+  
+      <div class="row ml-1 mb-2"> <!--row1-->
+      <%=link_to customer_path(@post_item.customer.id) do %>
+       <%=image_tag @post_item.customer.get_profile_image.variant(gravity: :center, resize:"80x80^", crop:"80x80+0+0").processed %>
       <% end %>
-
-       <%=image_tag @post_item.get_image(150,150),class:"mx-3 my-3" %>
-     </div>
-  </div>
-  <div class="col-md-8">
-  <div class="card-body">
-  <table class="post-show-table">
-  <tbody>
-    <p style="font-size:18px"><strong><%=@post_item.name %></strong></p>
-    <tr>
-      <th>購入価格：</th>
-      <td><%=@post_item.price %>円  <span style="font-size:12px">※価格は参考として下さい</span></td>
-    </tr>
-    <tr>
-      <th>購入地域：</th>
-      <td><%=@post_item.buy_prefecture.name%></td>
-    </tr>
-    <tr>
-      <th>購入店舗：</th>
-      <td><%=@post_item.shop %></td>
-    </tr>
-  </tbody>
-</table>
+      <!--お土産編集は自分の商品のみ表示-->
+      <%if customer_signed_in? %>
+        <% if @post_item.customer_id==current_customer.id %>
+          <h4 class="my-4 mx-3">投稿したお土産</h4>
+          <%=link_to "お土産情報編集",edit_post_item_path(@post_item.id),class:"btn btn-primary my-4 " %></br>
+        <% else %>
+          <h4 class="my-4 mx-3"><%=@post_item.customer.name %>さんの投稿したお土産</h4>
+        <% end %>
+      <% elsif admin_signed_in? %>
+        <h4  class="my-4 mx-3"><%=@post_item.customer.name %>さんの投稿したお土産</h4>
+      <%else %>
+      <%end %>
+      
+      </div>
+          
+      <div class="card mb-3" style="max-width: 600px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+           <div class="card-image" style="background-color:#B0C4DE">
+              <% if customer_signed_in? %>
+              <% if current_customer.email!='guest@examle.com' %>
+              <!--ログインしたユーザーがゲストユーザーでないときブックマークアイコン表示-->
+               <% if @post_item.customer_id!=current_customer.id %>
+              <!--自分の投稿したお土産はブックマークできない-->
+                  <% if @post_item.bookmarked_by?(current_customer) %>
+                   <%=link_to post_item_bookmarks_path(@post_item.id),method: :delete do %>
+                     <%= image_tag 'bookmark_on.jpg',size: "30x30",class:"ml-3 mt-2"%>
+                      <span style="color:black">ブックマーク</span>
+                   <% end %>
+                  <% else %>
+                   <%=link_to post_item_bookmarks_path(@post_item.id),method: :post do %>
+                    <%= image_tag 'bookmark_off.jpg',size: "30x30",class:"ml-3 mt-2"%>
+                    <span style="color:black">ブックマーク解除</span>
+                  <% end %>
+                  <% end %>
+                <% else %>
+                <% end %>
+              <% else %>
+              <% end %>
+            <% else %>
+            <% end %>
+      
+             <%=image_tag @post_item.get_image(150,150),class:"mx-3 my-3" %>
+           </div>
+        </div>
+        <div class="col-md-8">
+        <div class="card-body">
+        <table class="post-show-table">
+        <tbody>
+          <p style="font-size:18px"><strong><%=@post_item.name %></strong></p>
+          <tr>
+            <th>購入価格：</th>
+            <td><%=@post_item.price %>円  <span style="font-size:12px">※価格は参考として下さい</span></td>
+          </tr>
+          <tr>
+            <th>購入地域：</th>
+            <td><%=@post_item.buy_prefecture.name%></td>
+          </tr>
+          <tr>
+            <th>購入店舗：</th>
+            <td><%=@post_item.shop %></td>
+          </tr>
+        </tbody>
+      </table>
+      
+            </div>
+          </div>
+        </div>
+      
+      </div>
+  
+      <!--タグの表示-->
+      <div class="tag">
+      <div class="row" > <!--row3-->
+      <p class="my-2"><strong>登録されたタグ</strong></p>
+      <div class= "tag-box">
+      <% @post_tags.each do |tag| %>
+        <% if tag.tag_name.present? %>
+        <p class="m-2">#<%=tag.tag_name%></p>
+        <% else %>
+        <p class="m-2">タグは登録されていません</p>
+        <% end %>
+      <% end %>
+      </div>
+      </div>
 
       </div>
-    </div>
+      <!--タグの表示ここまで-->
+  
+      <!--星レビュー-->
+      <div class="review">
+      <div class="row"> <!--row4-->
+      <p><strong>お土産のレビュー</strong></p>
+      <div class="my-3" id="star-evaluation<%= @post_item.id %>">
+        <!-- 星レビュー画像表示javascript -->
+        <script>
+        $('#star-evaluation<%= @post_item.id %>').empty();
+        $('#star-evaluation<%= @post_item.id %>')
+        .raty({
+          size     : 20,
+          starOff:  '<%= asset_path('star-off.jpg') %>',
+          starOn : '<%= asset_path('star-on.jpg') %>',
+          half: false,
+          readOnly: true,
+          score: <%= @post_item.evaluation %>,
+        });
+        </script>
+      </div>
+      </div>
+    
+      </div>
+      <!--星レビューここまで--!>
+  
+      <!--レビュー-->
+      <div class="review-box p-2">
+       <p><%=@post_item.review %></p>
+      </div>
+       <!--レビューここまで-->
+    
+  
+      <!--投稿日、いいね、コメントここから-->
+      <div class="row"> <!--row5-->
+      <p class="mx-3 mt-2">投稿日:<%=@post_item.created_at.strftime('%Y/%m/%d') %></p>
+      <!--いいね表示※自分のお土産＆管理者ログイン時はいいねの数のみ表示（いいねはできない）-->
+      <% if customer_signed_in? %>
+        <% if @post_item.customer_id!=current_customer.id %>
+          <% if @post_item.favorited_by?(current_customer) %>
+            <%= link_to post_item_favorites_path(@post_item), method: :delete do %>
+              <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20"%>参考になった:<%=@post_item.favorites.count %></p>
+            <% end %>
+          <% else %>
+            <%=link_to  post_item_favorites_path(@post_item),method: :post do %>
+             <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
+            <% end %>
+          <% end %>
+        <% else%>
+          <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
+        <% end %>
+      <% else %>
+        <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
+      <% end %>
+      
+      <p class="my-2 mx-3"><%= image_tag 'comment_icon.jpg',size: "20x20" %>コメント:<%=@post_comments.count %></p>
+      </div>
+      <!--投稿日、いいね、コメントここまで-->
+  
+  
+      <!--コメント欄ここから-->
+      <!--コメント入力欄 ※管理者ログイン時は表示しない-->
+      <% if customer_signed_in? %>
+        <div class="current-comment">
+        <p><strong>コメント</strong></p>
+        <table>
+        <tbody>
+        <%=form_with model:[@post_item,@post_comment] do |f| %>
+        <tr>
+        <td>
+        <%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed,
+        class: "rounded-circle" %>
+        </td>
+        <td class="current-comment-box">
+        <%= f.text_area :comment,class:"form-control ml-1",placeholder: "コメントを入力"%>
+        </td>
+        <td>
+        <%=f.submit "  送信  ",class:"btn btn-primary ml-3"%>
+        </td>
+        </tr>
+        <% end %>
+        </tbody>
+        </table>
   </div>
-</div>
-
-
-<!--タグの表示-->
-<div class="tag">
-<div class="row" > <!--row3-->
-<p class="my-2"><strong>登録されたタグ</strong></p>
-<div class= "tag-box">
-<% @post_tags.each do |tag| %>
-  <% if tag.tag_name.present? %>
-  <p class="m-2">#<%=tag.tag_name%></p>
-  <% else %>
-  <p class="m-2">タグは登録されていません</p>
-  <% end %>
-<% end %>
-</div>
-</div>
-</div>
-<!--タグの表示ここまで-->
-
-<!--星レビュー-->
-<div class="review">
-<div class="row"> <!--row4-->
-<p><strong>お土産のレビュー</strong></p>
-<div class="my-3" id="star-evaluation<%= @post_item.id %>">
-  <!-- 星レビュー画像表示javascript -->
-  <script>
-  $('#star-evaluation<%= @post_item.id %>').empty();
-  $('#star-evaluation<%= @post_item.id %>')
-  .raty({
-    size     : 20,
-    starOff:  '<%= asset_path('star-off.jpg') %>',
-    starOn : '<%= asset_path('star-on.jpg') %>',
-    half: false,
-    readOnly: true,
-    score: <%= @post_item.evaluation %>,
-  });
-  </script>
-</div>
-</div>
-</div>
-<!--星レビューここまで--!>
-
-<!--レビュー-->
-<div class="review-box p-2">
- <p><%=@post_item.review %></p>
-</div>
- <!--レビューここまで-->
-
-
-<!--投稿日、いいね、コメントここから-->
-<div class="row"> <!--row5-->
-<p class="mx-3 mt-2">投稿日:<%=@post_item.created_at.strftime('%Y/%m/%d') %></p>
-<!--いいね表示※自分のお土産＆管理者ログイン時はいいねの数のみ表示（いいねはできない）-->
-<% if customer_signed_in? %>
-  <% if @post_item.customer_id!=current_customer.id %>
-    <% if @post_item.favorited_by?(current_customer) %>
-      <%= link_to post_item_favorites_path(@post_item), method: :delete do %>
-        <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20"%>参考になった:<%=@post_item.favorites.count %></p>
+      <% else %>
       <% end %>
-    <% else %>
-      <%=link_to  post_item_favorites_path(@post_item),method: :post do %>
-       <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
+      
+      <% @post_comments.each do |post_comment| %>
+        <table>
+        <tbody>
+        <tr><td><%=post_comment.customer.name %></td></tr>
+        <tr>
+        <td><%=image_tag  post_comment.customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed, class: "rounded-circle" %></td>
+        <td><div class="post-comment-box p-2 ml-1"><%=post_comment.comment %></div></td>
+        
+        <% if admin_signed_in? %><!--コメントの削除は管理者のみ表示-->
+        <td> <%=link_to "コメントを削除", post_item_post_comment_path(@post_item.id,post_comment.id),method: :delete,
+        "data-confirm"=>"管理者権限で不適切なコメントを削除します。宜しいですか？" %></td>
+        <% else %>
+        <% end %>
+        </tr>
+        <tr>
+        <td></td>
+        <td><p class="ml-1"><%=post_comment.created_at.strftime('%Y/%m/%d')%></p></td>
+        </tr>
+        </tbody>
+        </table>
       <% end %>
-    <% end %>
-  <% else%>
-    <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
-  <% end %>
-<% else %>
-  <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
-<% end %>
+      <!--コメント欄ここまで-->
+  
+    </div><!--col8のdiv-->
+    <!--マップ表示-->
+    <div class="col-4  mx-auto" style="background-color:#9999FF">
+        <div class="map_bar mx-auto">
+          <div class="map-top">
+            <h5 style="color:white"><strong>お店の場所調べてみませんか？</strong></h5>
+            <input id="address" type="textbox" value= <%=@post_item.shop%>>
+            <input type="button" value="検索" onclick="codeAddress()">
+        </div>
+          <div id='map'></div>
+          <style>
+          #map {
+            height: 500px;
+            width: 300px;
+            margin:0 auto;
+            margin-top: 50px;
+          }
+          </style>
+          <script>
+          let map
+          let geocoder
+          
+          function initMap(){
+            geocoder = new google.maps.Geocoder()
+          
+            map = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: 35.6812362, lng:139.7671248},
+              zoom: 15,
+              gestureHandling: 'greedy',
+            });
+          
+            marker = new google.maps.Marker({
+              position:  {lat: 35.6812362, lng:139.7671248},
+              map: map,
+              draggable: true
+            });
+          }
+          
+          
+          function codeAddress(){
+            let inputAddress = document.getElementById('address').value;
+          
+          
+            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+              if (status == 'OK') {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+              } else {
+                alert('該当する結果がありませんでした：' + status);
+              }
+            });
+          }
+          
+          </script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+        </div>
+      </div><!--col-4のdiv--> <!--マップ表示ここまで-->
+  </div><!--rowここまで-->
+</div><!--containerここまで-->
 
-<p class="my-2 mx-3"><%= image_tag 'comment_icon.jpg',size: "20x20" %>コメント:<%=@post_comments.count %></p>
-</div>
-<!--投稿日、いいね、コメントここまで-->
-
-
-
-<!--コメント欄ここから-->
-<!--コメント入力欄 ※管理者ログイン時は表示しない-->
-<% if customer_signed_in? %>
-<div class="current-comment">
-<p><strong>コメント</strong></p>
-<table>
-<tbody>
-<%=form_with model:[@post_item,@post_comment] do |f| %>
-<tr>
-<td>
-<%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed,
-class: "rounded-circle" %>
-</td>
-<td class="current-comment-box">
-<%= f.text_area :comment,class:"form-control ml-1",placeholder: "コメントを入力"%>
-</td>
-<td>
-<%=f.submit "  送信  ",class:"btn btn-primary ml-3"%>
-</td>
-</tr>
-<% end %>
-</tbody>
-</table>
-</div>
-<% else %>
-<% end %>
-
-<% @post_comments.each do |post_comment| %>
-<table>
-<tbody>
-<tr><td><%=post_comment.customer.name %></td></tr>
-<tr>
-<td><%=image_tag  post_comment.customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed, class: "rounded-circle" %></td>
-<td><div class="post-comment-box p-2 ml-1"><%=post_comment.comment %></div></td>
-
-<% if admin_signed_in? %><!--コメントの削除は管理者のみ表示-->
-<td> <%=link_to "コメントを削除", post_item_post_comment_path(@post_item.id,post_comment.id),method: :delete,
-"data-confirm"=>"管理者権限で不適切なコメントを削除します。宜しいですか？" %></td>
-<% else %>
-<% end %>
-</tr>
-<tr>
-<td></td>
-<td><p class="ml-1"><%=post_comment.created_at.strftime('%Y/%m/%d')%></p></td>
-</tr>
-</tbody>
-</table>
-<% end %>
-<!--コメント欄ここまで-->
-
-</div><!--col8のdiv-->
-
-
-
-<!--マップ表示-->
-<div class="col-4  mx-auto" style="background-color:#9999FF">
-<div class="map_bar mx-auto">
-
-<div class="map-top">
-  <h5 style="color:white"><strong>お店の場所調べてみませんか？</strong></h5>
-  <input id="address" type="textbox" value= <%=@post_item.shop%>>
-  <input type="button" value="検索" onclick="codeAddress()">
-</div>
-
-<div id='map'></div>
-
-<style>
-#map {
-  height: 500px;
-  width: 300px;
-  margin:0 auto;
-  margin-top: 50px;
-}
-</style>
-
-
-<script>
-let map
-let geocoder
-
-function initMap(){
-  geocoder = new google.maps.Geocoder()
-
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 35.6812362, lng:139.7671248},
-    zoom: 15,
-    gestureHandling: 'greedy',
-  });
-
-  marker = new google.maps.Marker({
-    position:  {lat: 35.6812362, lng:139.7671248},
-    map: map,
-    draggable: true
-  });
-}
-
-
-function codeAddress(){
-  let inputAddress = document.getElementById('address').value;
-
-
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-    if (status == 'OK') {
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
-    } else {
-      alert('該当する結果がありませんでした：' + status);
-    }
-  });
-}
-
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-</div>
-<!--マップ表示ここまで-->
-
-</div><!--col3のdiv-->
-</div><!--二つ目のrowのdiv-->
-</div>
 
 
 

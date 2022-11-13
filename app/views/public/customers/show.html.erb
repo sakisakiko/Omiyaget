@@ -9,7 +9,7 @@
               <!--マイページの表示-->
                 <h5 style="text-align:center">マイページ</h5>
                 <div style="text-align:center"><%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed%></br></div>
-                <div style="text-align:center"><%=link_to "プロフィール編集",edit_customer_path(@customer.id),class: "btn btn-primary my-3" %></br></div>
+                <div style="text-align:center"><%=link_to "編集",edit_customer_path(@customer.id),class: "btn btn-primary my-3 col-3" %></br></div>
               <!--マイページの表示ここまで-->
               <% else %>
               <!--自分以外のユーザーの表示-->

@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="customer-edit-title">
-    <h3 class="mt-5"><strong>プロフィール編集</strong></h3>
+    <h3 class="mt-5"><strong>登録情報編集</strong></h3>
   </div>
 
   <div class="customer-edit-card-container  my-5 mx-auto py-5">
@@ -13,24 +13,24 @@
            <th><span>プロフィール画像</span></th>
            <td><%= f.file_field :profile_image,asset: "image/*",class:"ml-3",style:"line-height: 1.5em;"%></td>
           </tr>
-      
+
           <tr>
             <th><span>ニックネーム</span></th>
             <td><%= f.text_field :name,class:"form-control form-control-sm col-11 mx-auto" %></td>
           </tr>
-      
+
           <tr>
             <th><span>出身地</span></th>
             <td><%= f.select :prefecture, Customer.prefectures.keys.map {|k| [k]},{prompt: "--選択してください--"},
             class:"form-control form-control-sm col-11 mx-auto" %></td>
           </tr>
-      
+
           <tr>
             <th><span>性別</span></th>
             <td><%= f.select :gender, Customer.genders_i18n.keys.map {|k| [Customer.genders_i18n[k], k]},{prompt: "--選択してください--"},
             class:"form-control form-control-sm col-11 mx-auto"%></td>
           </tr>
-      
+
           <tr>
             <th><span>自己紹介</span></th>
             <td><%= f.text_area :introduction,rows: "5",class:"form-control form-control-sm col-11 mx-auto my-3",
@@ -40,15 +40,15 @@
         </tbody>
       </table>
     </div><!--customer-edit-card-bodyここまで-->
-  
+
     <div class="field d-flex justify-content-center">
-      <%= f.submit "編集内容を保存",class:"btn btn-primary col-3 my-3" %>
+      <%= f.submit "編集内容を保存",class:"btn btn-primary col-3 mt-5 mb-3" %>
     </div>
-  
+
   　<div class="field d-flex justify-content-center">
       <%=link_to "退会する", unsubscribe_path,class:"btn btn-danger col-3" %>
     </div>
     <% end %>
   </div><!--customer-edit-card-container  ここまで-->
-  
+
 </div><!--containerここまで-->

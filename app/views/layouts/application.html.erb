@@ -65,7 +65,6 @@ aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navig
         <div class="header_icon">
           <p class="nav-item-post"><%=link_to new_post_item_path,class:"text-dark" do %><i class="fa-solid fa-pen-to-square"></i>お土産情報を投稿<% end %></p>
           <%=link_to customer_path(current_customer.id) do %>
-          <%#=image_tag current_customer.get_profile_image(65,65), class: "rounded-circle" %>
           <%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed, class: "rounded-circle" %>
           <% end %>
           <%=current_customer.name%>

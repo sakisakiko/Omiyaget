@@ -10,14 +10,13 @@
             <td>
               <%=link_to post_item_bookmarks_path(bookmark.post_item_id),method: :delete do %>
                 <%= image_tag 'bookmark_on.jpg',size: "30x30"%>
-                <div class="btn btn-outline-info">ブックマーク解除</div>
               <% end %>
             </td>
           </tr>
           <tr>
             <td>
             <%=link_to post_item_path(bookmark.customer_id) do %>
-              <%=image_tag bookmark.post_item.get_image(150,150) %>
+              <%=image_tag bookmark.post_item.get_image.variant(gravity: :center, resize:"150x150^", crop:"150x150+0+0").processed%>
             <% end %>
             </td>
           </tr>

@@ -8,10 +8,22 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+
+
 import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+
+import "../stylesheets/publics/sessions"
+
+import "../stylesheets/publics/bookmarks"
+import "../stylesheets/publics/customers"
+import "../stylesheets/publics/post_items"
+import "../stylesheets/publics/homes"
+
+
+
 
 import '@fortawesome/fontawesome-free/js/all'
 
@@ -21,3 +33,6 @@ ActiveStorage.start()
 
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
+
+const images = require.context('../images', true)
+const imagePath = (name) => images(name, true)

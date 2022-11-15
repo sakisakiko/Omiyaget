@@ -45,6 +45,8 @@ class Public::PostItemsController < ApplicationController
       else
         @post_items =   PostItem.joins(:customer).where(customers: {status: "enrolled"},release: true)
       end
+
+      @categories=Category.all# 部分テンプレートの為必要
   end
 
 
@@ -53,6 +55,7 @@ class Public::PostItemsController < ApplicationController
     @post_item= PostItem.find_by(category_id: params[:id])
     @post_items =   PostItem.joins(:customer).where(customers: {status: "enrolled"},release: true,category_id: params[:id]).order('created_at DESC')
     # @post_items = PostItem.where(category_id: params[:id]).order('created_at DESC')
+    @categories=Category.all# 部分テンプレートの為必要
   end
 
 
@@ -61,9 +64,8 @@ class Public::PostItemsController < ApplicationController
     # @post_items = PostItem.where(['buy_prefecture_id LIKE?', "%#{params[:buy_prefecture_id]}%")
     @post_item= PostItem.find_by(buy_prefecture_id: params[:buy_prefecture_id])
     @buy_prefecture = BuyPrefecture.find(params[:buy_prefecture_id])
+    @categories=Category.all# 部分テンプレートの為必要
   end
-
-
 
 
   def show

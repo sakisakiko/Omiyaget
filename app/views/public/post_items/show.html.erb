@@ -49,7 +49,10 @@
             <% else %>
             <% end %>
 
-             <%=image_tag @post_item.get_image(150,150),class:"mx-3 my-3" %>
+             <%#=image_tag @post_item.get_image(150,150),class:"mx-3 my-3" %>
+             <div class="post-item-image d-flex justify-content-center">
+               <%=image_tag @post_item.get_image.variant(gravity: :center, resize:"150x150^", crop:"150x150+0+0").processed,class:"my-3"%>
+             </div>
            </div>
         </div>
         <div class="col-md-8">

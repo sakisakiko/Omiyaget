@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  # 顧客用ログアウト用ルーティング
+  devise_scope :customer do
+    get '/customers/sign_out' => 'devise/sessions#destroy'
+  end
+  
+   #管理者ログアウト用ルーティング
+  devise_scope :admin do
+    get '/admin/sign_out' => 'devise/sessions#destroy'
+  end
+
 
   # 顧客用
   # URL /customers/sign_in ...
@@ -13,6 +23,8 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+
+
 
 
   scope module: :public do

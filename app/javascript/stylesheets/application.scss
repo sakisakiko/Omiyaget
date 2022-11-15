@@ -1,2 +1,30 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  }
+
+
+.nav-item{
+     margin-left: 50px;
+}
+
+.nav-item-post{
+    display:inline-block;
+}
+
+
+nav-item-post
+
+.header_icon{
+    margin-left: 30px;
+}
+
+.nav-follow{
+ display:inline-block;
+ font-size: 12px;
+}

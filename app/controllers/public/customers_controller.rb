@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
- 
+
   def show
     @customer=Customer.find(params[:id])
     @post_items=@customer.post_items

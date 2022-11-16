@@ -29,7 +29,10 @@
               <!--自分以外のユーザーの表示ここまで-->
               <% end %>
             <% else %>
-              <%=image_tag @customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed%>
+              <h5 style="text-align:center" class="mt-4"><%=@customer.name %>さんのプロフィール</h5>
+              <div style="text-align:center">
+               <%=image_tag @customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed%>
+              </div>
             <% end %>
           </div>
           <div class="col-md-7">

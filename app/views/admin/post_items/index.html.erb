@@ -1,43 +1,56 @@
-<h4>レビュー一覧</h4>
+<div class="row mx-auto">
+  <h3 class="mx-auto my-4"><strong>レビュー一覧</strong></h3>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>会員ID</th>
-      <th>ユーザー</th>
-      <th>お土産</th>
-      <th>お土産レビュー</th>
-      <th>レビュー削除</th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="col-1">会員ID</th>
+        <th class="col-2">ユーザー</th>
+        <th class="col-1">お土産</th>
+        <th class="col-2"></th>
+        <th>お土産レビュー</th>
+        <th class="col-2"></th>
+      </tr>
+    </thead>
 
-<% @post_items.each do |post_item| %>
-  <tbody>
-    <tr>
-      <td><%= post_item.id%></td>
-      <td><%=image_tag post_item.customer.get_profile_image(70,70) %> <%=post_item.customer.name %></td>
-      <td><%=image_tag post_item.get_image(70,70) %><%=post_item.name %></td>
-      <td><%=post_item.review %><br>
-        <div id="star-evaluation<%= post_item.id %>">
-          <!-- 星レビュー表示javascript -->
-          <script>
-          $('#star-evaluation<%= post_item.id %>').empty();
-          $('#star-evaluation<%= post_item.id %>')
-          .raty({
-            size     : 20,
-            starOff:  '<%= asset_path('star-off.jpg') %>',
-            starOn : '<%= asset_path('star-on.jpg') %>',
-            half: false,
-            readOnly: true,
-            score: <%= post_item.evaluation %>,
-          });
-          </script>
-        </div>
-      </td>
-      <td><%=link_to"レビュー削除",admin_review_update_path(post_item.id),method: :patch,"data-confirm"=>"管理者権限でこのレビューを削除します。宜しいですか？" %></td>
-    </tr>
-  </tbody>
-<% end %>
-</table>
+  <% @post_items.each do |post_item| %>
+    <tbody>
+      <tr>
+        <td><%= post_item.id%></td>
+        <td><%=image_tag post_item.customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed,
+        class: "rounded-circle" %>
+         <%=post_item.customer.name %></td>
+        <td><%=image_tag post_item.get_image.variant(gravity: :center, resize:"80x80^", crop:"80x80+0+0").processed %></td>
+        <td><%=post_item.name %></td>
+        <td><%=post_item.review %><br>
+          <div id="star-evaluation<%= post_item.id %>">
+            <!-- 星レビュー表示javascript -->
+            <script>
+            $('#star-evaluation<%= post_item.id %>').empty();
+            $('#star-evaluation<%= post_item.id %>')
+            .raty({
+              size     : 20,
+              starOff:  '<%= asset_path('star-off.jpg') %>',
+              starOn : '<%= asset_path('star-on.jpg') %>',
+              half: false,
+              readOnly: true,
+              score: <%= post_item.evaluation %>,
+            });
+            </script>
+          </div>
+        </td>
+        <% if post_item.review.present? %>
+          <td><%=link_to"レビュー削除",admin_review_update_path(post_item.id),method: :patch,
+          "data-confirm"=>"管理者権限でこのレビューを削除します。宜しいですか？",class:"btn btn-danger"%></td>
+        <% else %>
+          <td></td>
+        <% end %>
+      </tr>
+    </tbody>
+  <% end %>
+  </table>
+</div><!--container-->
+
 

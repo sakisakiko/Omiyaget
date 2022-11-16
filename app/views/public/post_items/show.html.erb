@@ -2,7 +2,6 @@
 <%= flash[:notice] %>　<!--フラッシュメッセージ-->
   <div class="row  mx-auto">  <!--row-->
     <div class="post-show-main col-8 mx-auto"> <!--col8-->
-
       <div class="row ml-1 mb-2"> <!--row1-->
       <%=link_to customer_path(@post_item.customer.id) do %>
        <%=image_tag @post_item.customer.get_profile_image.variant(gravity: :center, resize:"80x80^", crop:"80x80+0+0").processed %>
@@ -191,7 +190,7 @@
         <td><div class="post-comment-box p-2 ml-1"><%=post_comment.comment %></div></td>
 
         <% if admin_signed_in? %><!--コメントの削除は管理者のみ表示-->
-        <td> <%=link_to "コメントを削除", post_item_post_comment_path(@post_item.id,post_comment.id),method: :delete,
+        <td> <%=link_to "コメントを削除", post_item_post_comment_path(@post_item.id,post_comment.id),method: :delete,class:"btn btn-danger ml-3",
         "data-confirm"=>"管理者権限で不適切なコメントを削除します。宜しいですか？" %></td>
         <% else %>
         <% end %>

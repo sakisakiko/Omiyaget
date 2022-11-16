@@ -1,12 +1,12 @@
 <div class="container">
+
+<%=flash[:notice] %><!--フラッシュメッセージ-->
+
 <div class="sign-in-card-container my-5 mx-auto pt-3">
 
 <div  class="sign-in-title">
 <h4><strong>ログイン</strong></h4>
 </div>
-
-<%=flash[:notice] %>
-
 
 <div class="sign-in-card-body mx-auto my-5">
 <%=form_with model: @customer,url: customer_session_path do |f| %>

@@ -7,13 +7,13 @@
             <% if customer_signed_in? %>
               <% if @customer==current_customer %>
               <!--マイページの表示-->
-                <h5 style="text-align:center">マイページ</h5>
+                <h5 class="my-2" style="text-align:center">マイページ</h5>
                 <div style="text-align:center"><%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed%></br></div>
                 <div style="text-align:center"><%=link_to "編集",edit_customer_path(@customer.id),class: "btn btn-primary my-3 col-3" %></br></div>
               <!--マイページの表示ここまで-->
               <% else %>
               <!--自分以外のユーザーの表示-->
-                <h5 style="text-align:center"><%=@customer.name %>さんのプロフィール</h5>
+                <h5 class="my-2"style="text-align:center"><%=@customer.name %>さんのプロフィール</h5>
                 <div style="text-align:center">
                 <%=image_tag @customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed%>
                 </div>
@@ -88,12 +88,10 @@
                       <% if post_item.bookmarked_by?(current_customer) %>
                         <%=link_to post_item_bookmarks_path(post_item.id),method: :delete do %>
                           <%= image_tag 'bookmark_on.jpg',size: "30x30"%>
-                          <div class="btn btn-outline-info">ブックマーク</div>
                         <% end %>
                       <% else %>
                         <%=link_to post_item_bookmarks_path(post_item.id),method: :post do %>
                           <%= image_tag 'bookmark_off.jpg',size: "30x30"%>
-                        <div class="btn btn-outline-secondary">ブックマーク解除</div>
                         <% end %>
                       <% end %>
                     <% else %>
@@ -114,20 +112,27 @@
             </tr>
             <tr>
               <td>
-              <% if post_item.release == false %>
-                <%=image_tag "rock_icon.jpg",size:"30x25" %>
-              <% else %>
-              <% end %>
-              <%=post_item.name %>
+                <p style="height:75px">
+                  <% if post_item.release == false %>
+                    <%=image_tag "rock_icon.jpg",size:"30x25" %>
+                  <% else %>
+                  <% end %>
+                  <%=post_item.name %></br>
+                  【<%=post_item.buy_prefecture.name %>】
+                </p>
               </td>
-            </tr>
-            <tr>
-              <td>【<%=post_item.buy_prefecture.name %>】</td>
-            </tr>
           </tbody>
         </table>
       <% end %>
     </div><!--row２ここまで-->
-
   </div><!--customer-post-itemここまで-->
+
+  <!--ページネーション-->
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @post_items %>
+    </div>
+  </div>
+  <!--ページネーションここまで-->
+
 </div><!--containerここまで-->

@@ -16,6 +16,7 @@ import "bootstrap";
 import "../stylesheets/application"
 
 import "../stylesheets/publics/sessions"
+import "../stylesheets/publics/registrations"
 
 import "../stylesheets/publics/bookmarks"
 import "../stylesheets/publics/customers"

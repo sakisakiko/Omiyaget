@@ -160,22 +160,22 @@
         <div class="current-comment">
         <p><strong>コメント</strong></p>
         <table>
-        <tbody>
-        <%=form_with model:[@post_item,@post_comment] do |f| %>
-        <tr>
-        <td>
-        <%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed,
-        class: "rounded-circle" %>
-        </td>
-        <td class="current-comment-box">
-        <%= f.text_area :comment,class:"form-control ml-1",placeholder: "コメントを入力"%>
-        </td>
-        <td>
-        <%=f.submit "  送信  ",class:"btn btn-primary ml-3"%>
-        </td>
-        </tr>
-        <% end %>
-        </tbody>
+          <tbody>
+            <%=form_with model:[@post_item,@post_comment] do |f| %>
+              <tr>
+                <td>
+                  <%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed,
+                  class: "rounded-circle" %>
+                </td>
+                <td class="current-comment-box">
+                  <%= f.text_area :comment,class:"form-control ml-1",placeholder: "コメントを入力"%>
+                </td>
+                <td>
+                  <%=f.submit "  送信  ",class:"btn btn-primary ml-3"%>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
         </table>
   </div>
       <% else %>
@@ -213,13 +213,15 @@
             <input id="address" type="textbox" value= <%=@post_item.shop%>>
             <input type="button" value="検索" onclick="codeAddress()">
         </div>
-          <div id='map'></div>
+       <div id='map'></div>
+
           <style>
           #map {
-            height: 500px;
-            width: 300px;
+            height: 600px;
+            width: 90%;
             margin:0 auto;
-            margin-top: 50px;
+            margin-top: 30px;
+            margin-bottom: 30px;
           }
           </style>
           <script>

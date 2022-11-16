@@ -2,7 +2,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer=Customer.find(params[:id])
-    @post_items=@customer.post_items
+    @post_items=@customer.post_items.page(params[:page]).per(10)
   end
 
   def edit
@@ -28,13 +28,13 @@ class Public::CustomersController < ApplicationController
 
   def followings
     customer=Customer.find(params[:id])
-    @customers=customer.followings.where(customers: {status: "enrolled"})
+    @customers=customer.followings.where(customers: {status: "enrolled"}).page(params[:page]).per(5)
 
   end
 
   def followers
     customer=Customer.find(params[:id])
-    @customers=customer.followers.where(customers: {status: "enrolled"})
+    @customers=customer.followers.where(customers: {status: "enrolled"}).page(params[:page]).per(5)
   end
 
 

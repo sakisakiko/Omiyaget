@@ -20,6 +20,13 @@
           </tr>
 
           <tr>
+            <th><span>メールアドレス</span><span style="font-size:12px;">（※公開されません）</span></th>
+            <td><%= f.text_field :email,class:"form-control form-control-sm col-11 mx-auto" %></td>
+          </tr>
+
+
+
+          <tr>
             <th><span>出身地</span></th>
             <td><%= f.select :prefecture, Customer.prefectures.keys.map {|k| [k]},{prompt: "--選択してください--"},
             class:"form-control form-control-sm col-11 mx-auto" %></td>

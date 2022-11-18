@@ -7,6 +7,9 @@
   <div class="post-edit-card-container  my-5 mx-auto py-5">
     <%=form_with model: @post_item,url: post_item_path(@post_item.id) do |f| %>
       <div class="post-card-body mx-auto">
+
+      <%=render 'error_messages_post_item',post_item: @post_item %><!--エラーメッセージ部分テンプレート-->
+
         <table class="post-edit-table table-bordered mx-auto">
           <tbody>
             <tr>
@@ -52,6 +55,7 @@
                 <div class="form-group row ml-3 mt-3" style="line-height: 1.5em" id="star">
                 <!-- 評価javascript -->
                   <script>
+                    $('#star').empty();
                     $('#star').raty({
                       size     : 16,
                       starOff:  '<%= asset_path('star-off.jpg') %>',

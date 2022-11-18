@@ -12,12 +12,24 @@
           stop: "利用停止中"
     activerecord:
       models:
-        customer: "ユーザー"
+        customer:
       attributes:
         customer:
           name: "ニックネーム"
           email: "メールアドレス"
           password: "パスワード"
+      models:
+        post_item:
+      attributes:
+        post_item:
+          name: "品名"
+          price: "購入価格"
+          review: "レビュー"
+          evaluation: "評価"
+          shop: "購入店舗"
+          buy_prefecture: "購入地域"
+          category: "カテゴリー"
+
 
 
 

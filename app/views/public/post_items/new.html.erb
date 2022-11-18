@@ -7,56 +7,69 @@
 
 <div class="container">
   <div class="post-card-container my-5 mx-auto py-5">
+
+
     <%=form_with model: @post_item,url:  post_items_path do |f| %>
+
+
+
+
+
       <div class="post-card-body mx-auto">
-        <table class="post-table table-bordered　mx-auto">
+
+        <%=render 'error_messages_post_item',post_item: @post_item %><!--エラーメッセージ部分テンプレート-->
+
+        <table class="post-table table-bordered mx-auto">
           <tbody>
             <tr>
-              <th>お土産画像</th>
+              <th><span class="post_item_optional_field p-2 mx-2">任意</span>お土産画像</th>
               <td><%= f.file_field :image,asset: "image/*",class:"ml-3",style:"line-height: 1.5em;"%></td>
             </tr>
 
             <tr>
-              <th>お土産の品名</th>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>お土産の品名</th>
               <td><%= f.text_field :name,class:"form-control form-control-sm col-11 mx-auto",
               placeholder:"お土産の品名を入力"%></td>
             </tr>
 
             <tr>
-              <th>カテゴリ</th>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>カテゴリ</th>
               <td><%=f.collection_select :category_id,Category.all, :id, :name,
               {prompt: "--選択してください--"},
               class:"form-control form-control-sm col-11 mx-auto"%></td>
             </tr>
 
             <tr>
-              <th>タグを追加
+              <th><span class="post_item_optional_field p-2 mx-2">任意</span>タグを追加</th>
               <td><%= f.text_field :tag_name,class:"form-control form-control-sm col-11 mx-auto",
-              placeholder:"例：伝統工芸　割れ物　(※スペースでタグを追加)"%></td>
+              placeholder:"例：伝統工芸 割れ物 (※スペースでタグを追加)"%></td>
             </tr>
 
             <tr>
-                <th>購入時価格（税込）</th>
+                <th><span class="post_item_required_field p-2 mx-2">必須</span>購入価格（税込）</th>
                 <td>
                 <div class="form-inline">
-                  <%= f.text_field :price,class:"form-control form-control-sm col-6 ml-3",
-                  placeholder:"例：1000"%>円
+                  <%= f.text_field :price,class:"form-control form-control-sm col-8 ml-3",
+                  placeholder:"例：1000 （※参考価格とします）"%>円
                 </div>
               </td>
             </tr>
 
             <tr>
-              <th>レビュー </th>
+              <th><span class="post_item_optional_field p-2 mx-2">任意</span>レビュー </th>
               <td class="py-3"><%= f.text_area :review,rows: "5",class:"form-control form-control-sm col-11 mx-auto my-auto",
               placeholder: "お土産のレビューを記載して下さい（200字以内）"%></td>
             </tr>
 
             <tr>
-              <th><%= f.label :evaluation,'評価'%><%= f.hidden_field :evaluation, id: :review_star %></th>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>
+               <%= f.label :evaluation,'評価'%><%= f.hidden_field :evaluation, id: :review_star %>
+              </th>
               <td>
                 <div class="form-group row ml-3 mt-3" style="line-height: 1.5em" id="star">
                 <!-- 評価javascript -->
                   <script>
+                    $('#star').empty();
                     $('#star').raty({
                       size     : 16,
                       starOff:  '<%= asset_path('star-off.jpg') %>',
@@ -70,19 +83,19 @@
             </tr>
 
             <tr>
-              <th>購入地域</th>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>購入地域</th>
               <td><%=f.collection_select :buy_prefecture_id,BuyPrefecture.all, :id, :name,{prompt: "--選択してください--"},
               class:"form-control form-control-sm col-11 mx-auto"%></td>
             </tr>
 
             <tr>
-              <th>購入店舗</th>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>購入店舗</th>
               <td><%= f.text_field :shop,class:"form-control form-control-sm col-11 mx-auto",
               placeholder: "購入した店舗名" %></td>
             </tr>
 
             <tr>
-              <th>公開設定</th>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>公開設定</th>
               <td>
                 <div class="release-button ml-3">
                   <%=f.radio_button :release, :true,checked: true %>

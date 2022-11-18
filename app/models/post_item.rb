@@ -16,8 +16,9 @@ class PostItem < ApplicationRecord
   #バリデーション
    validates:name,presence:true
    validates:price,presence:true
+   validates:evaluation,presence:true
    validates:shop,presence:true
-   validates:review,length: {maximum: 300}
+   validates:review,length: {maximum: 200}
 
 
   def save_tag(sent_tags)

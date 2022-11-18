@@ -61,7 +61,7 @@ class Customer < ApplicationRecord
 
 
   # 性別:enum管理
-  # （unselected:--選択してください--（未選択）、male:男性、female:女性、unanswer:非公開）
+  # （unselected:未選択、male:男性、female:女性、unanswer:非公開）
   enum gender:{unselected:0,male:1,female:2,unanwer:3}
 
   # 会員ステータス:enum管理

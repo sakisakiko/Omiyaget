@@ -6,13 +6,12 @@ class Public::PostItemsController < ApplicationController
 
   def create
     @post_item=current_customer.post_items.new(post_item_params)
-    # @post_item.customer_id=current_customer.id
     tag_list=params[:post_item][:tag_name].split(/[[:blank:]]+/)
     if @post_item.save
       @post_item.save_tag(tag_list)
       redirect_to post_item_path(@post_item.id)
     else
-      redirect_to new_post_item_path
+      render :new
     end
   end
 
@@ -92,10 +91,14 @@ class Public::PostItemsController < ApplicationController
   def update
     @post_item=PostItem.find(params[:id])
     tag_list=params[:post_item][:tag_name].split(/[[:blank:]]+/)
-    @post_item.update(post_item_params)
-    @post_item.save_tag(tag_list)
-    flash[:notice] = "お土産情報を変更しました。"
-    redirect_to post_item_path(@post_item.id)
+
+    if @post_item.update(post_item_params)
+       @post_item.save_tag(tag_list)
+       flash[:notice] = "お土産情報を変更しました。"
+       redirect_to post_item_path(@post_item.id)
+    else
+       render :edit
+    end
   end
 
   def destroy

@@ -65,7 +65,7 @@ gem 'enum_help'
 gem 'kaminari','~> 1.2.1'
 
 # kaminariにbootstrapを適応
-gem 'bootstrap5-kaminari-views', '~> 0.0.1'
+# gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 
 #Slimのジェネレータを提供
 gem 'slim-rails'
@@ -73,6 +73,8 @@ gem 'slim-rails'
 # googleマップ表示の為
 gem "geocoder"
 
+# エラーメッセージ日本語化のために必要
+gem 'rails-i18n'
 
 # MySQLを利用するために必要なgem
 # 環境変数を管理するGem追加。「dotenv-rails」プロジェクトごとにファイルベースで環境変数を管理できる

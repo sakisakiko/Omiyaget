@@ -18,7 +18,7 @@
             <div class="ml-4 mt-4 ">
               <div class="d-flex justify-content-start">
                 <h5><strong>"<%=@post_item.buy_prefecture.name%>"のお土産</strong></h5>
-                <p class="ml-4" style="font-size:18px"><%=@post_items.count %>件ヒットしました</p>
+                <p class="ml-4" style="font-size:18px"><%=@post_items_amount %>件ヒットしました</p>
               </div>
               <p><%=link_to "一覧へ戻る",post_items_path %></p>
             </div>
@@ -30,6 +30,15 @@
         </div>
 
       <%=render 'post_items_contents',post_items: @post_items %><!--お土産部分テンプレート-->
+
+  <!--ページネーションの記述-->
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @post_items %>
+    </div>
+  </div>
+  <!--ページネーションの記述ここまで-->
+
 
   </div><!--rowのdiv-->
 </div><!--containerのdiv-->

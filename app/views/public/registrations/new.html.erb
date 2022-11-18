@@ -1,4 +1,5 @@
 <div class="container">
+
 <div class="sign-up-card-container my-5 mx-auto pt-3">
 
 <div  class="sign-up-title">
@@ -8,7 +9,10 @@
 <p class="sign-up-frach"><%=flash[:notice] %></p>
 
 <%=form_with model: @customer,url: customer_registration_path do |f| %>
+
+<div class="customer_sign_up_error_message ml-5">
   <%= render "public/shared/error_messages", resource: resource %>
+</div>
 
 
 <div class="sign-up-card-body mx-auto">

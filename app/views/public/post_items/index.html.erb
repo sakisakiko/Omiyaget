@@ -24,9 +24,21 @@
           <!--検索-->
         </div>
       <%=render 'post_items_contents',post_items: @post_items%><!--お土産テンプレート-->
+
+        <!--ページネーションの記述-->
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @post_items %>
+        </div>
+      </div>
+      <!--ページネーションの記述ここまで-->
+
       </div><!--post-itemのdiv-->
     </div>
 
-
   </div><!--rowのdiv-->
+
+
+
 </div><!--containerのdiv-->
+

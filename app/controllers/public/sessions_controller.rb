@@ -20,24 +20,6 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
-
-  # def customer_state
-  #   @customer=Customer.find_by(email:params[:customer][:email])
-  #   return if !@customer
-
-  #   if @customer.valid_password?(params[:customer][:password])&&(@customer.is_deleted==true)
-  #     flash[:notice]="既に退会済みです。再度登録してご利用下さい。"
-  #     redirect_to new_customer_registration_path
-  #   elsif @customer.valid_password?(params[:customer][:password])&&(@customer.is_deleted== 3)
-  #     flash[:notice]="このアカウントは現在利用停止されています。お問合せフォームからご連絡下さい。"
-  #     redirect_to  destroy_customer_session_path(@customer.id)
-  #   else
-  #   end
-
-  # end
-
-
 
   protected
   # 退会しているかを判断するメソッド

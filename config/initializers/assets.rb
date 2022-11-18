@@ -13,12 +13,3 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-
-# # scss個別読み込み設定
-# Rails.application.config.assets.precompile += %w(
-#   style.scss
-#   application.scss
-
-#   publics/*
-#   admins/*
-# )

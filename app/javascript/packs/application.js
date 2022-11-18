@@ -13,16 +13,16 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
+
+// stylesheetの読み込み
 import "../stylesheets/application"
 
 import "../stylesheets/publics/sessions"
 import "../stylesheets/publics/registrations"
-
 import "../stylesheets/publics/bookmarks"
 import "../stylesheets/publics/customers"
 import "../stylesheets/publics/post_items"
 import "../stylesheets/publics/homes"
-
 import "../stylesheets/admins/sessions"
 
 

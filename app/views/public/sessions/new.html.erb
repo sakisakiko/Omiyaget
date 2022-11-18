@@ -1,6 +1,6 @@
 <div class="container">
 
-<%=flash[:notice] %><!--フラッシュメッセージ-->
+<%#=flash[:notice] %><!--フラッシュメッセージ-->
 
 <div class="sign-in-card-container my-5 mx-auto pt-3">
 
@@ -10,6 +10,9 @@
 
 <div class="sign-in-card-body mx-auto my-5">
 <%=form_with model: @customer,url: customer_session_path do |f| %>
+
+<!--deivseエラーメッセージ表示 -->
+<p class="alert ml-5"><%= alert %></p>
 
 <table class="sign-in-table table-bordered  mx-auto">
 <tbody>

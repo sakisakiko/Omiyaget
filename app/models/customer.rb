@@ -24,8 +24,8 @@ class Customer < ApplicationRecord
 
    #ゲストユーザーのemailとpasswordを設定
    def self.guest
-     find_or_create_by(email: 'guest@examle.com', prefecture: 1, gender: 2,introduction: "") do |customer|
-       customer.password = SecureRandom.urlsafe_base64
+     find_or_create_by(name: 'guest',email: 'guest@examle.com', prefecture: 0, gender: 0,introduction: "") do |customer|
+       customer.password = SecureRandom.alphanumeric
     end
    end
 
@@ -44,15 +44,6 @@ class Customer < ApplicationRecord
   validates:password,presence:true#パスワード必須
   validates:password,length: {minimum: 6, maximum: 20 } #パスワード６文字以上20字以内
   validates:introduction,length: {maximum: 200} #自己紹介（２００字以内
-
-  after_validation :remove_unnecessary_error_messages
-
-    def remove_unnecessary_error_messages
-      errors.messages.delete(:customers)
-    end
-
-
-
 
   #出身地の都道府県:enum管理
    enum prefecture:{

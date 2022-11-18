@@ -20,33 +20,33 @@
 <tbody>
 
 <tr>
-<th>ニックネーム</th>
+<th><span class="sign_up_required_field p-2 mx-2">必須</span>ニックネーム</th>
 <td><%= f.text_field :name, autofocus: true, autocomplete: "name",
 class: "form-control form-control-sm col-11 mx-auto ",placeholder:"例：おみやげ太郎" %></td>
 </tr>
 
 <tr>
-<th>メールアドレス</th>
+<th><span class="sign_up_required_field p-2 mx-2">必須</span>メールアドレス</th>
 <td><%= f.email_field :email, autofocus: true, autocomplete: "email",
 class: "form-control form-control-sm col-11 mx-auto",
 placeholder: "例：×××@×××.com" %></td>
 </tr>
 
 <tr>
-<th>出身地</th>
+<th><span class="sign_up_optional_field p-2 mx-2">必須</span>出身地</th>
 <td><%= f.select :prefecture, Customer.prefectures.keys.map {|k| [k]},
 {prompt: "--選択してください--"},
 class:"form-control form-control-sm col-11 mx-auto"%></td>
 </tr>
 
 <tr>
-<th>性別</th>
+<th><span class="sign_up_optional_field p-2 mx-2">必須</span>性別</th>
 <td><%= f.select :gender, Customer.genders_i18n.keys.map {|k| [Customer.genders_i18n[k], k]},
 {prompt: "--選択してください--"},class:"form-control form-control-sm col-11 mx-auto"%></td>
 </tr>
 
 <tr>
-<th>パスワード</th>
+<th><span class="sign_up_required_field p-2 mx-2">必須</span>パスワード</th>
 <td>
     <%= f.password_field :password, autocomplete: "new-password",
     class: "form-control form-control-sm col-11 mx-auto",
@@ -55,7 +55,7 @@ class:"form-control form-control-sm col-11 mx-auto"%></td>
 </tr>
 
 <tr>
-<th>パスワード(確認用)</th>
+<th><span class="sign_up_required_field p-2 mx-2">必須</span>パスワード(確認用)</th>
 <td><%= f.password_field :password_confirmation, autocomplete: "new-password",
 class: "form-control form-control-sm col-11 mx-auto",
 placeholder:"例：パスワードを入力(確認用)"%></td>

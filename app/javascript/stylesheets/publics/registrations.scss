@@ -36,6 +36,20 @@
  border: 1px solid #d8d8d8;
 	}
 
+.sign_up_required_field{
+  background-color:#FF9900;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.sign_up_optional_field{
+  background-color:#C0C0C0;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
  .sign-in-link {
  text-align: center;
  }

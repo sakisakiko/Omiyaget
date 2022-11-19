@@ -80,7 +80,7 @@ class Public::PostItemsController < ApplicationController
     @post_item=PostItem.find(params[:id])
     @post_tags=@post_item.tags
     @post_comment=PostComment.new
-    @post_comments= PostComment.joins(:customer).where(customers: {status: "enrolled"})
+    # @post_comments= PostComment.joins(:customer).where(customers: {status: "enrolled"})
   end
 
   def edit

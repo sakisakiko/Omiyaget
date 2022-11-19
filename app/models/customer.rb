@@ -41,8 +41,8 @@ class Customer < ApplicationRecord
   validates:name,length: {maximum: 10} #ニックネーム（１０字以内
   validates:email,presence:true #メールアドレス必須
   validates:email,uniqueness:true #メールアドレスは他ユーザーと重複しない
-  validates:password,presence:true#パスワード必須
-  validates:password,length: {minimum: 6, maximum: 20 } #パスワード６文字以上20字以内
+  validates:password,presence:true, on: :create#パスワード必須
+  validates:password,length: {minimum: 6, maximum: 20 }, on: :create #パスワード６文字以上20字以内
   validates:introduction,length: {maximum: 200} #自己紹介（２００字以内
 
   #出身地の都道府県:enum管理

@@ -11,16 +11,11 @@
           deleted: "退会"
           stop: "利用停止中"
     activerecord:
-      models:
-        customer:
       attributes:
         customer:
           name: "ニックネーム"
           email: "メールアドレス"
           password: "パスワード"
-      models:
-        post_item:
-      attributes:
         post_item:
           name: "品名"
           price: "購入価格"

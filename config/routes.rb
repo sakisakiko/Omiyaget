@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_scope :customer do
     get '/customers/sign_out' => 'devise/sessions#destroy'
   end
-  
+
    #管理者ログアウト用ルーティング
   devise_scope :admin do
     get '/admin/sign_out' => 'devise/sessions#destroy'

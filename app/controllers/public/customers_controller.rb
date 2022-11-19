@@ -6,13 +6,16 @@ class Public::CustomersController < ApplicationController
   end
 
   def edit
-    @customer=current_customer
+    @customer=Customer.find(params[:id])
   end
 
   def update
-    @customer=current_customer
-    @customer.update(customer_params)
-    redirect_to customer_path(current_customer.id)
+    @customer=Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to customer_path(@customer.id)
+    else
+      render :edit
+    end
   end
 
   def unsubscrib
@@ -40,7 +43,7 @@ class Public::CustomersController < ApplicationController
 
   private
   def customer_params
-   params.require(:customer).permit(:email,:name,:prefecture,:gender,:profile_image,:image,:introduction,:is_deleted)
+   params.require(:customer).permit(:id,:email,:name,:prefecture,:gender,:profile_image,:image,:introduction,:is_deleted)
   end
 
 end

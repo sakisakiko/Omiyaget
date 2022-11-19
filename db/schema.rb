@@ -108,15 +108,13 @@ ActiveRecord::Schema.define(version: 2022_11_02_034420) do
     t.integer "category_id", default: 0, null: false
     t.integer "buy_prefecture_id", null: false
     t.string "name", default: "", null: false
-    t.text "review"
+    t.string "review", default: "", null: false
     t.float "evaluation", default: 0.0, null: false
     t.string "price", default: "", null: false
     t.string "shop", default: ""
     t.boolean "release", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "lat"
-    t.float "lng"
   end
 
   create_table "post_tags", force: :cascade do |t|

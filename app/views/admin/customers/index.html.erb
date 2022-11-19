@@ -36,21 +36,21 @@
 
         <% if customer.status_i18n=="有効"%>
           <td><p style="color:green"><strong><%=customer.status_i18n%></strong></p></td>
-        <% elsif customer.status_i18n=="退会" %>
-          <td><p style="color:silver"><strong><%=customer.status_i18n%></strong></p></td>
+        <!--<#% elsif customer.status_i18n=="退会" %>-->
+        <!--  <td><p style="color:silver"><strong><%#=customer.status_i18n%></strong></p></td>-->
         <% else %>
           <td><p style="color:red"><strong><%=customer.status_i18n%></strong></p></td>
         <% end %>
 
 
         <%=form_with url: admin_customer_path(customer.id),method: :patch do |f| %>
-        <% if customer.status_i18n=="退会" %>
-         <td></td>
-         <td></td>
-        <% else %>
+        <!--<#% if customer.status_i18n=="退会" %>-->
+        <!-- <td></td>-->
+        <!-- <td></td>-->
+        <!--<#% else %>-->
          <td><%= f.select :status, [["有効","enrolled"], ["利用停止中","stop"]] %></td>
          <td> <%=f.submit "更新する",class:"btn btn-success" %></td>
-        <% end %>
+        <%# end %>
 
 
         <% end %>

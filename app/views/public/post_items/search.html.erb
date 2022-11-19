@@ -16,7 +16,7 @@
         <div class="post-item-top-bar row mx-auto mb-3">
           <%if @keyword.present? %>
             <div class="ml-3 mt-4"><h5><strong><span style="color:blue">#<%=@keyword %></span>のタグを含むお土産</strong></h5>
-            <p style="font-size:18px"><%=@post_items.count %>件ヒットしました</p>
+            <p style="font-size:18px"><%=@post_items_amount%>件ヒットしました</p>
             <p><%=link_to "一覧へ戻る",post_items_path %></p></div>
           <!--検索-->
           <div class="search ml-auto" >
@@ -44,11 +44,11 @@
         <%=render 'post_items_contents',post_items: @post_items %><!--お土産部分テンプレート-->
 
   <!--ページネーションの記述-->
-  <!--<div class="row">-->
-  <!--  <div class="mx-auto">-->
-  <!--    <%#= paginate @post_items_pagenation%>-->
-  <!--  </div>-->
-  <!--</div>-->
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @post_items %>
+        </div>
+      </div>
   <!--ページネーションの記述ここまで-->
 
 

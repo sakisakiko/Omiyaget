@@ -60,8 +60,9 @@
                       size     : 16,
                       starOff:  '<%= asset_path('star-off.jpg') %>',
                       starOn : '<%= asset_path('star-on.jpg') %>',
-                      scoreName: 'post_item[evaluation]',
                       half: false,
+                      score: <%= @post_item.evaluation %>,
+                      scoreName: 'post_item[evaluation]',
                     });
                   </script>
                 </div>

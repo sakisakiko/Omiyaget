@@ -32,18 +32,19 @@
         </div>
         <%=render 'post_items_contents',post_items: @post_items %><!--お土産部分テンプレート-->
       </div><!--post-itemのdiv-->
+
+      <!--ページネーションの記述-->
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @post_items %>
+        </div>
+      </div>
+    <!--ページネーションの記述ここまで-->
     </div><!--main_bar col-md-8-->
 
   </div><!--rowのdiv-->
 
 
-<!--ページネーションの記述-->
-  <div class="row">
-    <div class="mx-auto">
-      <%= paginate @post_items %>
-    </div>
-  </div>
-<!--ページネーションの記述ここまで-->
 
 
 </div><!--containerのdiv-->

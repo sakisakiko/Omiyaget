@@ -50,7 +50,7 @@ Rails.application.routes.draw do
       end
     end
     get '/customers/unsubscribe'=>'customers#unsubscribe',as: 'unsubscribe'
-    patch '/customers/withdraw'=>'customers#withdraw',as: 'withdraw'
+    delete '/customers/withdraw'=>'customers#withdraw',as: 'withdraw'
 
 
     resources:customers,only:[:show,:edit,:update] do

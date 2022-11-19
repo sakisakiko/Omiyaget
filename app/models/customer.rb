@@ -65,8 +65,8 @@ class Customer < ApplicationRecord
   enum gender:{unselected:0,male:1,female:2,unanwer:3}
 
   # 会員ステータス:enum管理
-  # enrolled:有効、deleted:退会、stop:利用停止中
-  enum status:{enrolled:1, deleted:2, stop:3}
+  # enrolled:有効、stop:利用停止中
+  enum status:{enrolled:1,stop:2}
 
 
   #プロフィール画像が設定されていないとき、デフォルトの画像が設定される

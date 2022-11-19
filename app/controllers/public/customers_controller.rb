@@ -24,10 +24,18 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer=current_customer
-    @customer.update(status: 2)
+    @customer.destroy
     reset_session
+    flash[:notice] = "退会しました。"
     redirect_to root_path
   end
+
+  # def withdraw
+  #   @customer=current_customer
+  #   @customer.update(status: 2)
+  #   reset_session
+  #   redirect_to root_path
+  # end
 
   def followings
     customer=Customer.find(params[:id])

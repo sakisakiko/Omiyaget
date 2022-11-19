@@ -17,7 +17,7 @@ class Public::PostItemsController < ApplicationController
 
   def index
    @post_item=PostItem.new
-   @post_items =   PostItem.joins(:customer).where(customers: {status: "enrolled"},release: true).page(params[:page]).per(9)
+   @post_items =   PostItem.where(release: true).page(params[:page]).per(9)
   # お土産の投稿者のステータスがenrolled(有効)場合のお土産のみ表示かつ
   # 表示されたお土産は公開ステータスがtrueである
   # ※ページネーション
@@ -35,18 +35,18 @@ class Public::PostItemsController < ApplicationController
           tags = Tag.where('tag_name LIKE(?)', "%#{keyword}%")
           tags.each do |tag|
             if tag.present?
-              @post_items += tag.post_items.joins(:customer).where(customers: {status: "enrolled"},release: true)
-              # @search_post_items=[@post_items += tag.post_items.joins(:customer).where(customers: {status: "enrolled"},release: true)].page(params[:page]).per(9)
+              @post_items += tag.post_items.where(release: true)
             end
           end
         end
-        @post_items.uniq!
+        @post_items_amount=@post_items.count
+        @post_items = Kaminari.paginate_array(@post_items).page(params[:page]).per(9)
+        # @post_items.uniq!
 
         @keyword = params[:keyword]
     else
-        @post_items =   PostItem.joins(:customer).where(customers: {status: "enrolled"},release: true)
+        @post_items =   PostItem.where(release: true)
     end
-
      @categories=Category.all# 部分テンプレートの為必要
   end
 
@@ -54,10 +54,10 @@ class Public::PostItemsController < ApplicationController
   def category_search
     @category=Category.find(params[:id])
     @post_item= PostItem.find_by(category_id: params[:id])
-    @post_items =   PostItem.joins(:customer).where(customers: {status: "enrolled"},release: true,category_id: params[:id]).order('created_at DESC').page(params[:page]).per(9)
+    @post_items =   PostItem.where(release: true,category_id: params[:id]).order('created_at DESC').page(params[:page]).per(9)
     # 「カテゴリーが一致、公開状態になっている、お土産の投稿者が退会していない」の条件に一致するお土産を定義
     # 1ページに９個のお土産表示（ページネーション）
-    @post_items_amount = PostItem.joins(:customer).where(customers: {status: "enrolled"},release: true,category_id: params[:id]).order('created_at DESC').count
+    @post_items_amount = PostItem.where(release: true,category_id: params[:id]).order('created_at DESC').count
     # 上記で検索したお土産の件数を定義する
     @categories=Category.all
     # 部分テンプレートの為必要
@@ -65,10 +65,10 @@ class Public::PostItemsController < ApplicationController
 
 
   def prefecture_search
-    @post_items = PostItem.joins(:customer).where(buy_prefecture_id: params[:buy_prefecture_id],customers: {status: "enrolled"},release: true).page(params[:page]).per(9)
-    # 「購入地域ーが一致、公開状態になっている、お土産の投稿者が退会していない」の条件に一致するお土産を定義
+    @post_items = PostItem.joins(:customer).where(buy_prefecture_id: params[:buy_prefecture_id],release: true).page(params[:page]).per(9)
+    # 「購入地域が一致、公開状態になっている、お土産の投稿者が退会していない」の条件に一致するお土産を定義
     # 1ページに９個のお土産表示（ページネーション）
-    @post_items_amount = PostItem.joins(:customer).where(buy_prefecture_id: params[:buy_prefecture_id],customers: {status: "enrolled"},release: true).count
+    @post_items_amount = PostItem.joins(:customer).where(buy_prefecture_id: params[:buy_prefecture_id],release: true).count
     # 上記で検索したお土産の件数を定義する
     @post_item= PostItem.find_by(buy_prefecture_id: params[:buy_prefecture_id])
     @buy_prefecture = BuyPrefecture.find(params[:buy_prefecture_id])

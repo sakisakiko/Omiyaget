@@ -10,7 +10,11 @@
     <tbody>
     <% customers.each do |customer| %>
       <tr>
-        <td><%=image_tag customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed, class: "rounded-circle" %>
+        <td>
+          <%=link_to customer_path(customer.id) do %>
+            <%=image_tag customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed,
+            class: "rounded-circle" %>
+          <% end %>
         <%=customer.name %></td>
         <td><%=customer.introduction %></td>
         <td>

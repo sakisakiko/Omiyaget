@@ -19,10 +19,17 @@
     <tbody>
       <tr>
         <td><%= post_item.id%></td>
-        <td><%=image_tag post_item.customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed,
-        class: "rounded-circle" %>
+        <td>
+          <%=link_to customer_path(post_item.customer_id) do %>
+            <%=image_tag post_item.customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed,
+            class: "rounded-circle" %>
+          <% end %>
          <%=post_item.customer.name %></td>
-        <td><%=image_tag post_item.get_image.variant(gravity: :center, resize:"80x80^", crop:"80x80+0+0").processed %></td>
+        <td>
+          <%=link_to post_item_path(post_item.id) do %>
+            <%=image_tag post_item.get_image.variant(gravity: :center, resize:"80x80^", crop:"80x80+0+0").processed %>
+          <% end %>
+        </td>
         <td><%=post_item.name %></td>
         <td><%=post_item.review %><br>
           <div id="star-evaluation<%= post_item.id %>">

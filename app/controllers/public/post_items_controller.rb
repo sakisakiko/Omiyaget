@@ -1,4 +1,8 @@
 class Public::PostItemsController < ApplicationController
+
+  before_action :correct_custoemr, only: [:edit, :update]
+  before_action :correct_custoemr_show, only: [:show]
+
   def new
     @post_item=PostItem.new
     @tag_list=Tag.all
@@ -111,12 +115,28 @@ class Public::PostItemsController < ApplicationController
 
 
 
-private
-def post_item_params
-params.require(:post_item).permit(:image,:customer_id,:category_id,:name,
-:review,:evaluation,:price,:shop,:release,:keyword,:buy_prefecture_id,:lat,:lng)
-end
+  private
+  def post_item_params
+  params.require(:post_item).permit(:image,:customer_id,:category_id,:name,
+  :review,:evaluation,:price,:shop,:release,:keyword,:buy_prefecture_id,:lat,:lng)
+  end
 
+
+  # ユーザーは自分以外のお土産情報編集ページにアクセスできない
+  def correct_custoemr
+    @post_item=PostItem.find(params[:id])
+    @customer=@post_item.customer
+    redirect_to post_items_path unless @customer == current_customer
+  end
+
+  # ユーザーは自分以外の非公開のお土産詳細ページにアクセスできない
+  def correct_custoemr_show
+    @post_item=PostItem.find(params[:id])
+    @customer=@post_item.customer
+    if @post_item.release==false
+     redirect_to post_items_path unless @customer == current_customer
+    end
+  end
 
 
 end

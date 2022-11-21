@@ -1,5 +1,7 @@
 class Public::CustomersController < ApplicationController
 
+  before_action :correct_custoemr, only: [:edit, :update,:followings,:followers]
+
   def show
     @customer=Customer.find(params[:id])
     @post_items=@customer.post_items.page(params[:page]).per(10)
@@ -30,12 +32,6 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
-  # def withdraw
-  #   @customer=current_customer
-  #   @customer.update(status: 2)
-  #   reset_session
-  #   redirect_to root_path
-  # end
 
   def followings
     customer=Customer.find(params[:id])
@@ -53,5 +49,12 @@ class Public::CustomersController < ApplicationController
   def customer_params
    params.require(:customer).permit(:id,:email,:name,:prefecture,:gender,:profile_image,:image,:introduction,:is_deleted)
   end
+
+  # ユーザーは自分以外の会員情報編集ページ、フォロー＆フォロワー一覧にアクセスできない
+  def correct_custoemr
+    @customer=Customer.find(params[:id])
+    redirect_to post_items_path unless @customer == current_customer
+  end
+
 
 end

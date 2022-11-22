@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 class Public::SessionsController < Devise::SessionsController
+  # before_action :configure_sign_in_params, only: [:create]
+
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   # ↓ログイン処理（create)が行われる前に処理をする
-  before_action :customer_state, only: [:create]
+   before_action :customer_state, only: [:create]
 
   def after_sign_in_path_for(resource)
     post_items_path
@@ -31,9 +35,9 @@ class Public::SessionsController < Devise::SessionsController
     end
   end
 
-
-
-
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_in,keys:[:email])
+  end
 
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -36,6 +36,3 @@ ActiveStorage.start()
 
 window.$ = window.jQuery = require('jquery');
 require('packs/raty')
-
-const images = require.context('../images', true)
-const imagePath = (name) => images(name, true)

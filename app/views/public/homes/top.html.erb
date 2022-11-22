@@ -1,13 +1,43 @@
-<h2>ようこそ<%= image_tag 'omiyaget_logo.jpg'%>へ</h2>
-<p>おみやGET！ は旅先のお土産探しがもっと楽しくなるサービスです</p>
-<p>探す</p>
-<p>見つかる</p>
-<p>広がる</p>
-<p>さあ、始めましょう！</p>
-<%=link_to "新規登録",new_customer_registration_path %></br>
-<%=link_to "ログイン", new_customer_session_path %></br>
-まずはつかってみる
+<div class="container my-5">
+  <div class="top-card-container">
 
-<%=form_with model: @customer,url: new_guest_sign_in_path do |f| %>
- <%=f.submit 'ゲストログイン' %>
-<% end %>
+
+    <p class="flash_message mt-3" style="background-color:#FFCCCC; text-align:center; font-size:18px;">
+      <%=flash[:notice] %>
+    </p>
+
+
+    <div class="row mx-auto">
+      <h2 class="mx-auto my-3">ようこそ<%= image_tag 'omiyaget_logo.jpg'%>へ</h2>
+    </div>
+
+    <div class="row"><p class="mx-auto">おみやGET！ は旅先のお土産探しがもっと</br></p></div>
+    <div class="row"><p class="mx-auto">楽しくなるサービスです</p></div>
+
+
+
+    <div class="row d-flex justify-content-center">
+      <div class="concept-card1"><p class="concept-text d-flex justify-content-center">探す</p></div>
+      <div class="concept-card2"><p class="concept-text d-flex justify-content-center">見つかる</p></div>
+      <div class="concept-card3"><p class="concept-text d-flex justify-content-center">広がる</p></div>
+    </div>
+
+    <div class="row">
+      <p class="mx-auto my-3">さあ、始めましょう！</p>
+    </div>
+
+    <div class="row"><%=link_to "新規登録",new_customer_registration_path,class:"btn btn-success mx-auto" %></div>
+
+    <div class="row mt-3"><%=link_to "ログイン", new_customer_session_path,class:"btn btn-primary  mx-auto "%></br></div>
+
+    <div class="row">
+      <div class="gest-sign-in mx-auto my-4">
+      <%=form_with model: @customer,url: new_guest_sign_in_path do |f| %>
+      まずは使ってみる(閲覧用）
+       <%=f.submit 'ゲストログイン',class:"btn btn-secondary" %>
+      <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>

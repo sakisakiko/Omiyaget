@@ -6,10 +6,7 @@ class Tag < ApplicationRecord
 
   # バリデーション（重複しないかつ空でない）
   validates :tag_name, uniqueness: true, presence: true
-  
-  def self.search(keyword)
-  where(["title like? OR body like?", "%#{keyword}%", "%#{keyword}%"])
-  end
-  
+
+
 
 end

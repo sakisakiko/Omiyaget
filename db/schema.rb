@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_29_032704) do
+ActiveRecord::Schema.define(version: 2022_11_02_034420) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -72,9 +72,9 @@ ActiveRecord::Schema.define(version: 2022_10_29_032704) do
   end
 
   create_table "customers", force: :cascade do |t|
+    t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "name", default: "", null: false
     t.integer "prefecture", default: 0, null: false
     t.string "introduction", default: ""
     t.integer "gender", default: 0, null: false
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 2022_10_29_032704) do
     t.integer "category_id", default: 0, null: false
     t.integer "buy_prefecture_id", null: false
     t.string "name", default: "", null: false
-    t.text "review"
+    t.string "review", default: "", null: false
     t.float "evaluation", default: 0.0, null: false
     t.string "price", default: "", null: false
     t.string "shop", default: ""

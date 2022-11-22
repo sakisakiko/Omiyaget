@@ -1,6 +1,9 @@
 <div class="container">
 
-<h4 class="font-weight-bold">会員一覧</h4>
+<div class="row mx-auto">
+  <h3 class="mx-auto my-4"><strong>会員一覧</strong></h3>
+</div>
+
   <table class="table">
       <thead>
         <tr>
@@ -8,7 +11,8 @@
           <th>ユーザー名</th>
           <th>メールアドレス</th>
           <th>ステータス</th>
-           <th>ステータス変更</th>
+          <th>ステータス変更</th>
+          <th></th>
         </tr>
       </thead>
     <tbody>
@@ -17,8 +21,9 @@
       <!--ゲストユーザーは一覧に表示しない-->
        <% if customer.email == 'guest@examle.com' %>
         <tr>
-        <td>1</td>
-         <td>※ゲストユーザー</td>
+        <td></td>
+        <td>※ゲストユーザー</td>
+        <td></td>
         <td></td>
         <td></td>
         <td></td>
@@ -28,11 +33,26 @@
         <td><%=customer.id %></td>
          <td><%=link_to customer_path(customer.id) do %><%=customer.name %><% end %></td>
         <td><%=customer.email%></td>
-        <td><%=customer.status_i18n%>
-        </td>
+
+        <% if customer.status_i18n=="有効"%>
+          <td><p style="color:green"><strong><%=customer.status_i18n%></strong></p></td>
+        <!--<#% elsif customer.status_i18n=="退会" %>-->
+        <!--  <td><p style="color:silver"><strong><%#=customer.status_i18n%></strong></p></td>-->
+        <% else %>
+          <td><p style="color:red"><strong><%=customer.status_i18n%></strong></p></td>
+        <% end %>
+
+
         <%=form_with url: admin_customer_path(customer.id),method: :patch do |f| %>
-         <td><%= f.select :status, [["有効","enrolled"], ["利用停止中","stop"]] %>
-        <%=f.submit "更新する" %></td>
+        <!--<#% if customer.status_i18n=="退会" %>-->
+        <!-- <td></td>-->
+        <!-- <td></td>-->
+        <!--<#% else %>-->
+         <td><%= f.select :status, [["有効","enrolled"], ["利用停止中","stop"]] %></td>
+         <td> <%=f.submit "更新する",class:"btn btn-success" %></td>
+        <%# end %>
+
+
         <% end %>
       </tr>
       <% end %>
@@ -40,12 +60,13 @@
     </tbody>
   </table>
 
-<!--以下コメントアウト部分ページネーション-->
-  <!--<div class="row mx-auto">-->
-  <!--  <div class="col-lg-2 mx-auto">-->
-  <!--    <#%= paginate @customers %>-->
-  <!--  </div>-->
-  <!--</div>-->
+  <!--ページネーション-->
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @customers %>
+    </div>
+  </div>
+  <!--ページネーションここまで-->
 
 </div>
 

@@ -1,7 +1,7 @@
 class Admin::PostItemsController < ApplicationController
 
   def index
-    @post_items=PostItem.all
+    @post_items=PostItem.page(params[:page]).per(5)
   end
 
   def update

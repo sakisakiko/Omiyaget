@@ -1,11 +1,22 @@
-<%=image_tag 'attention.jpg',size: "150x150" %>
-<p>本当に退会しますか？</p>
-<p>退会すると、会員登録情報や</br>
-これまでの投稿、ブックマークなど<span>すべての情報</span>が破棄されます。</br>
-退会する場合は、「退会する」をクリックして下さい。</p>
+<div class="container">
+<div class="unsubscribe-box mx-auto">
+  <div class="attention-image field d-flex justify-content-center my-5"><%=image_tag 'attention.jpg',size: "150x150" %></div>
+  <h3 class="field d-flex justify-content-center"><strong>本当に退会しますか？</strong></h3>
+  <p class="field d-flex justify-content-center mt-3">退会すると、会員登録情報や</p>
+  <p class="field d-flex justify-content-center">
+    これまでの投稿、ブックマークなど<span style="color:red">すべての情報</span>が破棄されます。
+  </p>
+  <p class="field d-flex justify-content-center mb-3">
+    退会する場合は、「退会する」をクリックして下さい。
+  </p>
 
-<%=link_to "退会しない",customer_path(current_customer.id) %>
-<%=form_with model: @customer,url: withdraw_path,method: :patch do |f| %>
- <%=f.submit "退会する","data-confirm"=>"退会します。宜しいですか？" %>
-<% end %>
+<div class="field d-flex justify-content-center">
+  <%=link_to "退会しない",customer_path(current_customer.id),class:"btn btn-primary"%>
+  <%=form_with model: @customer,url: withdraw_path,method: :delete do |f| %>
+   <%=f.submit "退会する","data-confirm"=>"退会します。宜しいですか？",class:"btn btn-danger ml-4" %>
+  <% end %>
+</div>
+
+</div>
+</div>
 

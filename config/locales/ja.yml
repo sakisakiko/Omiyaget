@@ -2,12 +2,28 @@
     enums:
       customer:
         gender:
-          unselected: "--選択してください--"
+          unselected: "未選択"
           male: "男性"
           female: "女性"
           unanwer: "非公開"
         status:
           enrolled: "有効"
-          deleted: "退会"
           stop: "利用停止中"
+    activerecord:
+      attributes:
+        customer:
+          name: "ニックネーム"
+          email: "メールアドレス"
+          password: "パスワード"
+        post_item:
+          name: "品名"
+          price: "購入価格"
+          review: "レビュー"
+          evaluation: "評価"
+          shop: "購入店舗"
+          buy_prefecture: "購入地域"
+          category: "カテゴリー"
+
+
+
 

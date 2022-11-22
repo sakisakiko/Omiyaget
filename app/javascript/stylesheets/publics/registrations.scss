@@ -1,0 +1,51 @@
+.sign-up-card-container{
+  max-width: 800px;
+  border: 5px solid #6666CC ;
+}
+
+.sign-up-title{
+ color:  #6666CC ;
+ text-align: center;
+ border-bottom: solid #6666CC ;
+
+}
+
+.sign-up-table{
+  width: 80% ;
+	margin: 0 auto;
+}
+
+.sign-up-table tr{
+  border-top: 1px solid #e5e5e5;
+  line-height: 3.5em;
+	}
+
+.sign-up-table th{
+  width: 40%;/*横幅*/
+	background-color:#ebedf5;/*ブルーグレー*/
+  line-height: 3.5em;
+  font-size: 15px ;
+  text-align: left;
+	}
+
+.sign-up-table td{
+ border: 1px solid #d8d8d8;
+	}
+
+.sign_up_required_field{
+  background-color:#FF9900;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.sign_up_optional_field{
+  background-color:#C0C0C0;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+ .sign-in-link {
+ text-align: center;
+ }

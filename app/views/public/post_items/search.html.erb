@@ -1,14 +1,65 @@
-<h2>検索結果
-  <%# @keyword.split(/[[:blank:]]+/).each do |keyword| %>
-    "<%=@keyword %>"
-  <%# end %>
-</h2>
-    <% @post_items.each do |post_item| %>
-      <%=link_to post_item_path(post_item.id) do %>
-       <%=image_tag post_item.get_image(150,150) %>
-      <% end %>
-      <%=post_item.name %>
-      <%=post_item.buy_prefecture.name %>
-    <% end %>
+<div class="main-visual">
+  <div class="main-visual-text">
+    <p>さぁ、あなた好みのお土産を探してみましょう！</p>
   </div>
+</div>
+
+<div class="container" style="width: 90%">
+  <div class="row mt-3">
+
+    <%=render 'search_bar',categories: @categories%><!--絞り込み部分テンプレート-->
+
+
+<div class="main_bar col-md-8 mx-auto">
+    <%= flash[:notice] %><!--フラッシュメッセージ-->
+      <div class="post-item">
+        <div class="post-item-top-bar row mx-auto mb-3">
+          <%if @keyword.present? %>
+            <div class="ml-3 mt-4"><h5><strong><span style="color:blue">#<%=@keyword %></span>のタグを含むお土産</strong></h5>
+            <p style="font-size:18px"><%=@post_items_amount%>件ヒットしました</p>
+            <p><%=link_to "一覧へ戻る",post_items_path %></p></div>
+          <!--検索-->
+          <div class="search ml-auto" >
+            <%=form_with url: search_post_items_path, local: true,method: :get do |f| %>
+              <%=f.text_field :keyword,placeholder: "タグ検索",class:"mt-3" %>
+              <%=f.submit "検索",class:"mr-3" %>
+            <% end %>
+          </div>
+          <!--検索-->
+          <% else %>
+          <div class="ml-3 mt-4">
+            <h5 class="ml-3"><strong><span style="color:blue">#<%=@keyword %></span>のタグを含むお土産はヒットしませんでした</strong></h5>
+            <p><%=link_to "一覧へ戻る" ,post_items_path %></p>
+          <!--検索-->
+          <div class="search ml-auto" >
+            <%=form_with url: search_post_items_path, local: true,method: :get do |f| %>
+              <%=f.text_field :keyword,placeholder: "タグ検索",class:"mt-3" %>
+              <%=f.submit "検索",class:"mr-3" %>
+            <% end %>
+          </div>
+          <!--検索-->
+          <% end %>
+        </div>
+
+        <%=render 'post_items_contents',post_items: @post_items %><!--お土産部分テンプレート-->
+
+  <!--ページネーションの記述-->
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @post_items %>
+        </div>
+      </div>
+  <!--ページネーションの記述ここまで-->
+
+
+
+
+  </div><!--rowのdiv-->
+</div><!--containerのdiv-->
+
+
+
+
+
+
 

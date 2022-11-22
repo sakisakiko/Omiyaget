@@ -1,0 +1,257 @@
+// Place all the styles related to the public/post_items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+
+// ここから [post-item new.html]
+.post-card-container{
+  max-width: 800px;
+  background-color:#FAEBD7;
+  border: 4px solid #CC3300;
+}
+
+.post-title-visual{
+  width: 100%;
+  height: 150px;
+  position: relative;
+  // background-image: image-url('post-top-image.jpg') ;
+   background-image: url('../../../assets/images/post-top-image.jpg');
+  background-size: cover;
+}
+
+.post-title-visual::before{
+  /* 透過した黒を上から重ねるイメージ */
+  background-color: rgba(0,0,0,0.2);
+  /* 自由に位置指定 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+}
+
+.post-title h3{
+  width: 100%;
+  position: absolute;
+  color: white;
+  text-align: center;
+  line-height: 150px;
+}
+
+
+.post-table{
+  width: 80% ;
+	margin: 0 auto;
+}
+
+.post-table tr{
+  border-top: 1px solid #F4A460;
+  line-height: 3em;
+	}
+
+.post-table th{
+  width: 40%;/*横幅*/
+  background-color:#FFCC66;
+  line-height: 3em;
+  font-size: 15px ;
+  text-align: left;
+}
+
+.form-group{
+width: 60%;
+}
+
+.post-table td{
+border: 1px solid #d8d8d8;
+background-color: white;
+}
+
+.post-button{
+text-align: center;
+}
+
+
+ //ここから [post-item index.html]
+
+.main-visual{
+  width: 100%;
+  height: 180px;
+  position: relative;
+  background-image: url('../../../assets/images/main-image.jpg');
+  background-position: center left;
+  background-size: cover;
+}
+
+.main-visual::before{
+  /* 透過した黒を上から重ねるイメージ */
+  background-color: rgba(255,255,255,0.4);
+  /* 自由に位置指定 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+}
+
+.main-visual-text p{
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  line-height: 180px;
+  font-size: 20px;
+}
+
+.post-item h3{
+  line-height: 60px;
+}
+
+.post-item-top-bar{
+  background-color:	#FFCC99;
+}
+
+.post-item-contents{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.post-item-contents table{
+  width: 180px;
+  margin-left: 47.5px;
+}
+
+.sidebar{
+  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+  border: 1px solid #6666CC;
+
+}
+
+
+.sidebar h4{
+  text-align: center;
+  border-bottom: 1px solid #6666CC;
+  color:#6666CC;
+}
+
+.sidebar p{
+  font-size: 18px;
+  display: inline-block;
+}
+
+ //ここから [post-item show.html]
+.tag-box{
+width: 600px;
+border: 1px solid;
+border-radius: 2px;
+margin-left: 15px;
+}
+
+.tag p{
+margin-left: 15px;
+font-size: 18px;
+}
+
+.review p{
+margin: 15px;
+font-size: 18px;
+}
+
+.review-box{
+width: 85%;
+border: 1px solid;
+border-radius: 2px;
+}
+
+.current-comment p{
+font-size: 18px;
+}
+
+.current-comment-box{
+width: 350px;
+}
+
+.post-comment-box{
+width: 350px;
+height: 50px;
+border: 1px solid;
+border-radius: 2px;
+}
+
+.map-top{
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-left: 20px;
+}
+
+.post-show-table th{
+  line-height: 2em;
+  width: 40%;/*横幅*/
+}
+
+.post-show-table td {
+  line-height: 2em;
+  width: 80%;/*横幅*/
+}
+
+.post_item_required_field{
+  background-color:#FF9900;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.post_item_optional_field{
+  background-color:#C0C0C0;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+
+
+
+ //ここから [post-item edit.html]
+ .post-edit-card-container{
+  max-width: 800px;
+  background-color:#FAEBD7;
+  border: 4px dashed #2E8B57;
+}
+
+.post-edit-title h3{
+  text-align: center;
+  border-bottom: 4px solid #2E8B57;
+}
+
+.post-edit-table{
+  width: 80% ;
+	margin: 0 auto;
+}
+
+.post-edit-table tr{
+  border-top: 1px solid #F4A460;
+  line-height: 3em;
+	}
+
+.post-edit-table th{
+  width: 40%;/*横幅*/
+  background-color:#3CB371;
+  line-height: 3em;
+  font-size: 15px ;
+  text-align: left;
+  color: white;
+}
+
+.post-edit-table td{
+border: 1px solid #d8d8d8;
+background-color: white;
+}
+
+.post-edit-table span{
+  margin-left: 10px;
+}

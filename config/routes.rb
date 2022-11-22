@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  # 顧客用ログアウト用ルーティング
+  devise_scope :customer do
+    get '/customers/sign_out' => 'devise/sessions#destroy'
+  end
+
+   #管理者ログアウト用ルーティング
+  devise_scope :admin do
+    get '/admin/sign_out' => 'devise/sessions#destroy'
+  end
+
 
   # 顧客用
   # URL /customers/sign_in ...
@@ -15,6 +25,8 @@ Rails.application.routes.draw do
   }
 
 
+
+
   scope module: :public do
     root to:"homes#top"
 
@@ -26,16 +38,19 @@ Rails.application.routes.draw do
     #購入地域（都道府県）絞り込み検索
     get '/post_items/prefecture'=>'post_items#prefecture_search',as: 'post_items_prefecture_search'
 
+    #ブックマーク一覧
+    get '/bookmarks/index'=>'bookmarks#index',as: 'bookmarks_index'
+
     resources:post_items,only:[:new,:create,:index,:show,:edit,:update,:destroy]do
       resources:post_comments,only:[:create,:destroy]
       resource:favorites,only:[:create,:destroy]
-      resources:bookmarks,only:[:create,:index,:destroy,]
+      resource:bookmarks,only:[:create,:destroy]
       collection do
         get 'search'
       end
     end
     get '/customers/unsubscribe'=>'customers#unsubscribe',as: 'unsubscribe'
-    patch '/customers/withdraw'=>'customers#withdraw',as: 'withdraw'
+    delete '/customers/withdraw'=>'customers#withdraw',as: 'withdraw'
 
 
     resources:customers,only:[:show,:edit,:update] do

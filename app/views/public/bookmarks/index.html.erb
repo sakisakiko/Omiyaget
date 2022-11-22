@@ -1,2 +1,55 @@
-<h1>Public::Bookmarks#index</h1>
-<p>Find me in app/views/public/bookmarks/index.html.erb</p>
+<div class="container">
+
+  <% if @bookmarks.present? %>
+    <h4 class="mt-4 ml-5" ><strong>ブックマーク中のお土産</strong></h4>
+    <div class="row">
+    <% @bookmarks.each do |bookmark| %>
+      <table class="bookmark-item-contents">
+        <tbody>
+          <tr>
+            <td>
+              <%=link_to post_item_bookmarks_path(bookmark.post_item_id),method: :delete do %>
+                <%= image_tag 'bookmark_on.jpg',size: "30x30"%>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            <%=link_to post_item_path(bookmark.post_item_id) do %>
+              <%=image_tag bookmark.post_item.get_image.variant(gravity: :center, resize:"150x150^", crop:"150x150+0+0").processed%>
+            <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p style="height:75px"><%=bookmark.post_item.name %></br>
+                【<%=bookmark.post_item.buy_prefecture.name %>】
+              </p>
+            </td>
+        </tbody>
+      </table>
+    <% end %>
+    </div><!--rowのdiv-->
+  <% else %>
+    <div class="mx-auto">
+      <h4 class="mt-4" style="text-align:center"><strong>ブックマーク中のお土産</strong></h4>
+      <p style="margin:15px; font-size:18px; text-align:center ">現在ブックマークしているお土産はありません</p>
+    </div>
+  <% end %>
+
+<!--ページネーションの記述-->
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @bookmarks %>
+    </div>
+  </div>
+<!--ページネーションの記述ここまで-->
+
+</div><!--containerのdiv-->
+
+
+
+
+
+
+

@@ -1,0 +1,88 @@
+// Place all the styles related to the public/homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+ * {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+
+.top-card-container{
+ background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+.concept-card1,.concept-card2,.concept-card3{
+width: 200px;
+height: 300px ;
+line-height: 300px;
+background-size: cover;
+position: relative;
+}
+
+.concept-card1{
+background-image: url('../../../assets/images/top-image.jpg');
+margin-left: 90px;
+}
+
+.concept-card2{
+background-image: url('../../../assets/images/IMG-6750.JPG');
+margin-left: 30px;
+
+}
+
+.concept-card3{
+background-image: url('../../../assets/images/top-image.jpg3');
+margin-left: 30px;
+margin-right: 90px;
+}
+
+.concept-text{
+  width: 100%;
+  font-size: 25px;
+  color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+.concept-card1::before{
+  /* 透過した黒を上から重ねるイメージ */
+  background-color: rgba(0,0,0,0.3);
+  /* 自由に位置指定 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+}
+
+.concept-card2::before{
+  /* 透過した黒を上から重ねるイメージ */
+  background-color: rgba(0,0,0,0.3);
+  /* 自由に位置指定 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+}
+
+.concept-card3::before{
+  /* 透過した黒を上から重ねるイメージ */
+  background-color: rgba(0,0,0,0.3);
+  /* 自由に位置指定 */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  content: ' ';
+}
+
+
+

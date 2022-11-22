@@ -1,78 +1,125 @@
-<h4>お土産情報登録</h4>
-<%=form_with model: @post_item,url:  post_items_path do |f| %>
 
-  <div class="post_image">
-    <%= f.label :商品画像 %>
-    <%= f.file_field :image,asset: "image/*"%>
+<div class="post-title-visual">
+  <div class="post-title ">
+    <h3>お土産を投稿</h3>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :商品名 %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="form-group row mx-auto">
-    <%=f.label :カテゴリ,class: "col-lg-2" %>
-    <%=f.collection_select :category_id,Category.all, :id, :name,{prompt: "--選択してください--"}%></br>
-  </div>
+<div class="container">
+  <div class="post-card-container my-5 mx-auto py-5">
 
 
-  <div class="field">
-    <%= f.label :タグを追加 %></br>
-    ※スペースを入力で複数のタグ追加。
-    </br>※例：お菓子  伝統工芸  割れ物
-    <%= f.text_field :tag_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :購入時価格（税込） %>
-    <%= f.text_field :price %>円
-  </div>
-
-  <div class="field">
-    <%= f.label :商品レビュー %>
-    <%= f.text_area :review,rows: "5"  %>
-  </div>
-
-  <div class="form-group row" id="star">
-    <%= f.label :evaluation,'評価'%>
-    <%= f.hidden_field :evaluation, id: :review_star %>
-
-     <!-- 評価javascript -->
-  <script>
-  $('#star').raty({
-    size     : 20,
-    starOff:  '<%= asset_path('star-off.jpg') %>',
-    starOn : '<%= asset_path('star-on.jpg') %>',
-    scoreName: 'post_item[evaluation]',
-    half: false,
-  });
-  </script>
-  </div>
+    <%=form_with model: @post_item,url:  post_items_path do |f| %>
 
 
-  <div class="field">
-    <%= f.label :購入地域 %>
-    <%=f.collection_select :buy_prefecture_id,BuyPrefecture.all, :id, :name,{prompt: "--選択してください--"}%>
-  </div>
-
-  <div class="field">
-    <%= f.label :購入店舗%>
-    <%= f.text_field :shop %>
-  </div>
-
-  <div class="field">
-    <%= f.label :公開ステータス%>
-    <%=f.radio_button :release, :true,checked: true %>
-    <%=f.label :release, "公開" %>
-    <%=f.radio_button :release, :false %>
-    <%=f.label :release, "非公開" %>
-  </div>
 
 
-  <div class="field">
-    <%= f.submit "投稿する" %>
-  </div>
-<% end %>
+
+      <div class="post-card-body mx-auto">
+
+        <%=render 'error_messages_post_item',post_item: @post_item %><!--エラーメッセージ部分テンプレート-->
+
+        <table class="post-table table-bordered mx-auto">
+          <tbody>
+            <tr>
+              <th><span class="post_item_optional_field p-2 mx-2">任意</span>お土産画像</th>
+              <td><%= f.file_field :image,asset: "image/*",class:"ml-3",style:"line-height: 1.5em;"%></td>
+            </tr>
+
+            <tr>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>お土産の品名</th>
+              <td><%= f.text_field :name,class:"form-control form-control-sm col-11 mx-auto",
+              placeholder:"お土産の品名を入力"%></td>
+            </tr>
+
+            <tr>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>カテゴリ</th>
+              <td><%=f.collection_select :category_id,Category.all, :id, :name,
+              {prompt: "--選択してください--"},
+              class:"form-control form-control-sm col-11 mx-auto"%></td>
+            </tr>
+
+            <tr>
+              <th><span class="post_item_optional_field p-2 mx-2">任意</span>タグを追加</th>
+              <td><%= f.text_field :tag_name,class:"form-control form-control-sm col-11 mx-auto",
+              placeholder:"例：伝統工芸 割れ物 (※スペースでタグを追加)"%></td>
+            </tr>
+
+            <tr>
+                <th><span class="post_item_required_field p-2 mx-2">必須</span>購入価格（税込）</th>
+                <td>
+                <div class="form-inline">
+                  <%= f.text_field :price,class:"form-control form-control-sm col-8 ml-3",
+                  placeholder:"例：1000 （※参考価格とします）"%>円
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>レビュー </th>
+              <td class="py-3"><%= f.text_area :review,rows: "5",class:"form-control form-control-sm col-11 mx-auto my-auto",
+              placeholder: "お土産のレビューを記載して下さい（200字以内）"%></td>
+            </tr>
+
+            <tr>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>
+               <%= f.label :evaluation,'評価'%><%= f.hidden_field :evaluation, id: :review_star %>
+              </th>
+              <td>
+                <div class="form-group row ml-3 mt-3" style="line-height: 1.5em" id="star">
+                <!-- 評価javascript -->
+                  <script>
+                    $('#star').empty();
+                    $('#star').raty({
+                      size     : 16,
+                      starOff:  '<%= asset_path('star-off.jpg') %>',
+                      starOn : '<%= asset_path('star-on.jpg') %>',
+                      scoreName: 'post_item[evaluation]',
+                      half: false,
+                    });
+                  </script>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>購入地域</th>
+              <td><%=f.collection_select :buy_prefecture_id,BuyPrefecture.all, :id, :name,{prompt: "--選択してください--"},
+              class:"form-control form-control-sm col-11 mx-auto"%></td>
+            </tr>
+
+            <tr>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>購入店舗</th>
+              <td><%= f.text_field :shop,class:"form-control form-control-sm col-11 mx-auto",
+              placeholder: "購入した店舗名" %></td>
+            </tr>
+
+            <tr>
+              <th><span class="post_item_required_field p-2 mx-2">必須</span>公開設定</th>
+              <td>
+                <div class="release-button ml-3">
+                  <%=f.radio_button :release, :true,checked: true %>
+                  <%=f.label :release, "公開" %>
+                  <%=f.radio_button :release, :false %>
+                  <%=f.label :release, "非公開" %>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!--post-card-bodyここまで-->
+
+      <div class="row">
+        <div class="col-md-4 col-sm-6 mx-auto">
+          <div class="post-button">
+            <%= f.submit "投稿する",class:"btn btn-warning mt-3" %>
+          </div>
+        </div>
+      </div><!--rowここまで-->
+    <% end %>
+
+
+  </div><!--post-card-containerここまで-->
+</div><!--containerここまで-->
 
 

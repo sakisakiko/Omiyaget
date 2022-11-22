@@ -1,29 +1,23 @@
 class Public::CustomersController < ApplicationController
-  # before_filter :check_login
 
-  # def check_login
-  #   if current_customer==true
-  #     if current_customer.status=="stop"
-  #       redirect_to  destroy_customer_session_path
-  #     else
-  #     end
-  #   end
-  # end
-
+  before_action :correct_custoemr, only: [:edit, :update,:followings,:followers]
 
   def show
     @customer=Customer.find(params[:id])
-    @post_items=@customer.post_items
+    @post_items=@customer.post_items.page(params[:page]).per(10)
   end
 
   def edit
-    @customer=current_customer
+    @customer=Customer.find(params[:id])
   end
 
   def update
-    @customer=current_customer
-    @customer.update(customer_params)
-    redirect_to customer_path(current_customer.id)
+    @customer=Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to customer_path(@customer.id)
+    else
+      render :edit
+    end
   end
 
   def unsubscrib
@@ -32,26 +26,35 @@ class Public::CustomersController < ApplicationController
 
   def withdraw
     @customer=current_customer
-    @customer.update(is_deleted: 2)
+    @customer.destroy
     reset_session
+    flash[:notice] = "退会しました。"
     redirect_to root_path
   end
 
+
   def followings
     customer=Customer.find(params[:id])
-    @customers=customer.followings
+    @customers=customer.followings.where(customers: {status: "enrolled"}).page(params[:page]).per(5)
+
   end
 
   def followers
     customer=Customer.find(params[:id])
-    @customers=customer.followers
+    @customers=customer.followers.where(customers: {status: "enrolled"}).page(params[:page]).per(5)
   end
-
 
 
   private
   def customer_params
-   params.require(:customer).permit(:email,:name,:prefecture,:gender,:profile_image,:image,:introduction,:is_deleted)
+   params.require(:customer).permit(:id,:email,:name,:prefecture,:gender,:profile_image,:image,:introduction,:is_deleted)
   end
+
+  # ユーザーは自分以外の会員情報編集ページ、フォロー＆フォロワー一覧にアクセスできない
+  def correct_custoemr
+    @customer=Customer.find(params[:id])
+    redirect_to post_items_path unless @customer == current_customer
+  end
+
 
 end

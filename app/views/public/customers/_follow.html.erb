@@ -1,0 +1,45 @@
+  <div class="follow-table"><!--部分テンプレート-->
+    <table class="table table-hover  col-10 mx-auto ">
+      <thead>
+        <tr>
+          <th>ユーザー</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+    <tbody>
+    <% customers.each do |customer| %>
+      <tr>
+        <td>
+          <%=link_to customer_path(customer.id) do %>
+            <%=image_tag customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed,
+            class: "rounded-circle" %>
+          <% end %>
+        <%=customer.name %></td>
+        <td><%=customer.introduction %></td>
+        <td>
+        <% if customer.is_following_by?(current_customer) %>
+          <%=link_to customer_relationships_path(customer),method: :delete do %>
+            <button class="btn btn-secondary">フォロー解除</button>
+          <% end %>
+        <% else %>
+          <%=link_to customer_relationships_path(customer),method: :post do %>
+            <button class="btn btn-success">フォロー</button>
+          <% end %>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+    </table>
+
+  <!--ページネーションの記述-->
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @customers %>
+    </div>
+  </div>
+  <!--ページネーションの記述ここまで-->
+
+  </div><!--部分テンプレート-->
+

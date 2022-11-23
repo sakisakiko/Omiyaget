@@ -1,5 +1,9 @@
 current directory: /home/ec2-user/environment/Omiyaget/vendor/bundle/ruby/3.1.0/gems/mysql2-0.5.4/ext/mysql2
+<<<<<<< HEAD
 /home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221122-5057-26al3p.rb extconf.rb
+=======
+/home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221123-30661-pdvi1v.rb extconf.rb
+>>>>>>> develop
 checking for rb_absint_size()... yes
 checking for rb_absint_singlebit_p()... yes
 checking for rb_wait_for_single_fd()... yes

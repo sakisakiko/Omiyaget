@@ -80,7 +80,7 @@ gem 'rails-i18n'
 # 環境変数を管理するGem追加。「dotenv-rails」プロジェクトごとにファイルベースで環境変数を管理できる
 gem 'dotenv-rails'
 group :production do
-  gem 'mysql2'
+#  gem 'mysql2'
 end
 
 

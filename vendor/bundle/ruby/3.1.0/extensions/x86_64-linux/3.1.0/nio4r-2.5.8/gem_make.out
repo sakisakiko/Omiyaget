@@ -1,5 +1,9 @@
 current directory: /home/ec2-user/environment/Omiyaget/vendor/bundle/ruby/3.1.0/gems/nio4r-2.5.8/ext/nio4r
+<<<<<<< HEAD
 /home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221122-4218-9oqvb.rb extconf.rb
+=======
+/home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221123-14194-ycbdu8.rb extconf.rb
+>>>>>>> develop
 checking for unistd.h... yes
 checking for linux/aio_abi.h... yes
 checking for linux/io_uring.h... no
@@ -251,4 +255,8 @@ linking shared-object nio4r_ext.so
 
 current directory: /home/ec2-user/environment/Omiyaget/vendor/bundle/ruby/3.1.0/gems/nio4r-2.5.8/ext/nio4r
 make DESTDIR\= install
+<<<<<<< HEAD
 /usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20221122-4218-q9yap3
+=======
+/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20221123-14194-t3gpw6
+>>>>>>> develop

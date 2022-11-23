@@ -6,42 +6,53 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
- Admin.create(email: 'hanada@dmm.com', password:'12g1035')
+ Admin.find_or_create_by!(email: "hanada@dmm.com") do |admin|
+  admin.password = "12g1035"
+ end
 
- BuyPrefecture.create!(
-   [
-    {id: 1, name: '北海道'}, {id: 2, name: '青森県'}, {id: 3, name: '岩手県'},
-    {id: 4, name: '宮城県'}, {id: 5, name: '秋田県'}, {id: 6, name: '山形県'},
-    {id: 7, name: '福島県'}, {id: 8, name: '茨城県'}, {id: 9, name: '栃木県'},
-    {id: 10, name: '群馬県'}, {id: 11, name: '埼玉県'}, {id: 12, name: '千葉県'},
-    {id: 13, name: '東京都'}, {id: 14, name: '神奈川県'}, {id: 15, name: '新潟県'},
-    {id: 16, name: '富山県'}, {id: 17, name: '石川県'}, {id: 18, name: '福井県'},
-    {id: 19, name: '山梨県'}, {id: 20, name: '長野県'}, {id: 21, name: '岐阜県'},
-    {id: 22, name: '静岡県'}, {id: 23, name: '愛知県'}, {id: 24, name: '三重県'},
-    {id: 25, name: '滋賀県'}, {id: 26, name: '京都府'}, {id: 27, name: '大阪府'},
-    {id: 28, name: '兵庫県'}, {id: 29, name: '奈良県'}, {id: 30, name: '和歌山県'},
-    {id: 31, name: '鳥取県'}, {id: 32, name: '島根県'}, {id: 33, name: '岡山県'},
-    {id: 34, name: '広島県'}, {id: 35, name: '山口県'}, {id: 36, name: '徳島県'},
-    {id: 37, name: '香川県'}, {id: 38, name: '愛媛県'}, {id: 39, name: '高知県'},
-    {id: 40, name: '福岡県'}, {id: 41, name: '佐賀県'}, {id: 42, name: '長崎県'},
-    {id: 43, name: '熊本県'}, {id: 44, name: '大分県'}, {id: 45, name: '宮崎県'},
-    {id: 46, name: '鹿児島県'}, {id: 47, name: '沖縄県'}
-    ]
-  )
+buy_prefectures = [
+  { id: 1, name: "北海道" }, { id: 2, name: "青森県" }, {id: 3, name: '岩手県'},
+  {id: 4, name: '宮城県'}, {id: 5, name: '秋田県'}, {id: 6, name: '山形県'},
+  {id: 7, name: '福島県'}, {id: 8, name: '茨城県'}, {id: 9, name: '栃木県'},
+  {id: 10, name: '群馬県'}, {id: 11, name: '埼玉県'}, {id: 12, name: '千葉県'},
+  {id: 13, name: '東京都'}, {id: 14, name: '神奈川県'}, {id: 15, name: '新潟県'},
+  {id: 16, name: '富山県'}, {id: 17, name: '石川県'}, {id: 18, name: '福井県'},
+  {id: 19, name: '山梨県'}, {id: 20, name: '長野県'}, {id: 21, name: '岐阜県'},
+  {id: 22, name: '静岡県'}, {id: 23, name: '愛知県'}, {id: 24, name: '三重県'},
+  {id: 25, name: '滋賀県'}, {id: 26, name: '京都府'}, {id: 27, name: '大阪府'},
+  {id: 28, name: '兵庫県'}, {id: 29, name: '奈良県'}, {id: 30, name: '和歌山県'},
+  {id: 31, name: '鳥取県'}, {id: 32, name: '島根県'}, {id: 33, name: '岡山県'},
+  {id: 34, name: '広島県'}, {id: 35, name: '山口県'}, {id: 36, name: '徳島県'},
+  {id: 37, name: '香川県'}, {id: 38, name: '愛媛県'}, {id: 39, name: '高知県'},
+  {id: 40, name: '福岡県'}, {id: 41, name: '佐賀県'}, {id: 42, name: '長崎県'},
+  {id: 43, name: '熊本県'}, {id: 44, name: '大分県'}, {id: 45, name: '宮崎県'},
+  {id: 46, name: '鹿児島県'}, {id: 47, name: '沖縄県'}
+]
 
-  Category.create!(
-  [
-    {id: 1, name: "食べ物"},
-    {id: 2,name: "お菓子"},
-    {id: 3,name: "飲み物"},
-    {id: 4,name: "雑貨"},
-    {id: 5,name: "ファッション"},
-    {id: 6,name: "その他"}
-  ])
+buy_prefectures.each do |buy_prefecture|
+  BuyPrefecture.find_or_create_by!(id: buy_prefecture[:id]) do |m|
+    m.name = buy_prefecture[:name]
+  end
+end
 
-  Customer.create!(
-  [
-    {email: 'hanasaki@test.com',
+categories = [
+  {id: 1, name: "食べ物"},
+  {id: 2,name: "お菓子"},
+  {id: 3,name: "飲み物"},
+  {id: 4,name: "雑貨"},
+  {id: 5,name: "ファッション"},
+  {id: 6,name: "その他"}
+]
+
+categories.each do |category|
+  Category.find_or_create_by!(id: category[:id]) do |m|
+    m.name = category[:name]
+  end
+end
+
+customers = [
+  {
+    email: 'hanasaki@test.com',
     name: '花咲',
     password: '12g1035',
     prefecture: 40,
@@ -49,17 +60,19 @@
     gender: 2,
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
-    },
-
-    {email: 'taro@test.com',
-    name: 'タロウ', password: '12g1035',
-    prefecture: 13,introduction: "一人旅が好きで日本全国巡ってます。よろしくお願いします。",
+  },
+  {
+    email: 'taro@test.com',
+    name: 'タロウ',
+    password: '12g1035',
+    prefecture: 13,
+    introduction: "一人旅が好きで日本全国巡ってます。よろしくお願いします。",
     gender: 1,
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")
-    },
-
-    {email: 'aoi@test.com',
+  },
+  {
+    email: 'aoi@test.com',
     name: '葵',
     password: '12g1035',
     prefecture: 2,
@@ -67,9 +80,9 @@
     gender: 2,
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")
-    },
-
-    {email: 'yuta@test.com',
+  },
+  {
+    email: 'yuta@test.com',
     name: '悠太',
     password: '12g1035',
     prefecture: 34,
@@ -77,9 +90,9 @@
     gender: 1,
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename:"sample-user4.jpg")
-    },
-
-    {email: 'momo@test.com',
+  },
+  {
+    email: 'momo@test.com',
     name: 'MOMO',
     password: '12g1035',
     prefecture: 20,
@@ -87,19 +100,19 @@
     gender: 2,
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename:"sample-user5.jpg")
-    },
-
-    {email: 'yamada@test.com',
+  },
+  {
+    email: 'yamada@test.com',
     name: '山田',
     password: '12g1035',
     prefecture: 42,
-    introduction:"山田と申します。宜しくお願いします。",
+    introduction: "山田と申します。宜しくお願いします。",
     gender: 1,
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user6.jpg"), filename:"sample-user6.jpg")
-    },
-
-    {email: 'sakura@test.com',
+  },
+  {
+    email: 'sakura@test.com',
     name: 'さくら',
     password: '12g1035',
     prefecture: 42,
@@ -107,9 +120,9 @@
     gender: 2,
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user7.jpg"), filename:"sample-user7.jpg")
-    },
-
-    {email: 'yukia@test.com',
+  },
+  {
+    email: 'yukia@test.com',
     name: 'ユウキ',
     password: '12g1035',
     prefecture: 6,
@@ -117,9 +130,9 @@
     gender: 1,
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user8.jpg"), filename:"sample-user8.jpg")
-    },
-
-    {email: 'maeda@test.com',
+  },
+  {
+    email: 'maeda@test.com',
     name: '前田響',
     password: '12g1035',
     prefecture: 15,
@@ -127,9 +140,9 @@
     gender: 1,
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user9.jpg"), filename:"sample-user9.jpg")
-    },
-
-    {email: 'mido@test.com',
+  },
+  {
+    email: 'mido@test.com',
     name: 'MIDO',
     password: '12g1035',
     prefecture: 30,
@@ -137,9 +150,9 @@
     gender: 2,
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user10.jpg"), filename:"sample-user10.jpg")
-    },
-
-    {email: 'hanako@test.com',
+  },
+  {
+    email: 'hanako@test.com',
     name: 'ハナコ',
     password: '12g1035',
     prefecture: 4,
@@ -147,15 +160,25 @@
     gender: 2,
     status: 1,
     profile_image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user11.jpg"), filename:"sample-user11.jpg")
-    },
-  ]
-)
+  },
+]
 
+customers.each do |customer|
+  Customer.find_or_create_by!(email: customer[:email]) do |m|
+    m.name = customer[:name]
+    m.password = customer[:password]
+    m.prefecture = customer[:prefecture]
+    m.introduction = customer[:introduction]
+    m.gender = customer[:gender]
+    m.status = customer[:status]
+    m.profile_image = customer[:profile_image]
+  end
+end
 
-PostItem.create!(
-  [
-    {customer_id: 1,
-    category_id: 2,
+post_items = [
+  {
+    customer: Customer.first,
+    category: Category.first(2).last,
     name: "星果庵　金平糖（ほうじ茶）",
     review: "ほうじ茶の香ばしい香りがして美味しいです！",
     evaluation: 5,
@@ -164,10 +187,10 @@ PostItem.create!(
     buy_prefecture_id: 27,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image1.jpg"), filename:"sample-post-image1.jpg")
-    },
-
-    {customer_id: 2,
-    category_id: 2,
+  },
+  {
+    customer: Customer.first(2).last,
+    category: Category.first(2).last,
     name: "【天明堂】鳳梨萬頭　１０個入",
     review: "パイナップルの味がしてすごく美味しかったです",
     evaluation: 5,
@@ -176,10 +199,10 @@ PostItem.create!(
     buy_prefecture_id: 34,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image2.jpg"), filename:"sample-post-image2.jpg")
-    },
-
-    {customer_id: 2,
-    category_id: 4,
+  },
+  {
+    customer: Customer.first(2).last,
+    category: Category.first(4).last,
     name: "コースター",
     review: "小樽のキャンドルのお店にて。木の作りと温かみのあるデザインが気に入っています",
     evaluation: 5,
@@ -188,10 +211,10 @@ PostItem.create!(
     buy_prefecture_id: 1,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image3.jpg"), filename:"sample-post-image3.jpg")
-    },
-
-    {customer_id: 3,
-    category_id: 2,
+  },
+  {
+    customer: Customer.first(3).last,
+    category: Category.first(2).last,
     name: "萩の月",
     review: "職場へのお土産と家用に買いました。美味しかったです",
     evaluation: 4,
@@ -200,10 +223,10 @@ PostItem.create!(
     buy_prefecture_id: 45,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image4.jpg"), filename:"sample-post-image4.jpg")
-    },
-
-    {customer_id: 4,
-    category_id: 1,
+  },
+  {
+    customer: Customer.first(4).last,
+    category: Category.first,
     name: "うまか玉手箱",
     review: "色々な味付けの明太子がセットなのが良いです！ペースト上ですがご飯によく合います！",
     evaluation: 5,
@@ -212,10 +235,10 @@ PostItem.create!(
     buy_prefecture_id: 40,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image5.jpg"), filename:"sample-post-image5.jpg")
-    },
-
-    {customer_id: 4,
-    category_id: 2,
+  },
+  {
+    customer: Customer.first(4).last,
+    category: Category.first(2).last,
     name: "佐世保ちょこ煉瓦物語",
     review: "濃厚なチョコレートのが最高に美味しいです！",
     evaluation: 5,
@@ -224,10 +247,10 @@ PostItem.create!(
     buy_prefecture_id: 42,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image6.jpg"), filename:"sample-post-image6.jpg")
-    },
-
-    {customer_id: 5,
-    category_id: 2,
+  },
+  {
+    customer: Customer.first(5).last,
+    category: Category.first(2).last,
     name: "りくろーおじさんのチーズケーキ",
     review: "ふわっとしていてさっぱりとしたチーズケーキでとても美味しいです。ケーキ屋さんのチーズケーキとは違うので別物と思って食べると良いとおもいます。",
     evaluation: 4,
@@ -236,10 +259,10 @@ PostItem.create!(
     buy_prefecture_id: 27,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image7.jpg"), filename:"sample-post-image7.jpg")
-    },
-
-    {customer_id: 5,
-    category_id: 3,
+  },
+  {
+    customer: Customer.first(5).last,
+    category: Category.first(3).last,
     name: "山廃純米酒　飛良泉（720ml)",
     review: "大吟醸だとやや濃厚に感じますが、さらっとしていて飲みやすかったです。",
     evaluation: 5,
@@ -248,10 +271,10 @@ PostItem.create!(
     buy_prefecture_id: 5,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image8.jpg"), filename:"sample-post-image8.jpg")
-    },
-
-    {customer_id: 5,
-    category_id: 4,
+  },
+  {
+    customer: Customer.first(5).last,
+    category: Category.first(4).last,
     name: "丸亀　組うちわ",
     review: "伝統工芸の丸亀うちわです。涼むのに使用するのも良いですが形と絵柄がお気に入りなので飾っています",
     evaluation: 5,
@@ -260,10 +283,10 @@ PostItem.create!(
     buy_prefecture_id: 37,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image9.jpg"), filename:"sample-post-image9.jpg")
-    },
-
-    {customer_id: 5,
-    category_id: 2,
+  },
+  {
+    customer: Customer.first(5).last,
+    category: Category.first(2).last,
     name: "ふくやラスク明太味セット",
     review: "シュガーとガーリックの2種類の明太味のラスクで、とても美味しいです！写真には載っていないのですが外のパッケージもかわいく、コースターにもなります",
     evaluation: 5,
@@ -272,10 +295,10 @@ PostItem.create!(
     buy_prefecture_id: 40,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image10.jpg"), filename:"sample-post-image10.jpg")
-    },
-
-    {customer_id: 5,
-    category_id: 4,
+  },
+  {
+    customer: Customer.first(5).last,
+    category: Category.first(4).last,
     name: "小樽硝子　花瓶",
     review: "透明感のある鮮やかな硝子がとても綺麗で気に入っています",
     evaluation: 5,
@@ -284,13 +307,24 @@ PostItem.create!(
     buy_prefecture_id: 1,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image11.jpg"), filename:"sample-post-image11.jpg")
-    },
+  },
+]
 
-  ]
-)
+post_items.each do |post_item|
+  PostItem.find_or_create_by!(name: post_item[:name]) do |m|
+    m.customer = post_item[:customer]
+    m.category = post_item[:category]
+    m.review = post_item[:review]
+    m.evaluation = post_item[:evaluation]
+    m.price = post_item[:price]
+    m.shop = post_item[:shop]
+    m.buy_prefecture_id = post_item[:buy_prefecture_id]
+    m.release = post_item[:release]
+    m.image = post_item[:image]
+  end
+end
 
-
-
+p "データ作成しました!"
 
 # PostTag.create!(
 #   [

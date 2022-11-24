@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  # 顧客用ログアウト用ルーティング
+  #会員用ログアウト用ルーティング
+  #会員強制ログアウト用ルーティング（利用停止の際）
   devise_scope :customer do
     get '/customers/sign_out' => 'devise/sessions#destroy'
+    get '/logout'=>'devise/sessions#destroy',as: 'logout'
   end
 
    #管理者ログアウト用ルーティング
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
   end
 
 
-  # 顧客用
+  #会員用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",

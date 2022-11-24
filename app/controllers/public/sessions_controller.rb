@@ -1,11 +1,9 @@
-# frozen_string_literal: true
 class Public::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # ↓ログイン処理（create)が行われる前に処理をする
-   before_action :customer_state, only: [:create]
+  before_action :customer_state, only: [:create]
 
   def after_sign_in_path_for(resource)
     post_items_path
@@ -16,6 +14,12 @@ class Public::SessionsController < Devise::SessionsController
   end
 
 
+
+  before_action :customer_active
+  # 会員ステータスが有効でないとき（利用停止されている）ログアウトさせる
+    def customer_active
+      redirect_to logout_path if current_customer && current_customer.status != 'enrolled'
+    end
 
 
   protected
@@ -40,8 +44,4 @@ class Public::SessionsController < Devise::SessionsController
   end
 
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
 end

@@ -1,7 +1,6 @@
 class Public::BookmarksController < ApplicationController
-
   # ログインしていない場合ブックマーク画面のアクセスを制限する
-  # before_action :authenticate_customer!
+  before_action :customer_sign_in
 
   def create
     @post_item=PostItem.find(params[:post_item_id])
@@ -30,6 +29,13 @@ class Public::BookmarksController < ApplicationController
   def index
      @bookmarks=Bookmark.joins(:post_item).where(post_items:{release: true},
      customer_id: current_customer.id).page(params[:page]).per(10)
+  end
+
+    # ログインしていないユーザーはブックマークページにアクセスできない
+  def customer_sign_in
+    unless customer_signed_in?
+      redirect_to root_path
+    end
   end
 
 

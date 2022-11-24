@@ -1,7 +1,6 @@
 class Public::PostItemsController < ApplicationController
-  # ログインしていない場合、一覧画面を除くお土産関連画面のアクセスを制限する
-  # before_action :authenticate_customer!, except: [:index]
-
+  #会員または管理者がログインしているか判断するメソッド（indexアクションは除く）
+  before_action :customer_or_admin_sign_in, except: [:index]
 
   before_action :correct_custoemr, only: [:edit, :update]
   before_action :correct_custoemr_show, only: [:show]
@@ -136,6 +135,13 @@ class Public::PostItemsController < ApplicationController
     @customer=@post_item.customer
     if @post_item.release==false
      redirect_to post_items_path unless @customer == current_customer
+    end
+  end
+
+  # ログインしていないユーザー（会員）と管理者は一覧ページ以外のページにアクセスできない
+  def customer_or_admin_sign_in
+    unless customer_signed_in? or admin_signed_in?
+      redirect_to root_path
     end
   end
 

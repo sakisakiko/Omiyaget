@@ -1,7 +1,6 @@
 class Admin::PostItemsController < ApplicationController
-
-  # 管理者がログインしていない場合、レビュー画面のアクセスを制限する
-  # before_action :authenticate_admin!
+  # 管理者がログインしているか判断するメソッド
+  before_action :admin_sign_in
 
   def index
     @post_items=PostItem.page(params[:page]).per(5)
@@ -12,6 +11,13 @@ class Admin::PostItemsController < ApplicationController
     @post_item.review=""
     @post_item.save!
     redirect_to admin_review_path
+  end
+
+  # 会員がログインしていない場合、レビュー一覧にアクセスできない
+  def admin_sign_in
+    unless admin_signed_in?
+      redirect_to root_path
+    end
   end
 
 

@@ -1,6 +1,6 @@
 class Admin::CustomersController < ApplicationController
-  # 管理者がログインしていない場合、会員の一覧画面のアクセスを制限する
-  # before_action :authenticate_admin!
+  # 管理者がログインしているか判断するメソッド
+  before_action :admin_sign_in
 
   def index
     @customers=Customer.page(params[:page]).per(10)
@@ -11,6 +11,14 @@ class Admin::CustomersController < ApplicationController
     @customer.update(customer_params)
     redirect_to admin_customers_path
   end
+  
+  # 会員がログインしていない場合会員一覧ページにアクセスできない
+  def admin_sign_in
+    unless admin_signed_in?
+      redirect_to root_path
+    end
+  end
+
 
   private
   def customer_params

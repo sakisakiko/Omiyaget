@@ -1,6 +1,6 @@
 class Admin::CategorysController < ApplicationController
-  # 管理者がログインしていない場合、カテゴリー一覧・編集画面のアクセスを制限する
-  # before_action :authenticate_admin!
+  # 管理者がログインしているか判断するメソッド
+  before_action :admin_sign_in
 
   def create
     @category=Category.new(category_params)
@@ -32,6 +32,13 @@ class Admin::CategorysController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name,:id)
+  end
+
+  # 会員がログインしていないカテゴリーページにアクセスできない
+  def admin_sign_in
+    unless admin_signed_in?
+      redirect_to root_path
+    end
   end
 
 

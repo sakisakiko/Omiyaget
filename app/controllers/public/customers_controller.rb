@@ -1,6 +1,9 @@
 class Public::CustomersController < ApplicationController
+  # 会員または管理者がログインしているか判断するメソッド（indexアクションは除く）
+  before_action :customer_or_admin_sign_in
+
   # ログインしていない場合会員画面のアクセスを制限する
-  # before_action :authenticate_customer!
+  #before_action :authenticate_customer!
 
   # ユーザーは自分以外の会員情報編集ページ、フォロー＆フォロワー一覧にアクセスできない
   before_action :correct_custoemr, only: [:edit, :update,:followings,:followers]
@@ -59,5 +62,11 @@ class Public::CustomersController < ApplicationController
     redirect_to post_items_path unless @customer == current_customer
   end
 
+  # ログインしていないユーザー（会員）と管理者は会員ページ、編集ページ、フォロー＆フォロワーページにアクセスできない
+  def customer_or_admin_sign_in
+    unless customer_signed_in? or admin_signed_in?
+      redirect_to root_path
+    end
+  end
 
 end

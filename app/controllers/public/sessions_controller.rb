@@ -18,7 +18,7 @@ class Public::SessionsController < Devise::SessionsController
   before_action :customer_active
   # 会員ステータスが有効でないとき（利用停止されている）ログアウトさせる
     def customer_active
-      redirect_to logout_path if current_customer && current_customer.status != 'enrolled'
+      redirect_to logout_path if current_customer && current_customer.status != 'active'
     end
 
 

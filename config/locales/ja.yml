@@ -7,7 +7,7 @@
           female: "女性"
           unanwer: "非公開"
         status:
-          enrolled: "有効"
+          active: "有効"
           stop: "利用停止中"
     activerecord:
       attributes:

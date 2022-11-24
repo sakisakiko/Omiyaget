@@ -70,10 +70,10 @@ aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navig
           <%=current_customer.name%>
           </br>
           <p class="nav-follow"><%=link_to  followings_customer_path(current_customer) do %>
-          　<%=current_customer.followings.where(customers: {status: "enrolled"}).count %>フォロー<% end %>
+          　<%=current_customer.followings.where(customers: {status: "active"}).count %>フォロー<% end %>
           </p>
           <p class="nav-follow"><%=link_to followers_customer_path(current_customer) do%>
-          <%=current_customer.followers.where(customers: {status: "enrolled"}).count %>フォロワー<% end %>
+          <%=current_customer.followers.where(customers: {status: "active"}).count %>フォロワー<% end %>
           </p>
         </div>
   <!--会員-->

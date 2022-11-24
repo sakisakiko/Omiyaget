@@ -38,13 +38,13 @@ class Public::CustomersController < ApplicationController
 
   def followings
     customer=Customer.find(params[:id])
-    @customers=customer.followings.where(customers: {status: "enrolled"}).page(params[:page]).per(5)
+    @customers=customer.followings.where(customers: {status: "active"}).page(params[:page]).per(5)
 
   end
 
   def followers
     customer=Customer.find(params[:id])
-    @customers=customer.followers.where(customers: {status: "enrolled"}).page(params[:page]).per(5)
+    @customers=customer.followers.where(customers: {status: "active"}).page(params[:page]).per(5)
   end
 
 

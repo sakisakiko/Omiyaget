@@ -25,7 +25,6 @@ class Public::PostItemsController < ApplicationController
   def index
    @post_item=PostItem.new
    @post_items =   PostItem.where(release: true).page(params[:page]).per(9)
-  # お土産の投稿者のステータスがenrolled(有効)場合のお土産のみ表示かつ
   # 表示されたお土産は公開ステータスがtrueである
   # ※ページネーション
    @categories=Category.all
@@ -87,7 +86,6 @@ class Public::PostItemsController < ApplicationController
     @post_item=PostItem.find(params[:id])
     @post_tags=@post_item.tags
     @post_comment=PostComment.new
-    # @post_comments= PostComment.joins(:customer).where(customers: {status: "enrolled"})
   end
 
   def edit

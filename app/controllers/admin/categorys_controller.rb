@@ -1,4 +1,6 @@
 class Admin::CategorysController < ApplicationController
+  # 管理者がログインしていない場合、カテゴリー一覧・編集画面のアクセスを制限する
+  # before_action :authenticate_admin!
 
   def create
     @category=Category.new(category_params)

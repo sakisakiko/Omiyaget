@@ -1,5 +1,8 @@
 class Public::CustomersController < ApplicationController
+  # ログインしていない場合会員画面のアクセスを制限する
+  # before_action :authenticate_customer!
 
+  # ユーザーは自分以外の会員情報編集ページ、フォロー＆フォロワー一覧にアクセスできない
   before_action :correct_custoemr, only: [:edit, :update,:followings,:followers]
 
   def show

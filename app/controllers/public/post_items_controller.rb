@@ -1,4 +1,7 @@
 class Public::PostItemsController < ApplicationController
+  # ログインしていない場合、一覧画面を除くお土産関連画面のアクセスを制限する
+  # before_action :authenticate_customer!, except: [:index]
+
 
   before_action :correct_custoemr, only: [:edit, :update]
   before_action :correct_custoemr_show, only: [:show]

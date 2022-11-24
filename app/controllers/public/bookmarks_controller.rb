@@ -1,5 +1,8 @@
 class Public::BookmarksController < ApplicationController
 
+  # ログインしていない場合ブックマーク画面のアクセスを制限する
+  # before_action :authenticate_customer!
+
   def create
     @post_item=PostItem.find(params[:post_item_id])
     bookmark=@post_item.bookmarks.new(customer_id: current_customer.id)

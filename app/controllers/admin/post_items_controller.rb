@@ -1,5 +1,8 @@
 class Admin::PostItemsController < ApplicationController
 
+  # 管理者がログインしていない場合、レビュー画面のアクセスを制限する
+  # before_action :authenticate_admin!
+
   def index
     @post_items=PostItem.page(params[:page]).per(5)
   end

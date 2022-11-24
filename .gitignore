@@ -42,3 +42,5 @@ yarn-debug.log*
 /.env
 
 vendor/bundle
+
+config/credentials.yml.enc

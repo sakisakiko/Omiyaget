@@ -1,36 +1,29 @@
 <div class="container">
-<div class="admin-sign-in-card-container my-5 mx-auto pt-3">
+  <div class="admin-sign-in-card-container my-5 mx-auto pt-3">
 
-<div  class="admin_sign-in-title">
-<h4><strong>管理者ログイン</strong></h4>
-</div>
+    <div  class="admin_sign-in-title">
+      <h4><strong>管理者ログイン</strong></h4>
+    </div>
 
-<div class="admin-sign-in-card-body mx-auto my-5">
-<%=form_with model: @admin,url: admin_session_path do |f| %>
+    <div class="admin-sign-in-card-body mx-auto my-5">
+      <%=form_with model: @admin,url: admin_session_path do |f| %>
+      <table class="admin-sign-in-table table-bordered  mx-auto">
+        <tbody>
+          <tr>
+            <th><span class="ml-3">管理者用メールアドレス</span></th>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control form-control-sm col-11 mx-auto" %></td>
+          </tr>
+          <tr>
+            <th><span class="ml-3">管理者用パスワード</span></th>
+            <td><%= f.password_field :password, autocomplete: "current-password",class: "form-control form-control-sm col-11 mx-auto" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <%= f.submit "ログイン",class:"btn btn-primary mx-auto mt-5" %>
+      </div>
+      <% end %>
+    </div>
 
-<table class="admin-sign-in-table table-bordered  mx-auto">
-
-<tbody>
-<tr>
-<th>管理者用メールアドレス</th>
-<td><%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control form-control-sm col-11 mx-auto" %></td>
-</tr>
-
-<tr>
-<th>管理者用パスワード</th>
-<td><%= f.password_field :password, autocomplete: "current-password",class: "form-control form-control-sm col-11 mx-auto" %></td>
-</tr>
-
-</tbody>
-</table>
-
-
-<div class="row">
-  <%= f.submit "ログイン",class:"btn btn-primary mx-auto mt-5" %>
-</div>
-<% end %>
-</div>
-
-
-</div>
+  </div>
 </div>

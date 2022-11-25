@@ -4,7 +4,7 @@
   </div>
 </div>
 
-<div class="container" style="width: 90%">
+<div class="container mb-5" style="width: 90%">
   <div class="row mt-3">
 
     <%=render 'search_bar',categories: @categories%><!--絞り込み部分テンプレート-->
@@ -25,7 +25,7 @@
           <% else %>
             <div class="ml-3 mt-4">
               <h5 class="ml-3"><strong>"<%=@buy_prefecture.name%>"のお土産はヒットしませんでした</strong></h5>
-              <p><%=link_to "一覧へ戻る",post_items_path %></p></div>
+              <p class="ml-3"><%=link_to "一覧へ戻る",post_items_path %></p></div>
           <% end %>
         </div>
 

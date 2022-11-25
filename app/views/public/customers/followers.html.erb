@@ -1,13 +1,34 @@
+<!--<div class="container">-->
+<!--  <div class="col-10 mx-auto">-->
+<!--    <h4 class="my-4" style="text-align:center"><strong>フォロワー一覧</strong></h4>-->
+<!--  </div>-->
+
+<!--  <%# if @customers.present? %>-->
+
+<!--  <%#=render 'follow',customers: @customers %><!--部分テンプレートに-->
+
+<!--  <%# else %>-->
+
+<!--  <div class="col-10 mx-auto">-->
+<!--    <p class="my-4" style="text-align:center;  font-size:18px;"><strong>現在フォロワーはいません</strong></p>-->
+<!--  </div>-->
+
+<!--  <%# end %>-->
+<!--</div>-->
+
+
 <div class="container">
-  <div class="col-10 mx-auto">
-    <h4 class="my-4" style="text-align:center"><strong>フォロワー一覧</strong></h4>
-  </div>
 
   <% if @customers.present? %>
-    <%=render 'follow',customers: @customers %><!--部分テンプレートに-->
+   <div class=" mx-auto">
+    <h4 class="my-4" style="text-align:center"><strong>フォロワー一覧</strong></h4>
+    <%=render 'follow',customers: @customers %><!--部分テンプレート-->
+   </div>
   <% else %>
-    <div class="col-10 mx-auto">
-      <p class="my-4" style="text-align:center;  font-size:18px;">現在フォロワーはいません</p>
+    <div class=" mx-auto">
+      <h4 style="text-align:center; margin-top:200px;"><strong>フォロワー一覧</strong></h4>
+      <p style="text-align:center;  font-size:18px;">現在フォロワーはいません</p>
     </div>
   <% end %>
+
 </div>

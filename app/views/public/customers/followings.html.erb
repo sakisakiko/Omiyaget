@@ -1,14 +1,15 @@
 <div class="container">
-  <div class="col-10 mx-auto">
-    <h4 class="my-4" style="text-align:center"><strong>フォロー一覧</strong></h4>
-  </div>
 
   <% if @customers.present? %>
+   <div class=" mx-auto">
+    <h4 class="my-4" style="text-align:center"><strong>フォロー一覧</strong></h4>
     <%=render 'follow',customers: @customers %><!--部分テンプレート-->
+   </div>
   <% else %>
-  　<div class="col-10 mx-auto">
-      <p class="my-4" style="text-align:center;  font-size:18px;">現在フォロー中のユーザーはいません</p>
-  　</div>
+    <div class="mx-auto">
+      <h4 style="text-align:center; margin-top:200px;"><strong>フォロー一覧</strong></h4>
+      <p style="text-align:center;  font-size:18px;">現在フォロー中のユーザーはいません</p>
+    </div>
   <% end %>
 
 </div>

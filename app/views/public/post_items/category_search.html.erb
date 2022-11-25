@@ -17,7 +17,7 @@
           <%if @post_item.present? %>
             <div class="ml-4 mt-4 ">
               <div class="d-flex justify-content-start">
-                <h5><strong>カテゴリー「<%= @post_item.category.name %>」のお土産</strong></h5>
+                <h5 style="font-family: 'Zen Maru Gothic', sans-serif;">カテゴリー「<%= @post_item.category.name %>」のお土産</h5>
                 <p class="ml-4" style="font-size:18px"><%=@post_items_amount%>件ヒットしました</p>
               </div>
               <p><%=link_to "一覧へ戻る",post_items_path %></p>
@@ -26,7 +26,7 @@
 
           <% else %>
           <div class="ml-3 mt-4">
-            <h5><strong>カテゴリー「<%=@category.name%>」はヒットしませんでした</strong></h5>
+            <h5 style="font-family: 'Zen Maru Gothic', sans-serif;">カテゴリー「<%=@category.name%>」はヒットしませんでした</h5>
             <p><%=link_to "一覧へ戻る",post_items_path %></p></div>
           <% end %>
         </div>

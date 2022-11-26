@@ -138,7 +138,7 @@ class Public::PostItemsController < ApplicationController
     end
   end
 
-  ログインしていないユーザー（会員）と管理者は一覧ページ以外のページにアクセスできない
+  #ログインしていないユーザー（会員）と管理者は一覧ページ以外のページにアクセスできない
   def customer_or_admin_sign_in
     unless customer_signed_in? or admin_signed_in?
       redirect_to root_path

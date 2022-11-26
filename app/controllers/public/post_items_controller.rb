@@ -1,6 +1,6 @@
 class Public::PostItemsController < ApplicationController
   #会員または管理者がログインしているか判断するメソッド（indexアクションは除く）
-  before_action :customer_or_admin_sign_in, except: [:index]
+  # before_action :customer_or_admin_sign_in, except: [:index]
 
   before_action :correct_custoemr, only: [:edit, :update]
   before_action :correct_custoemr_show, only: [:show]
@@ -139,11 +139,11 @@ class Public::PostItemsController < ApplicationController
   end
 
   # ログインしていないユーザー（会員）と管理者は一覧ページ以外のページにアクセスできない
-  def customer_or_admin_sign_in
-    unless customer_signed_in? or admin_signed_in?
-      redirect_to root_path
-    end
-  end
+  # def customer_or_admin_sign_in
+  #   unless customer_signed_in? or admin_signed_in?
+  #     redirect_to root_path
+  #   end
+  # end
 
 
 end

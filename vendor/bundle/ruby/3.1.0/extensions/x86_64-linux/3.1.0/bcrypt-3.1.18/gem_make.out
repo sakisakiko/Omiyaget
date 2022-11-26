@@ -1,9 +1,5 @@
 current directory: /home/ec2-user/environment/Omiyaget/vendor/bundle/ruby/3.1.0/gems/bcrypt-3.1.18/ext/mri
-<<<<<<< HEAD
-/home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221122-4218-e547cd.rb extconf.rb
-=======
-/home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221123-14194-vber43.rb extconf.rb
->>>>>>> develop
+/home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221126-30001-4sebf.rb extconf.rb
 creating Makefile
 
 current directory: /home/ec2-user/environment/Omiyaget/vendor/bundle/ruby/3.1.0/gems/bcrypt-3.1.18/ext/mri
@@ -27,8 +23,4 @@ linking shared-object bcrypt_ext.so
 
 current directory: /home/ec2-user/environment/Omiyaget/vendor/bundle/ruby/3.1.0/gems/bcrypt-3.1.18/ext/mri
 make DESTDIR\= install
-<<<<<<< HEAD
-/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20221122-4218-r6is2l
-=======
-/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20221123-14194-zk3dx5
->>>>>>> develop
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20221126-30001-usu78k

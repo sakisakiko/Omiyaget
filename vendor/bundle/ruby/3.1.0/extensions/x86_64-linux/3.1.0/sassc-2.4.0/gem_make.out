@@ -1,5 +1,5 @@
 current directory: /home/ec2-user/environment/Omiyaget/vendor/bundle/ruby/3.1.0/gems/sassc-2.4.0/ext
-/home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221123-8672-ztnxb0.rb extconf.rb
+/home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221126-30001-neusju.rb extconf.rb
 creating Makefile
 
 current directory: /home/ec2-user/environment/Omiyaget/vendor/bundle/ruby/3.1.0/gems/sassc-2.4.0/ext
@@ -77,4 +77,4 @@ linking shared-object sassc/libsass.so
 
 current directory: /home/ec2-user/environment/Omiyaget/vendor/bundle/ruby/3.1.0/gems/sassc-2.4.0/ext
 make DESTDIR\= install
-/usr/bin/install -c -m 0755 libsass.so ./.gem.20221123-8672-54hjpe/sassc
+/usr/bin/install -c -m 0755 libsass.so ./.gem.20221126-30001-li6hui/sassc

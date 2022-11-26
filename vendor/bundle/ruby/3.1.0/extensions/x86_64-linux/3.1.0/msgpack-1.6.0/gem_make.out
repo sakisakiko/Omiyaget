@@ -1,9 +1,5 @@
 current directory: /home/ec2-user/environment/Omiyaget/vendor/bundle/ruby/3.1.0/gems/msgpack-1.6.0/ext/msgpack
-<<<<<<< HEAD
-/home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221122-4218-oa9gul.rb extconf.rb
-=======
-/home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221123-14194-7wt0uy.rb extconf.rb
->>>>>>> develop
+/home/ec2-user/.rvm/rubies/ruby-3.1.2/bin/ruby -I /home/ec2-user/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20221126-30001-52qjm8.rb extconf.rb
 checking for ruby/st.h... yes
 checking for st.h... no
 checking for rb_enc_interned_str() in ruby.h... yes
@@ -31,8 +27,4 @@ linking shared-object msgpack/msgpack.so
 
 current directory: /home/ec2-user/environment/Omiyaget/vendor/bundle/ruby/3.1.0/gems/msgpack-1.6.0/ext/msgpack
 make DESTDIR\= install
-<<<<<<< HEAD
-/usr/bin/install -c -m 0755 msgpack.so ./.gem.20221122-4218-e355ni/msgpack
-=======
-/usr/bin/install -c -m 0755 msgpack.so ./.gem.20221123-14194-89z6ue/msgpack
->>>>>>> develop
+/usr/bin/install -c -m 0755 msgpack.so ./.gem.20221126-30001-gtjcc9/msgpack

@@ -32,13 +32,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-<<<<<<< HEAD
-sitearchdir = $(DESTDIR)./.gem.20221122-4218-r6is2l
-sitelibdir = $(DESTDIR)./.gem.20221122-4218-r6is2l
-=======
-sitearchdir = $(DESTDIR)./.gem.20221123-14194-zk3dx5
-sitelibdir = $(DESTDIR)./.gem.20221123-14194-zk3dx5
->>>>>>> develop
+sitearchdir = $(DESTDIR)./.gem.20221126-30001-usu78k
+sitelibdir = $(DESTDIR)./.gem.20221126-30001-usu78k
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)

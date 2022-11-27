@@ -46,6 +46,8 @@ class Public::PostItemsController < ApplicationController
           tags.each do |tag|
             if tag.present?
               @post_items += tag.post_items.where(release: true)
+              #重複を防ぐ
+              @post_items.uniq!
             end
           end
         end

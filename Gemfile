@@ -83,7 +83,6 @@ group :production do
  gem 'mysql2'
 end
 
-
 # 以降三行最終行に記載
 gem "net-smtp"
 gem "net-pop"

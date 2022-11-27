@@ -34,9 +34,14 @@ class Public::PostItemsController < ApplicationController
     if params[:keyword].present?
       # tag = Tag.find_by(tag_name: params[:keyword])
       @post_items=[]
+      @keyword=""
       # 分割したキーワードごとに検索
         params[:keyword].split(/[[:blank:]]+/).each do |keyword|
+          # キーワードが空白の場合はスキップ
           next if keyword == ""
+          @keyword += '#'+keyword+" "
+          # タグモデルの中で検索したキーワードを含むものをtagsで定義
+          # ヒットしたタグが現在投稿されているお土産に存在した場合、検索したタグを含むお土産を@post_itemsにいれていく
           tags = Tag.where('tag_name LIKE(?)', "%#{keyword}%")
           tags.each do |tag|
             if tag.present?
@@ -46,11 +51,9 @@ class Public::PostItemsController < ApplicationController
         end
         @post_items_amount=@post_items.count
         @post_items = Kaminari.paginate_array(@post_items).page(params[:page]).per(9)
-        # @post_items.uniq!
-
-        @keyword = params[:keyword]
     else
-        @post_items =   PostItem.where(release: true)
+        # 空検索した際は一覧画面画面にリダイレクトする
+         redirect_to post_items_path
     end
      @categories=Category.all# 部分テンプレートの為必要
   end

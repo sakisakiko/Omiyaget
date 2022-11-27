@@ -18,7 +18,6 @@ class PostItem < ApplicationRecord
    validates:price,presence:true
    validates:evaluation,presence:true
    validates:shop,presence:true
-   validates:review,presence:true
    validates:review,length: {maximum: 200}
 
 

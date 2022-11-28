@@ -52,7 +52,11 @@
                   <tbody>
                     <tr>
                       <td class="p-2">＜自己紹介＞</br>
-                        <%=@customer.introduction %>
+                        <% if @customer.introduction.present? %>
+                          <%=@customer.introduction %>
+                        <% else %>
+                        　<p style="color:silver;">自己紹介文はまだ書かれていません</p>
+                        <% end %>
                       </td>
                     </tr>
                   </tbody>

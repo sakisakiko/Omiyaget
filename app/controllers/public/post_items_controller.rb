@@ -24,7 +24,7 @@ class Public::PostItemsController < ApplicationController
 
   def index
    @post_item=PostItem.new
-   @post_items =   PostItem.where(release: true).page(params[:page]).per(9)
+   @post_items =PostItem.where(release: true).order(created_at: :desc).page(params[:page]).per(9)
   # 表示されたお土産は公開ステータスがtrueである
   # ※ページネーション
    @categories=Category.all
@@ -76,7 +76,7 @@ class Public::PostItemsController < ApplicationController
 
 
   def prefecture_search
-    @post_items = PostItem.joins(:customer).where(buy_prefecture_id: params[:buy_prefecture_id],release: true).page(params[:page]).per(9)
+    @post_items = PostItem.joins(:customer).where(buy_prefecture_id: params[:buy_prefecture_id],release: true).order(created_at: :desc).page(params[:page]).per(9)
     # 「購入地域が一致、公開状態になっている」の条件に一致するお土産を定義
     # 1ページに９個のお土産表示（ページネーション）
     @post_items_amount = PostItem.joins(:customer).where(buy_prefecture_id: params[:buy_prefecture_id],release: true).count

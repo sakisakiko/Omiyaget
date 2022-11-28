@@ -177,7 +177,7 @@ end
 
 post_items = [
   {
-    customer: Customer.first,
+    customer: Customer.first(7).last,
     category: Category.first(2).last,
     name: "星果庵 金平糖（ほうじ茶）",
     review: "ほうじ茶の香ばしい香りがして美味しいです！",

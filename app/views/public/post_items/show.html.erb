@@ -9,7 +9,7 @@
       <!--お土産編集は自分の商品のみ表示-->
       <%if customer_signed_in? %>
         <% if @post_item.customer_id==current_customer.id %>
-          <h4 class="my-4 mx-3">投稿したお土産</h4>
+          <h4 class="my-4 mx-3" style="font-family: 'Zen Maru Gothic', sans-serif;">投稿したお土産</h4>
           <%=link_to "お土産情報編集",edit_post_item_path(@post_item.id),class:"btn btn-primary my-4 " %></br>
         <% else %>
           <h4 class="my-4 mx-3"><%=@post_item.customer.name %>さんの投稿したお土産</h4>

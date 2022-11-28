@@ -1,20 +1,13 @@
 
 <div class="post-title-visual">
   <div class="post-title ">
-    <h3>お土産を投稿</h3>
+    <h3 style="font-family: 'Shippori Mincho', serif;">お土産を投稿</h3>
   </div>
 </div>
 
 <div class="container">
   <div class="post-card-container my-5 mx-auto py-5">
-
-
     <%=form_with model: @post_item,url:  post_items_path do |f| %>
-
-
-
-
-
       <div class="post-card-body mx-auto">
 
         <%=render 'error_messages_post_item',post_item: @post_item %><!--エラーメッセージ部分テンプレート-->

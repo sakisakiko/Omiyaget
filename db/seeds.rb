@@ -195,7 +195,7 @@ post_items = [
     review: "パイナップルの味がしてすごく美味しかったです",
     evaluation: 5,
     price: 1458,
-    shop: "八丁堀本店地階 広島みやげ 心斎橋本店",
+    shop: "広島駅",
     buy_prefecture_id: 34,
     release: true,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image2.jpg"), filename:"sample-post-image2.jpg")

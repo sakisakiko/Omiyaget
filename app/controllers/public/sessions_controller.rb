@@ -33,7 +33,7 @@ class Public::SessionsController < Devise::SessionsController
     #【処理３】退会フラグがstop(利用停止）のとき
     if @customer.valid_password?(params[:customer][:password])&&(@customer.status=="stop")
       # フラッシュメッセージ
-        flash[:notice] = "このアカウントは現在利用停止されています"
+        flash[:notice] = "このアカウントは現在利用停止されています。"
       # ログイン画面へリダイレクト
         redirect_to new_customer_session_path
     end
@@ -42,6 +42,5 @@ class Public::SessionsController < Devise::SessionsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in,keys:[:email])
   end
-
 
 end

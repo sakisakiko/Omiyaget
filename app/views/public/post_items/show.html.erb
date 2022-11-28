@@ -115,7 +115,7 @@
 
       <!--レビュー-->
       <div class="review-box p-2">
-        <% if @post_tags.present? %>
+        <% if @post_item.review.present? %>
          <p><%=@post_item.review %></p>
         <% else %>
          <p class="m-2" style="color:silver;">レビューはまだ書かれていません</p>

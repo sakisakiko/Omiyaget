@@ -324,25 +324,51 @@ post_items.each do |post_item|
   end
 end
 
-p "データ作成しました!"
+  Tag.upsert_all(
+  [
+    {tag_name: "金平糖",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "和菓子",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "饅頭",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "コースター",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "クリーム",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "明太子",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "ケーキ",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "チョコ味",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "チーズケーキ",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "お酒",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "日本酒",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "うちわ",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "ラスク",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "ガーリック",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "明太味",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "ガラス",created_at: Time.current,updated_at: Time.current},
+    {tag_name: "花瓶",created_at: Time.current,updated_at: Time.current}
+  ]
+  )
 
-# PostTag.create!(
-#   [
-#     {post_item_id: 1,tag_id: 1},
-#     {post_item_id: 1,tag_id: 2},
-#     {post_item_id: 2,tag_id: 1},
-#     {post_item_id: 3,tag_id: 3},
-#     {post_item_id: 4,tag_id: 1},
-#     {post_item_id: 5,tag_id: 4}
-#   ]
-#   )
 
-#   Tag.create!(
-#   [
-#     {id: 1,tag_name: "お菓子"},
-#     {id: 2,tag_name: "金平糖"},
-#     {id: 3,tag_name: "コースター"},
-#     {id: 4,tag_name: "明太子"}
+PostTag.upsert_all(
+  [
+    {post_item_id: 1,tag_id: 1,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 1,tag_id: 2,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 2,tag_id: 3,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 3,tag_id: 4,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 4,tag_id: 3,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 4,tag_id: 5,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 5,tag_id: 6,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 6,tag_id: 7,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 6,tag_id: 8,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 7,tag_id: 7,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 7,tag_id: 9,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 8,tag_id: 10,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 8,tag_id: 11,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 9,tag_id: 12,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 10,tag_id: 13,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 10,tag_id: 14,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 10,tag_id: 15,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 11,tag_id: 16,created_at: Time.current,updated_at: Time.current},
+    {post_item_id: 11,tag_id: 17,created_at: Time.current,updated_at: Time.current}
+  ]
+  )
 
-#   ]
-#   )
+  p "データ作成しました!"

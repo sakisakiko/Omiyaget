@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
   # アソシエーション
   has_many :post_items,dependent: :destroy
   has_many :bookmarks,dependent: :destroy
-  has_many :post_comment,dependent: :destroy
+  has_many :post_comments,dependent: :destroy
   has_many :favorites,dependent: :destroy
 
   has_many :relationships,dependent: :destroy, foreign_key: :following_id

@@ -11,6 +11,7 @@ class Public::CustomersController < ApplicationController
   def show
     @customer=Customer.find(params[:id])
     @post_items=@customer.post_items.page(params[:page]).per(10)
+    @post_items_release =@customer.post_items.where(release: true).page(params[:page]).per(10)
   end
 
   def edit

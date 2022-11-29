@@ -24,7 +24,7 @@ class Customer < ApplicationRecord
 
    #ゲストユーザーのemailとpasswordを設定
    def self.guest
-     find_or_create_by(name: 'guest',email: 'guest@examle.com', prefecture: 0, gender: 0,introduction: "") do |customer|
+     find_or_create_by(name: 'ゲストユーザー',email: 'guest@examle.com', prefecture: 0, gender: 0,introduction: "") do |customer|
        customer.password = SecureRandom.alphanumeric
     end
    end

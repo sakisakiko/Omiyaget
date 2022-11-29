@@ -1,0 +1,52 @@
+<div class="row mx-auto">
+  <% post_items_release.each do |post_item| %>
+    <table class="customer-post-item-contents">
+      <tbody>
+        <tr>
+          <td>
+            <% if customer_signed_in? %>
+              <% if current_customer.email!='guest@examle.com' %>
+                <!--ログインしたユーザーがゲストユーザーでないときブックマークアイコン表示-->
+                <% if post_item.customer_id!=current_customer.id %>
+                  <!--自分の投稿したお土産はブックマークできない-->
+                  <% if post_item.bookmarked_by?(current_customer) %>
+                    <%=link_to post_item_bookmarks_path(post_item.id),method: :delete do %>
+                      <%= image_tag 'bookmark_on.jpg',size: "30x30"%>
+                    <% end %>
+                  <% else %>
+                    <%=link_to post_item_bookmarks_path(post_item.id),method: :post do %>
+                        <%= image_tag 'bookmark_off.jpg',size: "30x30"%>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                <% end %>
+              <% else %>
+              <% end %>
+            <% else %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%=link_to post_item_path(post_item.id) do %>
+              <%=image_tag post_item.get_image.variant(gravity: :center, resize:"150x150^", crop:"150x150+0+0").processed%>
+              <%#=image_tag post_item.get_image(150,150) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p style="height:75px">
+              <% if post_item.release == false %>
+                <%=image_tag "rock_icon.jpg",size:"30x25" %>
+              <% else %>
+              <% end %>
+              <%=post_item.name %></br>
+              【<%=post_item.buy_prefecture.name %>】
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+</div>

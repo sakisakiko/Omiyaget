@@ -5,7 +5,12 @@
         <div class="row no-gutters"><!--row no-gutters-->
           <div class="col-md-4 mx-auto">
             <% if customer_signed_in? %>
-              <% if @customer==current_customer %>
+              <% if current_customer.email == 'guest@examle.com' %>
+                  <h5 style="text-align:center" class="mt-4"><%=@customer.name %>さんのプロフィール</h5>
+                  <div style="text-align:center">
+                   <%=image_tag @customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed%>
+                  </div>
+              <% elsif  @customer==current_customer %>
               <!--マイページの表示-->
                 <h5 class="my-2" style="text-align:center">マイページ</h5>
                 <div style="text-align:center"><%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed%></br></div>
@@ -80,65 +85,49 @@
       <h4 class="my-3"><strong>投稿されたお土産</strong></h4>
     <% end %>
 
-    <div class="row mx-auto"><!--row２-->
-      <% @post_items.each do |post_item| %>
-        <table class="customer-post-item-contents">
-          <tbody>
-            <tr>
-              <td>
-                <% if customer_signed_in? %>
-                  <% if current_customer.email!='guest@examle.com' %>
-                  <!--ログインしたユーザーがゲストユーザーでないときブックマークアイコン表示-->
-                    <% if post_item.customer_id!=current_customer.id %>
-                      <!--自分の投稿したお土産はブックマークできない-->
-                      <% if post_item.bookmarked_by?(current_customer) %>
-                        <%=link_to post_item_bookmarks_path(post_item.id),method: :delete do %>
-                          <%= image_tag 'bookmark_on.jpg',size: "30x30"%>
-                        <% end %>
-                      <% else %>
-                        <%=link_to post_item_bookmarks_path(post_item.id),method: :post do %>
-                          <%= image_tag 'bookmark_off.jpg',size: "30x30"%>
-                        <% end %>
-                      <% end %>
-                    <% else %>
-                    <% end %>
-                  <% else %>
-                  <% end %>
-                <% else %>
-                <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-              <%=link_to post_item_path(post_item.id) do %>
-                <%=image_tag post_item.get_image.variant(gravity: :center, resize:"150x150^", crop:"150x150+0+0").processed%>
-                <%#=image_tag post_item.get_image(150,150) %>
-              <% end %>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <p style="height:75px">
-                  <% if post_item.release == false %>
-                    <%=image_tag "rock_icon.jpg",size:"30x25" %>
-                  <% else %>
-                  <% end %>
-                  <%=post_item.name %></br>
-                  【<%=post_item.buy_prefecture.name %>】
-                </p>
-              </td>
-          </tbody>
-        </table>
+    <% if customer_signed_in? %>
+      <% if current_customer.email == 'guest@examle.com' %>
+        <!--ゲスト-->
+        <%= render 'post_items_release',post_items_release: @post_items_release %>
+        <!--ゲスト-->
+      <% elsif @customer==current_customer %>
+        <!--マイページ-->
+        <%= render 'mypage_post_items',post_items: @post_items %>
+        <!--マイページ-->
+      <% else %>
+        <!--他ユーザーの詳細ページ-->
+        <%= render 'post_items_release',post_items_release: @post_items_release %>
+        <!--他ユーザーの詳細ページ-->
       <% end %>
-    </div><!--row２ここまで-->
+    <% else %>
+      <!--管理者からのユーザーの詳細ページ-->
+       <%= render 'post_items_release',post_items_release: @post_items_release %>
+      <!--管理者からのユーザーの詳細ページ-->
+    <% end %>
   </div><!--customer-post-itemここまで-->
 
-  <!--ページネーション-->
-  <div class="row">
-    <div class="mx-auto">
-      <%= paginate @post_items %>
+<!--ページネーション-->
+<% if customer_signed_in? %>
+  <% if @customer==current_customer %>
+    <div class="row">
+      <div class="mx-auto">
+        <%= paginate @post_items %>
+      </div>
     </div>
-  </div>
-  <!--ページネーションここまで-->
+  <% else %>
+    <div class="row">
+      <div class="mx-auto">
+        <%= paginate @post_items_release %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+    <div class="row">
+      <div class="mx-auto">
+        <%= paginate @post_items_release %>
+      </div>
+    </div>
+<% end %>
+<!--ページネーションここまで-->
 
 </div><!--containerここまで-->

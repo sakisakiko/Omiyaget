@@ -15,6 +15,8 @@
           name: "ニックネーム"
           email: "メールアドレス"
           password: "パスワード"
+          password_confirmation: "確認用パスワード"
+          introduction: "自己紹介文"
         post_item:
           name: "品名"
           price: "購入価格"

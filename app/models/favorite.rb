@@ -4,6 +4,6 @@ class Favorite < ApplicationRecord
   belongs_to :customer
 
  # バリデーション
- #一つのお土産に対しては一度しかいいねできない(重複を防ぐ)
-  validates:post_item_id,uniqueness:true
+ #ユーザーは一つのお土産に対しては一度しかいいねできない(重複を防ぐ)
+  validates_uniqueness_of :post_item_id, scope: :customer_id
 end

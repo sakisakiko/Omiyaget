@@ -66,8 +66,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources:customers,only:[:index,:update]
-    resources:categorys,only:[:index,:create,:edit,:update,:destroy]
-    # destroy不要。動作など確認後削除
+    resources:categorys,only:[:index,:create,:edit,:update]
 
     get '/review'=>'post_items#index',as: 'review'
     patch '/review/update/:id'=>'post_items#update',as: 'review_update'

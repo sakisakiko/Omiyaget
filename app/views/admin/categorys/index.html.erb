@@ -23,7 +23,6 @@
       <tr>
         <td><%=category.name %></td>
         <td><%=link_to "編集する",edit_admin_category_path(category.id),class: " btn btn-success" %></td>
-        <td><%#=link_to"削除する",admin_category_path(category.id),method: :delete %><!--destroy不要あとでけす--></td>
       </tr>
     <% end %>
     </tbody>

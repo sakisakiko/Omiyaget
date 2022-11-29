@@ -23,13 +23,6 @@ class Admin::CategorysController < ApplicationController
     redirect_to admin_categorys_path
   end
 
-  def destroy
-    @category=Category.find(params[:id])
-    @category.destroy
-     redirect_to admin_categorys_path
-  end
-
-
   def category_params
     params.require(:category).permit(:name,:id)
   end

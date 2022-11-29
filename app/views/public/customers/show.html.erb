@@ -11,16 +11,16 @@
                    <%=image_tag @customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed%>
                   </div>
               <% elsif  @customer==current_customer %>
-              <!--マイページの表示-->
+                <!--マイページの表示-->
                 <h5 class="my-2" style="text-align:center">マイページ</h5>
                 <div style="text-align:center"><%=image_tag current_customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed%></br></div>
                 <div style="text-align:center"><%=link_to "編集",edit_customer_path(@customer.id),class: "btn btn-primary my-3 col-3" %></br></div>
-              <!--マイページの表示ここまで-->
+                <!--マイページの表示ここまで-->
               <% else %>
-              <!--自分以外のユーザーの表示-->
+                <!--自分以外のユーザーの表示-->
                 <h5 class="my-2"style="text-align:center"><%=@customer.name %>さんのプロフィール</h5>
                 <div style="text-align:center">
-                <%=image_tag @customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed%>
+                  <%=image_tag @customer.get_profile_image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0").processed%>
                 </div>
                 <% if @customer.is_following_by?(current_customer) %>
                   <%=link_to customer_relationships_path(@customer),method: :delete do %>
@@ -31,7 +31,7 @@
                     <div style="text-align:center"><button class="btn btn-success my-3">フォロー</button></div>
                   <% end %>
                 <% end %>
-              <!--自分以外のユーザーの表示ここまで-->
+                <!--自分以外のユーザーの表示ここまで-->
               <% end %>
             <% else %>
               <h5 style="text-align:center" class="mt-4"><%=@customer.name %>さんのプロフィール</h5>
@@ -51,22 +51,19 @@
                   </tr>
                 </thead>
               </table>
-
-
-                <table class="mt-3 p-3" style="border: 1px solid gray;  width:80%; height:80%;">
-                  <tbody>
-                    <tr>
-                      <td class="p-2">＜自己紹介＞</br>
-                        <% if @customer.introduction.present? %>
-                          <%=@customer.introduction %>
-                        <% else %>
-                        　<p style="color:silver;">自己紹介文はまだ書かれていません</p>
-                        <% end %>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-
+              <table class="mt-3 p-3" style="border: 1px solid gray;  width:80%; height:80%;">
+                <tbody>
+                  <tr>
+                    <td class="p-2">＜自己紹介＞</br>
+                      <% if @customer.introduction.present? %>
+                        <%=@customer.introduction %>
+                      <% else %>
+                        <p style="color:silver;">自己紹介文はまだ書かれていません</p>
+                      <% end %>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div><!--row no-guttersここまで-->
@@ -89,45 +86,41 @@
       <% if current_customer.email == 'guest@examle.com' %>
         <!--ゲスト-->
         <%= render 'post_items_release',post_items_release: @post_items_release %>
-        <!--ゲスト-->
       <% elsif @customer==current_customer %>
         <!--マイページ-->
         <%= render 'mypage_post_items',post_items: @post_items %>
-        <!--マイページ-->
       <% else %>
         <!--他ユーザーの詳細ページ-->
         <%= render 'post_items_release',post_items_release: @post_items_release %>
-        <!--他ユーザーの詳細ページ-->
       <% end %>
     <% else %>
       <!--管理者からのユーザーの詳細ページ-->
        <%= render 'post_items_release',post_items_release: @post_items_release %>
-      <!--管理者からのユーザーの詳細ページ-->
     <% end %>
   </div><!--customer-post-itemここまで-->
 
-<!--ページネーション-->
-<% if customer_signed_in? %>
-  <% if @customer==current_customer %>
-    <div class="row">
-      <div class="mx-auto">
-        <%= paginate @post_items %>
+  <!--ページネーション-->
+  <% if customer_signed_in? %>
+    <% if @customer==current_customer %>
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @post_items %>
+        </div>
       </div>
-    </div>
+    <% else %>
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @post_items_release %>
+        </div>
+      </div>
+    <% end %>
   <% else %>
-    <div class="row">
-      <div class="mx-auto">
-        <%= paginate @post_items_release %>
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @post_items_release %>
+        </div>
       </div>
-    </div>
   <% end %>
-<% else %>
-    <div class="row">
-      <div class="mx-auto">
-        <%= paginate @post_items_release %>
-      </div>
-    </div>
-<% end %>
-<!--ページネーションここまで-->
+  <!--ページネーションここまで-->
 
 </div><!--containerここまで-->

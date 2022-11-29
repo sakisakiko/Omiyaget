@@ -123,9 +123,8 @@
       </div>
        <!--レビューここまで-->
 
-
       <!--投稿日、いいね、コメントここから-->
-      <div class="row"> <!--row5-->
+      <div class="row"> 
         <p class="mx-3 mt-2">投稿日:<%=@post_item.created_at.strftime('%Y/%m/%d') %></p>
         <!--いいね表示※自分のお土産＆管理者ログイン時はいいねの数のみ表示（いいねはできない）-->
         <% if customer_signed_in? %>

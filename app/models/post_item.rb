@@ -51,7 +51,7 @@ class PostItem < ApplicationRecord
 
   # 既にブックマークをしているかの確認
   def bookmarked_by?(customer)
-    bookmarks.where(customer_id: customer).exists?
+    bookmarks.where(customer_id: customer.id).exists?
   end
 
   #お土産の商品画像が投稿されていなかった場合デフォルト画像を設定

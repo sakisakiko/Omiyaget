@@ -4,6 +4,8 @@
 旅先などで実際に購入したお土産の情報を投稿し、共有できるサイトです。
 また、条件で絞り込み検索を行うことで日本全国のお土産を探すことができます。
 
+![Omiyaget_image](https://user-images.githubusercontent.com/108504337/204809567-13c6135c-dae9-4014-8bd8-285746b2a907.jpg)
+
 ### サイトテーマ
 より多くのお土産を
 発見したり、共有できるようにするサイト。
@@ -16,7 +18,7 @@
 そこで、他人がオススメするお土産を閲覧したり、自分がよかったと感じたお土産の情報を発信して
 お互いにシェアできれば旅行ももっと楽しくなるのではないかと思い、このテーマにしました。
 
-### ターゲットユーザ
+### ターゲットユーザー
 旅行に行く人
 
 ### 主な利用シーン
@@ -32,7 +34,8 @@
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1Wqgv6TsoCbC6-1zsGjr4TC7mePVoNGAMwegTYexkgRU/edit?usp=sharing)
 - [画面遷移図（会員側）](https://drive.google.com/file/d/1cntnq6TWV2JGSQM3j8vqJU17W9u4n_hE/view?usp=sharing)
 - [画面遷移図（管理者側）](https://drive.google.com/file/d/1jDlOdGwtjkBSSkW3d4gw9n94RuC6GJs2/view?usp=sharing)
-
+- [ER図](https://drive.google.com/file/d/1eYxr3_gzCQNhKfR1olpaYK5sNBvSpSLR/view?usp=sharing)
+![omiyaget-ER](https://user-images.githubusercontent.com/108504337/204808810-1ba8aafa-870f-46cc-8600-6e8735c360c0.jpg)
 
 ## テスト
  - テスト仕様書にて実施:

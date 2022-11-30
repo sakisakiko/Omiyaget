@@ -4,8 +4,6 @@
 旅先などで実際に購入したお土産の情報を投稿し、共有できるサイトです。
 また、条件で絞り込み検索を行うことで日本全国のお土産を探すことができます。
 
-![Omiyaget_image](images/omiyaget_imagejpg )
-
 ### サイトテーマ
 より多くのお土産を
 発見したり、共有できるようにするサイト。
@@ -34,12 +32,10 @@
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1Wqgv6TsoCbC6-1zsGjr4TC7mePVoNGAMwegTYexkgRU/edit?usp=sharing)
 - [画面遷移図（会員側）](https://drive.google.com/file/d/1cntnq6TWV2JGSQM3j8vqJU17W9u4n_hE/view?usp=sharing)
 - [画面遷移図（管理者側）](https://drive.google.com/file/d/1jDlOdGwtjkBSSkW3d4gw9n94RuC6GJs2/view?usp=sharing)
-- ER図
-![ER図](images/omiyaget-ER.jpg )
+
 
 ## テスト
-
- -テスト仕様書にて実施
+ - テスト仕様書にて実施:
 [テスト仕様書](https://docs.google.com/spreadsheets/d/15Z0zs5bFW8DGClkPzh1XOWaPQMWmd945mo2kQmGu-xw/edit?usp=sharing)
 
 ## 開発環境
@@ -50,20 +46,25 @@
 - IDE：Cloud9
 
 ## 使用素材等外部リンク
-写真
-  - [photoAC](https://www.photo-ac.com/)
-  - [Pixabay](https://pixabay.com/ja/)
-アイコン
-  - [Font Awesome](https://fontawesome.com/)
-  - [ICOOON MONO](https://icooon-mono.com/)
-  - [カクレノ](https://kotonohaworks.com/free-icons/)
-フォント
-　- [Google Fonts](https://fonts.google.com/)
-グラデーション
-　- [WebGradients](https://webgradients.com/)
-ロゴ制作
-　- [designevo](https://www.designevo.com/)
-GoogleマップAPIの取得
-  - [google cloud platform](https://cloud.google.com/)
+- 写真:
+  [photoAC](https://www.photo-ac.com/).
+  [Pixabay](https://pixabay.com/ja/).
+
+- アイコン:
+  [Font Awesome](https://fontawesome.com/).
+  [ICOOON MONO](https://icooon-mono.com/).
+  [カクレノ](https://kotonohaworks.com/free-icons/).
+
+- フォント:
+  [Google Fonts](https://fonts.google.com/).
+
+- グラデーション:
+  [WebGradients](https://webgradients.com/).
+
+- ロゴ制作:
+  [designevo](https://www.designevo.com/).
+
+- GoogleマップAPIの取得:
+  [google cloud platform](https://cloud.google.com/).
 
 

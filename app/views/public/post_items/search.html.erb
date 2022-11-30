@@ -1,6 +1,6 @@
 <div class="main-visual">
   <div class="main-visual-text">
-    <p style="font-size:25px; font-family: 'Shippori Mincho', serif;">さぁ、あなた好みのお土産を探してみましょう</p>
+    <p>さぁ、あなた好みのお土産を探してみましょう</p>
   </div>
 </div>
 
@@ -12,8 +12,8 @@
     <div class="main_bar col-md-8 mx-auto">
         <%= flash[:notice] %><!--フラッシュメッセージ-->
           <div class="post-item">
-            <div class="post-item-top-bar row mx-auto mb-3">
-                <div class="col-sm-6 ml-3 mt-4">
+            <div class="post-item-top-bar row mx-auto mb-3 p-3">
+                <div class="col-sm-6">
                   <h5 style="font-family: 'Zen Maru Gothic', sans-serif;"><strong><span style="color:blue"><%=@keyword%></span>のタグを含むお土産</strong></h5>
                   <p style="font-size:18px"><%=@post_items_amount%>件ヒットしました</p>
                   <p><%=link_to "一覧へ戻る",post_items_path %></p>

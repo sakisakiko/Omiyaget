@@ -1,6 +1,6 @@
 <div class="main-visual">
   <div class="main-visual-text">
-    <p style="font-size:25px; font-family: 'Shippori Mincho', serif; ">さぁ、あなた好みのお土産を探してみましょう</p>
+    <p>さぁ、あなた好みのお土産を探してみましょう</p>
   </div>
 </div>
 
@@ -10,9 +10,9 @@
     <div class="main_bar col-md-8 mx-auto">
       <%= flash[:notice] %><!--フラッシュメッセージ-->
       <div class="post-item">
-        <div class="post-item-top-bar row mx-auto mb-3">
+        <div class="post-item-top-bar row mx-auto mb-3 p-3">
           <%if @post_item.present? %>
-            <div class="ml-4 mt-4 ">
+            <div>
               <div class="d-flex justify-content-start">
                 <h4 style="font-family: 'Zen Maru Gothic', sans-serif;"><strong>カテゴリー「<%= @post_item.category.name %>」のお土産</strong></h4>
                 <p class="ml-4" style="font-size:18px"><%=@post_items_amount%>件ヒットしました</p>
@@ -27,7 +27,7 @@
         </div>
         <%=render 'post_items_contents',post_items: @post_items %><!--お土産部分テンプレート-->
       </div><!--post-itemのdiv-->
-    
+
       <!--ページネーションの記述-->
       <div class="row">
         <div class="mx-auto">

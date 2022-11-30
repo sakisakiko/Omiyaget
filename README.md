@@ -24,7 +24,7 @@
 
 ## 実装機能一覧
 
-[実装機能](https://docs.google.com/spreadsheets/d/1PK4ZMlgzPtUXjw5JPEohkg76LgIGaD27McWG7Fa9zko/edit?usp=sharing)
+- [実装機能](https://docs.google.com/spreadsheets/d/1PK4ZMlgzPtUXjw5JPEohkg76LgIGaD27McWG7Fa9zko/edit?usp=sharing)
 
 ## 設計書
 
@@ -39,7 +39,7 @@
 [テスト仕様書](https://docs.google.com/spreadsheets/d/15Z0zs5bFW8DGClkPzh1XOWaPQMWmd945mo2kQmGu-xw/edit?usp=sharing)
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Linux(Amazon Linux 2)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery

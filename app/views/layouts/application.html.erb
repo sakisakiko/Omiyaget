@@ -2,7 +2,9 @@
 <html>
   <head>
     <title>Omiyaget</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--viewportとビューポート-->
+    <!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&family=Shippori+Mincho:wght@500&family=Zen+Maru+Gothic:wght@700&display=swap" rel="stylesheet">
@@ -58,7 +60,7 @@
                   <%=link_to followers_customer_path(current_customer) do%>
                   <%=current_customer.followers.where(customers: {status: "active"}).count %>フォロワー<% end %>
                 </p>
-          　　</div>
+              </div>
               <!--会員-->
             <%end%>
           <% elsif admin_signed_in? %>

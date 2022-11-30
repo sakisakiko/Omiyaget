@@ -367,7 +367,7 @@ PostTag.upsert_all(
     {post_item_id: 10,tag_id: 14,created_at: Time.current,updated_at: Time.current},
     {post_item_id: 10,tag_id: 15,created_at: Time.current,updated_at: Time.current},
     {post_item_id: 11,tag_id: 16,created_at: Time.current,updated_at: Time.current},
-    {post_item_id: 11,tag_id: 17,created_at: Time.current,updated_at: Time.current}
+    {post_item_id: 11,tag_id: 117,created_at: Time.current,updated_at: Time.current}
   ]
   )
 

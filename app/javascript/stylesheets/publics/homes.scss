@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
- * {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
- }
 
 .top-card-container{
 background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
@@ -89,9 +84,6 @@ margin-right: 90px;
 }
 
 @media screen and (max-width: 1024px) {
-  header {
-    width: 100%;
-  }
 
   .top-card-container{
     width: 100%;

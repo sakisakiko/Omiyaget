@@ -6,6 +6,8 @@
 
 ![Omiyaget_image](https://user-images.githubusercontent.com/108504337/204809567-13c6135c-dae9-4014-8bd8-285746b2a907.jpg)
 
+サイトはこちらから：[おみやGET!](http://35.170.123.8/)
+
 ### サイトテーマ
 より多くのお土産を
 発見したり、共有できるようにするサイト。

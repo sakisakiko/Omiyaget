@@ -1,9 +1,9 @@
-  <div class="sidebar col-md-3 mx-auto py-3"><!--絞り込み部分テンプレート-->
+  <div class="sidebar col-md-3"><!--絞り込み部分テンプレート-->
       <h4><strong>絞り込み検索</strong></h4>
-      <div class="category-search ">
-        <h5 class="mb-4">【カテゴリ】</h5>
+      <div class="category-search">
+        <h5>【カテゴリ】</h5>
         <% categories.each do |category| %>
-        <p class="mr-4">
+        <p>
           <%=link_to post_items_category_search_path(category.id) do %>
             <%= category.name%>
           <% end %>
@@ -12,12 +12,12 @@
       </div>
 
       <div class="prefucture-search">
-        <h5 class="mb-4">【地域】</h5>
+        <h5>【地域】</h5>
         <%= form_with url: post_items_prefecture_search_path, local: true, method: :get do |f| %>
           <%=f.collection_select :buy_prefecture_id,BuyPrefecture.all, :id, :name,{prompt: "--選択してください--"}%>
           <%=f.submit "検索" %>
         <% end %>
-       <div class="prefucture_image my-5"><%=image_tag "japan_map.jpg",width: '100%', height: '100%'%></div>
+       <div class="prefucture_image"><%=image_tag "japan_map.jpg",width: '100%', height: '100%'%></div>
       </div>
     </div> <!--絞り込み部分テンプレートここまで-->
 

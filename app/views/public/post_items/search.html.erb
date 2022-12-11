@@ -4,22 +4,22 @@
   </div>
 </div>
 
-<div class="container mb-5" style="width: 90%">
-  <div class="row mt-3">
+<div class="container post-item-container">
+  <div class="row">
   <%=render 'search_bar',categories: @categories%><!--絞り込み部分テンプレート-->
 
 
-    <div class="main_bar col-md-8 mx-auto">
+    <div class="main_bar col-md-8">
         <%= flash[:notice] %><!--フラッシュメッセージ-->
           <div class="post-item">
-            <div class="post-item-top-bar row mx-auto mb-3 p-3">
+            <div class="post-item-top-bar">
                 <div class="col-sm-6">
-                  <h5 style="font-family: 'Zen Maru Gothic', sans-serif;"><strong><span style="color:blue"><%=@keyword%></span>のタグを含むお土産</strong></h5>
-                  <p style="font-size:18px"><%=@post_items_amount%>件ヒットしました</p>
+                  <h5 class="top-bar-title"><strong><span class="tag"><%=@keyword%></span>のタグを含むお土産</strong></h5>
+                  <p><%=@post_items_amount%>件ヒットしました</p>
                   <p><%=link_to "一覧へ戻る",post_items_path %></p>
                 </div>
                 <!--検索-->
-                <div class="col-sm-5 search ml-auto" >
+                <div class="col-sm-5 tag-search" >
                   <%=form_with url: search_post_items_path, local: true,method: :get do |f| %>
                     <%=f.text_field :keyword,placeholder: "タグ検索",class:"col-9 mt-3" %>
                     <%=f.submit "検索",class:"mr-3" %>
@@ -27,7 +27,6 @@
                 </div>
                 <!--検索-->
             </div>
-
             <%=render 'post_items_contents',post_items: @post_items %><!--お土産部分テンプレート-->
           </div><!--post-itemのdiv-->
           <!--ページネーションの記述-->

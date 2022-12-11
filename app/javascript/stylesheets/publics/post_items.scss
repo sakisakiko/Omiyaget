@@ -2,12 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
- * {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
- }
-
 // ここから [post-item new.html]
 .post-card-container{
   max-width: 800px;
@@ -19,15 +13,13 @@
   width: 100%;
   height: 150px;
   position: relative;
-  // background-image: image-url('post-top-image.jpg') ;
-   background-image: url('../../../assets/images/post-top-image.jpg');
+  background-image: url('../../../assets/images/post-top-image.jpg');
   background-size: cover;
 }
 
 .post-title-visual::before{
-  /* 透過した黒を上から重ねるイメージ */
+  // 透過した黒を上から重ねる
   background-color: rgba(0,0,0,0.2);
-  /* 自由に位置指定 */
   position: absolute;
   top: 0;
   right: 0;
@@ -56,7 +48,7 @@
 	}
 
 .post-table th{
-  width: 40%;/*横幅*/
+  width: 40%;
   background-color:#FFCC66;
   line-height: 3em;
   font-size: 15px ;
@@ -77,10 +69,12 @@ text-align: center;
 }
 
 
- //ここから [post-item index.html]
+ //ここから [post-item index.html],[search.html],[category_search.html],[prefecture_search.html],
+
 .main-visual{
   width: 100%;
   height: 180px;
+  margin-bottom: 48px;
   position: relative;
   background-image: url('../../../assets/images/main-image.jpg');
   background-position: center left;
@@ -88,9 +82,8 @@ text-align: center;
 }
 
 .main-visual::before{
-  /* 透過した黒を上から重ねるイメージ */
+  // 透過した黒を上から重ねる
   background-color: rgba(255,255,255,0.4);
-  /* 自由に位置指定 */
   position: absolute;
   top: 0;
   right: 0;
@@ -108,14 +101,35 @@ text-align: center;
   font-family: 'Shippori Mincho', serif;
 }
 
-.post-item h3{
-  line-height: 60px;
+.post-item-container{
+  width: 90%;
+  margin-bottom: 80px;
+}
+
+.main_bar{
+  margin: 0 auto;
 }
 
 .post-item-top-bar{
   background-color:	#FFCC99;
   display: flex;
+  margin: 0 auto 20px ;
+  padding: 15px;
 }
+
+.top-bar-title{
+  font-family: 'Zen Maru Gothic', sans-serif;;
+}
+
+.top-bar-title tag{
+ color: blue;
+}
+
+.tag-search{
+  margin: 0 auto;
+}
+
+
 .search{
   margin-left: auto;
 }
@@ -130,9 +144,26 @@ text-align: center;
   margin-left: 47.5px;
 }
 
+.post-item-contents p{
+  height: 75px;
+}
+
+.search-hit-top-message{
+  display: flex;
+  justify-content: start;
+}
+
+.search-hit-top-message p{
+  margin-left: 48px;
+  font-size: 18px;
+}
+
+
 .sidebar{
   background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
   border: 1px solid #6666CC;
+  margin: 0 auto;
+  padding: 20px ;
 }
 
 .sidebar h4{
@@ -141,22 +172,78 @@ text-align: center;
   color:#6666CC;
 }
 
+.sidebar h5{
+ margin-bottom: 20px;
+}
+
 .sidebar p{
   font-size: 18px;
   display: inline-block;
+  margin-right: 20px;
+}
+
+.prefucture_image{
+  margin: 20px 0;
 }
 
  //ここから [post-item show.html]
+
+.post-item-show-container{
+  margin : 40px auto;
+}
+
+.post-item-show-conteiner flash-message{
+ margin: 30px;
+}
+
+.post-item-show-main{
+ margin: 0 auto;
+}
+
+.post-show-top{
+padding-left: 15px;
+margin-bottom: 20px;
+}
+
+.post-show-top h4{
+margin: 30px;
+font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.post-show-main card{
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+.card-image{
+  background-color:#B0C4DE;
+}
+
+.bookmark{
+  color: black;
+}
+.tag{
+  font-size: 18px;
+}
+.tag-title{
+  margin: 20px 0 ;
+}
 .tag-box{
 width: 85%;
 border: 1px solid;
 border-radius: 2px;
 }
 
-.tag p{
-margin-left: 15px;
-font-size: 18px;
+.post-tag{
+  display: inline-block;
+   margin: 10px;
 }
+
+.no-post-tag{
+  margin: 10px;
+  color: silver;
+}
+
 
 .review p{
 margin: 15px;

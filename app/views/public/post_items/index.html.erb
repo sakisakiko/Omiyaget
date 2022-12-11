@@ -4,16 +4,16 @@
   </div>
 </div>
 
-<div class="container mb-5" style="width: 90%">
-  <div class="row mt-3">
+<div class="container post-item-container">
+  <div class="row">
 
     <%=render 'search_bar',categories: @categories%><!--絞り込み部分テンプレート-->
 
-    <div class="main_bar col-md-8 mx-auto">
+    <div class="main_bar col-md-8">
     <%= flash[:notice] %><!--フラッシュメッセージ-->
       <div class="post-item">
-        <div class="post-item-top-bar mx-auto mb-3">
-          <h3 class="ml-3" style="font-family: 'Zen Maru Gothic', sans-serif;"><strong>新着のおみやげ</strong></h3>
+        <div class="post-item-top-bar">
+          <h3 class="top-bar-title"><strong>新着のおみやげ</strong></h3>
           <!--検索-->
           <div class="search" >
             <%=form_with url: search_post_items_path, local: true,method: :get do |f| %>

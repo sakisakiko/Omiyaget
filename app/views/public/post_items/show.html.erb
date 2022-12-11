@@ -1,29 +1,29 @@
-<div class="container my-5">
-<p class="mt-3 ml-3"><%= flash[:notice] %></p> <!--フラッシュメッセージ-->
+<div class="container post-item-show-container">
+<p class="flash-message"><%= flash[:notice] %></p> <!--フラッシュメッセージ-->
   <div class="row  mx-auto">  <!--row-->
-    <div class="post-show-main col-8 mx-auto"> <!--col8-->
-      <div class="row ml-1 mb-2"> <!--row1-->
+    <div class="post-show-main col-8"> <!--col8-->
+      <div class="row post-show-top"> <!--row1-->
         <%=link_to customer_path(@post_item.customer.id) do %>
          <%=image_tag @post_item.customer.get_profile_image.variant(gravity: :center, resize:"80x80^", crop:"80x80+0+0").processed %>
         <% end %>
         <!--お土産編集は自分の商品のみ表示-->
         <%if customer_signed_in? %>
           <% if @post_item.customer_id==current_customer.id %>
-            <h4 class="my-4 mx-3" style="font-family: 'Zen Maru Gothic', sans-serif;">投稿したお土産</h4>
+            <h4>投稿したお土産</h4>
             <%=link_to "お土産情報編集",edit_post_item_path(@post_item.id),class:"btn btn-primary my-4 " %></br>
           <% else %>
-            <h4 class="my-4 mx-3"><%=@post_item.customer.name %>さんの投稿したお土産</h4>
+            <h4><%=@post_item.customer.name %>さんの投稿したお土産</h4>
           <% end %>
         <% elsif admin_signed_in? %>
-          <h4  class="my-4 mx-3"><%=@post_item.customer.name %>さんの投稿したお土産</h4>
+          <h4><%=@post_item.customer.name %>さんの投稿したお土産</h4>
         <%else %>
         <%end %>
       </div>
 
-      <div class="card mb-3" style="max-width: 600px;">
-        <div class="row no-gutters">
+      <div class="card">
+        <div class="row">
           <div class="col-md-4">
-           <div class="card-image" style="background-color:#B0C4DE">
+           <div class="card-image">
               <% if customer_signed_in? %>
                 <% if current_customer.email!='guest@examle.com' %>
                 <!--ログインしたユーザーがゲストユーザーでないときブックマークアイコン表示-->
@@ -32,12 +32,12 @@
                     <% if @post_item.bookmarked_by?(current_customer) %>
                        <%=link_to post_item_bookmarks_path(@post_item.id),method: :delete do %>
                          <%= image_tag 'bookmark_on.jpg',size: "30x30",class:"ml-3 mt-2"%>
-                         <span style="color:black">ブックマーク解除</span>
+                         <span class="bookmark">ブックマーク解除</span>
                        <% end %>
                     <% else %>
                       <%=link_to post_item_bookmarks_path(@post_item.id),method: :post do %>
                         <%= image_tag 'bookmark_off.jpg',size: "30x30",class:"ml-3 mt-2"%>
-                        <span style="color:black">ブックマーク</span>
+                        <span class="bookmark">ブックマーク</span>
                       <% end %>
                     <% end %>
                   <% else %>
@@ -77,14 +77,14 @@
 
       <!--タグの表示-->
       <div class="tag">
-        <p class="ml-0 my-2"><strong>登録されたタグ</strong></p>
+        <p class="tag-title"><strong>登録されたタグ</strong></p>
           <div class= "tag-box">
               <% if @post_tags.present? %>
                 <% @post_tags.each do |tag| %>
-                 <p class="m-2" style="display:inline-block">#<%=tag.tag_name%></p>
+                 <p class="post-tag">#<%=tag.tag_name%></p>
                 <% end %>
               <% else %>
-                <p class="m-2" style="color:silver;">登録されているタグはありません</p>
+                <p class="no-post-tag">登録されているタグはありません</p>
             <% end %>
           </div>
       </div>
@@ -124,7 +124,7 @@
        <!--レビューここまで-->
 
       <!--投稿日、いいね、コメントここから-->
-      <div class="row"> 
+      <div class="row">
         <p class="mx-3 mt-2">投稿日:<%=@post_item.created_at.strftime('%Y/%m/%d') %></p>
         <!--いいね表示※自分のお土産＆管理者ログイン時はいいねの数のみ表示（いいねはできない）-->
         <% if customer_signed_in? %>

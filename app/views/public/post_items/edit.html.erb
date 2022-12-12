@@ -1,16 +1,15 @@
 <div class="container">
-
   <div class="post-edit-title">
-   <h3 class="mt-5" style="font-family: 'Shippori Mincho', serif;">お土産情報編集</h3>
+   <h3>お土産情報編集</h3>
   </div>
 
-  <div class="post-edit-card-container  my-5 mx-auto py-5">
+  <div class="post-edit-card-container">
     <%=form_with model: @post_item,url: post_item_path(@post_item.id) do |f| %>
-      <div class="post-card-body mx-auto">
+      <div class="post-edit-card-body">
 
       <%=render 'error_messages_post_item',post_item: @post_item %><!--エラーメッセージ部分テンプレート-->
 
-        <table class="post-edit-table table-bordered mx-auto">
+        <table class="post-edit-table table-bordered">
           <tbody>
             <tr>
               <th><span>商品画像</span></th>
@@ -83,7 +82,7 @@
             <tr>
               <th><span>公開設定</span></th>
                 <td>
-                  <div class="release-button ml-3">
+                  <div class="release-button">
                   <%=f.radio_button :release, :true,checked: true %>
                   <%=f.label :release, "公開" %>
                   <%=f.radio_button :release, :false %>
@@ -95,10 +94,10 @@
           </tbody>
         </table>
       </div><!--post-card-bodyここまで-->
-      <div class="field d-flex justify-content-center">
+      <div class="post-item-edit-button">
         <%= f.submit "変更する",class:"btn btn-primary mt-4 col-3" %>
       </div>
-      <div class="field d-flex justify-content-center">
+      <div class="post-item-edit-button">
         <%=link_to "このお土産を削除",post_item_path(@post_item.id),method: :delete,
         class:"btn btn-danger  mt-4 col-3",
         "data-confirm" => "このお土産情報を削除します。削除した情報は元に戻せません。よろしいですか？" %>

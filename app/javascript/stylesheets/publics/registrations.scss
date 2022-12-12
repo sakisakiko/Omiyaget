@@ -1,6 +1,8 @@
 .sign-up-card-container{
   max-width: 800px;
   border: 5px solid #6666CC ;
+  margin: 40px auto;
+  padding-top: 20px;
 }
 
 .sign-up-title{
@@ -10,9 +12,19 @@
 
 }
 
+.customer_sign_up_error_message{
+ margin-left: 40px;
+}
+
+.sign-up-card-body{
+  margin: 0 auto;
+  padding: 30px auto;
+}
+
 .sign-up-table{
   width: 80% ;
 	margin: 0 auto;
+
 }
 
 .sign-up-table tr{
@@ -37,6 +49,9 @@
   color: white;
   border-radius: 6px;
   font-size: 12px;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .sign_up_optional_field{
@@ -44,6 +59,9 @@
   color: white;
   border-radius: 6px;
   font-size: 12px;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
  .sign-in-link {

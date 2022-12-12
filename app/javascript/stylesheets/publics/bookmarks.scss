@@ -2,7 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.bookmark-container{
+ margin: 30px auto;
+}
+
+.bookmark-title{
+ margin-top: 30px;
+ margin-left: 40px;
+}
+
+.bookmark-item-contents-text{
+ height: 75px;
+}
+
 .bookmark-item-contents{
  width: 150px;
  margin-left: 65px;
+}
+
+.null-bookmark-box{
+ margin: 0 auto;
+}
+
+.null-bookmark-box h4{
+ text-align: center;
+ margin-top: 200px;
+}
+
+.null-bookmark-box p{
+ margin: 15px;
+ font-size: 18px;
+ text-align: center
 }

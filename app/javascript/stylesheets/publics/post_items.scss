@@ -3,12 +3,6 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 // ここから [post-item new.html]
-.post-card-container{
-  max-width: 800px;
-  background-color:#FAEBD7;
-  border: 4px solid #CC3300;
-}
-
 .post-title-visual{
   width: 100%;
   height: 150px;
@@ -34,8 +28,21 @@
   color: white;
   text-align: center;
   line-height: 150px;
+  font-family: 'Shippori Mincho', serif;
 }
 
+.post-card-container{
+  max-width: 800px;
+  background-color:#FAEBD7;
+  border: 4px solid #CC3300;
+  margin: 40px auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.post-card-body{
+  margin: 0 auto;
+}
 
 .post-table{
   width: 80% ;
@@ -55,6 +62,18 @@
   text-align: left;
 }
 
+.post_item_optional_field{
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.post_item_required_field{
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .form-group{
 width: 60%;
 }
@@ -67,7 +86,6 @@ background-color: white;
 .post-button{
 text-align: center;
 }
-
 
  //ここから [post-item index.html],[search.html],[category_search.html],[prefecture_search.html],
 
@@ -192,7 +210,7 @@ text-align: center;
   margin : 40px auto;
 }
 
-.post-item-show-conteiner flash-message{
+.post-item-show-flash{
  margin: 30px;
 }
 
@@ -210,7 +228,7 @@ margin: 30px;
 font-family: 'Zen Maru Gothic', sans-serif;
 }
 
-.post-show-main card{
+.post-show-card{
   max-width: 600px;
   margin-bottom: 30px;
 }
@@ -254,6 +272,20 @@ font-size: 18px;
 width: 85%;
 border: 1px solid;
 border-radius: 2px;
+padding: 10px;
+}
+
+.no-review-text{
+  margin: 10px;
+  color: silver;
+}
+.review-detail{
+  padding-left: 15px;
+ }
+
+.review-detail p{
+ margin-right: 10px;
+ margin-top: 5px;
 }
 
 .current-comment p{
@@ -268,12 +300,36 @@ width: 350px;
 width: 350px;
 border: 1px solid;
 border-radius: 2px;
+margin-left: 5px;
+padding: 10px;
+}
+.post-comment-name{
+  margin: 0 0 0 5px;
+ }
+
+.post-comment-date{
+  margin-left: 5px;
+ }
+
+.map_bar{
+  margin: 0 auto;
+  background-color:#9999FF;
 }
 
 .map-top{
   margin: 0 auto;
   margin-top: 40px;
   margin-left: 20px;
+ color: white;
+}
+
+// グーグルマップのスタイル
+#map{
+  height: 600px;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .post-show-table th{
@@ -302,16 +358,27 @@ border-radius: 2px;
 
 
  //ここから [post-item edit.html]
+ .post-edit-title h3{
+  text-align: center;
+  border-bottom: 4px solid #2E8B57;
+  margin-top: 40px;
+  font-family: 'Shippori Mincho', serif;
+
+}
+
  .post-edit-card-container{
   max-width: 800px;
   background-color:#FAEBD7;
   border: 4px dashed #2E8B57;
+  margin: 40px auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
-.post-edit-title h3{
-  text-align: center;
-  border-bottom: 4px solid #2E8B57;
+.post-edit-card-body{
+  margin: 0 auto;
 }
+
 
 .post-edit-table{
   width: 80% ;
@@ -339,6 +406,21 @@ background-color: white;
 
 .post-edit-table span{
   margin-left: 10px;
+}
+.post-item-edit-button{
+ display: flex;
+ justify-content: center;
+}
+
+// エラーメッセージ
+.error_explanation{
+  margin-left: 50px;
+  color: red;
+}
+
+//公開・非公開ボタン
+.release-button{
+  margin-left: 20px;
 }
 
 @media screen and (max-width: 1024px) {

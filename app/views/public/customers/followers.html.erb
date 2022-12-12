@@ -1,14 +1,14 @@
 <div class="container">
 
   <% if @customers.present? %>
-   <div class=" mx-auto">
-    <h4 class="my-4" style="text-align:center"><strong>フォロワー一覧</strong></h4>
+   <div class="follower">
+    <h4><strong>フォロワー一覧</strong></h4>
     <%=render 'follow',customers: @customers %><!--部分テンプレート-->
    </div>
   <% else %>
-    <div class="mx-auto">
-      <h4 style="text-align:center; margin-top:200px;"><strong>フォロワー一覧</strong></h4>
-      <p style="text-align:center;  font-size:18px;">現在フォロワーはいません</p>
+    <div class="following">
+      <h4><strong>フォロワー一覧</strong></h4>
+      <p>現在フォロワーはいません</p>
     </div>
   <% end %>
 

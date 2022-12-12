@@ -1,25 +1,25 @@
 <div class="container">
-  <div class="sign-in-card-container my-5 mx-auto pt-3">
+  <div class="sign-in-card-container">
 
   <div  class="sign-in-title">
       <h4><strong>ログイン</strong></h4>
-  </div>  
+  </div>
 
-  <div class="sign-in-card-body mx-auto my-5">
+  <div class="sign-in-card-body">
     <%=form_with model: @customer,url: customer_session_path do |f| %>
       <!--フラッシュメッセージ表示 -->
-      <p class="flash-message" style="text-align:center;"><%=flash[:notice] %></p>
+      <p class="sign-in-flash-message"><%=flash[:notice] %></p>
       <!--deivseエラーメッセージ表示 -->
-      <p class="alert ml-5"><%= alert %></p>
+      <p class="alert"><%= alert %></p>
 
-      <table class="sign-in-table table-bordered  mx-auto">
+      <table class="sign-in-table table-bordered">
         <tbody>
           <tr>
-            <th><span class="ml-2"> メールアドレス</span></th>
+            <th><span> メールアドレス</span></th>
             <td><%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control form-control-sm col-11 mx-auto" %></td>
           </tr>
           <tr>
-            <th><span class="ml-2">パスワード</span></th>
+            <th><span>パスワード</span></th>
             <td><%= f.password_field :password, autocomplete: "current-password",class: "form-control form-control-sm col-11 mx-auto"%></td>
           </tr>
         </tbody>
@@ -32,7 +32,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4 col-sm-6 mx-auto mb-4">
+    <div class="col-md-4 col-sm-6 sign-up-link-box">
       <div class="sign-up-link">
         <h6><strong>新規登録がお済みでない方</strong></h6>
         <%=link_to "こちら", new_customer_registration_path %>から新規登録を行ってください

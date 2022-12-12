@@ -4,26 +4,85 @@
 
 
 // customer-showここから
+.customer-show-container{
+  margin: 40px auto ;
+}
+
+.customer-show-card{
+  border: 1px solid silver;
+}
+
+.customer-show-card-left{
+ margin: 0 auto;
+}
+
+.customer-show-card-left h5{
+   text-align: center;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+.customer-show-contents{
+  text-align: center;
+}
+
+.customer-introduction-box{
+  width: 80%;
+  height: 80%;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid gray;
+}
+
+.introduction-text {
+  padding: 10px;
+}
+
+.not-introduction-text{
+  color: silver;
+}
+
 .customer-post-item-contents{
  width: 150px;
  margin-left: 60px;
 }
 
 .customer-post-item h4{
-  margin-left: 60px;
+  margin: 20px 60px;
+}
+
+.customer-post-item-contents-text{
+  height: 75px;
 }
 
 
 // customer-editここから
+.customer-edit-title h3{
+  text-align: center;
+  border-bottom: 4px solid #0099CC;
+  margin-top: 30px;
+}
+
  .customer-edit-card-container{
   max-width: 800px;
   background-color:#FAEBD7;
   border: 2px solid #0099CC;
+  margin: 40px auto;
+  padding: 30px;
 }
 
-.customer-edit-title h3{
-  text-align: center;
-  border-bottom: 4px solid #0099CC;
+.customer-edit-card-body{
+  margin: 0 auto;
+}
+
+.error_explanation h4{
+ margin-left: 30px;
+ color: red;
+}
+
+.error_explanation ul{
+ margin-left: 30px;
+ color: red;
 }
 
 .customer-edit-table{
@@ -54,4 +113,70 @@ background-color: white;
   margin-left: 10px;
 }
 
-// unsubscribここから
+.mail-remarks{
+ font-size: 11px;
+}
+
+.customer-edit-button{
+  display: flex;
+  justify-content: center;
+}
+
+// followページここから
+
+.follower{
+  margin: 0 auto;
+}
+
+.follower h4{
+  margin: 20px auto;
+  text-align: center;
+}
+
+.following{
+  margin: 0 auto;
+}
+
+.following h4{
+   margin-top: 200px;
+  text-align: center;
+}
+
+.following p{
+  text-align: center;
+  font-size: 18px;
+}
+
+.follow-table table{
+  margin: 0 auto;
+}
+
+// unsubscribe.htmlここから
+
+.unsubscribe-box{
+  margin: 30px auto;
+}
+
+.attention-image{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.unsubscribe-box h3{
+  display: flex;
+  justify-content: center;
+}
+
+.unsubscribe-box p{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+}

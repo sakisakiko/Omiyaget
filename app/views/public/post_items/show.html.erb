@@ -1,5 +1,5 @@
 <div class="container post-item-show-container">
-<p class="flash-message"><%= flash[:notice] %></p> <!--フラッシュメッセージ-->
+<p class="post-item-show-flash"><%= flash[:notice] %></p> <!--フラッシュメッセージ-->
   <div class="row  mx-auto">  <!--row-->
     <div class="post-show-main col-8"> <!--col8-->
       <div class="row post-show-top"> <!--row1-->
@@ -20,7 +20,7 @@
         <%end %>
       </div>
 
-      <div class="card">
+      <div class="card post-show-card">
         <div class="row">
           <div class="col-md-4">
            <div class="card-image">
@@ -108,44 +108,45 @@
                 score: <%= @post_item.evaluation %>,
               });
               </script>
+              <!-- 星レビュー画像表示javascript -->
           </div>
         </div>
       </div>
       <!--星レビューここまで--!>
 
       <!--レビュー-->
-      <div class="review-box p-2">
+      <div class="review-box">
         <% if @post_item.review.present? %>
          <p><%=@post_item.review %></p>
         <% else %>
-         <p class="m-2" style="color:silver;">レビューはまだ書かれていません</p>
+         <p class="no-review-text">レビューはまだ書かれていません</p>
         <% end %>
       </div>
        <!--レビューここまで-->
 
       <!--投稿日、いいね、コメントここから-->
-      <div class="row">
-        <p class="mx-3 mt-2">投稿日:<%=@post_item.created_at.strftime('%Y/%m/%d') %></p>
+      <div class="row review-detail">
+        <p>投稿日:<%=@post_item.created_at.strftime('%Y/%m/%d') %></p>
         <!--いいね表示※自分のお土産＆管理者ログイン時はいいねの数のみ表示（いいねはできない）-->
         <% if customer_signed_in? %>
           <% if @post_item.customer_id!=current_customer.id %>
             <% if @post_item.favorited_by?(current_customer) %>
               <%= link_to post_item_favorites_path(@post_item), method: :delete do %>
-                <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20"%>参考になった:<%=@post_item.favorites.count %></p>
+                <p><%= image_tag 'good_icon.jpg',size: "20x20"%>参考になった:<%=@post_item.favorites.count %></p>
               <% end %>
             <% else %>
               <%=link_to  post_item_favorites_path(@post_item),method: :post do %>
-               <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
+               <p><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
               <% end %>
             <% end %>
           <% else%>
-            <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
+            <p><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
           <% end %>
         <% else %>
-          <p class="my-2"><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
+          <p><%= image_tag 'good_icon.jpg',size: "20x20" %>参考になった:<%=@post_item.favorites.count %></p>
         <% end %>
 
-        <p class="my-2 mx-3"><%= image_tag 'comment_icon.jpg',size: "20x20" %>コメント:<%=@post_item.post_comments.count %></p>
+        <p><%= image_tag 'comment_icon.jpg',size: "20x20" %>コメント:<%=@post_item.post_comments.count %></p>
       </div>
       <!--投稿日、いいね、コメントここまで-->
 
@@ -178,17 +179,17 @@
       <% end %>
 
       <% @post_item.post_comments.each do |post_comment| %>
-        <table>
+        <table class="comment-box">
           <tbody>
             <tr>
               <td></td>
-              <td><%=post_comment.customer.name %></td>
+              <td><p class="post-comment-name"><%=post_comment.customer.name %></p></td>
             </tr>
             <tr>
               <td>
                 <%=image_tag  post_comment.customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed, class: "rounded-circle" %>
               </td>
-              <td><div class="post-comment-box p-2 ml-1"><%=post_comment.comment %></div></td>
+              <td><div class="post-comment-box"><%=post_comment.comment %></div></td>
 
               <% if admin_signed_in? %><!--コメントの削除は管理者のみ表示-->
               <td> <%=link_to "コメントを削除", post_item_post_comment_path(@post_item.id,post_comment.id),method: :delete,class:"btn btn-danger ml-3",
@@ -198,7 +199,7 @@
             </tr>
             <tr>
               <td></td>
-            <td><p class="ml-1"><%=post_comment.created_at.strftime('%Y/%m/%d')%></p></td>
+            <td><p class="post-comment-date"><%=post_comment.created_at.strftime('%Y/%m/%d')%></p></td>
             </tr>
           </tbody>
         </table>
@@ -207,24 +208,16 @@
     </div><!--col8のdiv-->
 
     <!--マップ表示-->
-    <div class="col-4  mx-auto" style="background-color:#9999FF">
-        <div class="map_bar mx-auto">
+    <div class="col-4 map_bar">
+        <!--<div class="map_bar mx-auto">-->
           <div class="map-top">
-            <h5 style="color:white"><strong>お店の場所調べてみませんか？</strong></h5>
+            <h5><strong>お店の場所調べてみませんか？</strong></h5>
             <input id="address" type="textbox" value= <%=@post_item.shop%>>
             <input type="button" value="検索" onclick="codeAddress()">
-        </div>
+          </div>
        <div id='map'></div>
 
-          <style>
-          #map {
-            height: 600px;
-            width: 90%;
-            margin:0 auto;
-            margin-top: 30px;
-            margin-bottom: 30px;
-          }
-          </style>
+       <!--マップのjavascript-->
           <script>
           let map
           let geocoder

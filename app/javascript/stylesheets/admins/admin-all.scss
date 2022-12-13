@@ -1,0 +1,93 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+//admin/sessions.html
+.admin-sign-in-card-container{
+  margin: 0 auto;
+  padding-top: 100px;
+}
+
+.admin-sign-in-box{
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border: 5px solid #9966CC;
+}
+
+.admin_sign-in-title{
+color:  #9966CC;
+text-align: center;
+border-bottom: solid #9966CC;
+
+}
+
+.admin-sign-in-card-body{
+  margin: 40px auto;
+}
+
+.admin-sign-in-table{
+  width: 80% ;
+	margin: 0 auto;
+}
+
+.admin-sign-in-table tr{
+  border-top: 1px solid #e5e5e5;
+  line-height: 3.5em;
+	}
+
+.admin-sign-in-table th{
+  width: 40%;/*横幅*/
+	background-color:#ebedf5;/*ブルーグレー*/
+  line-height: 3.5em;
+  font-size: 15px ;
+  text-align: left;
+	}
+
+.admin-sign-intable span{
+  margin-left: 20px;
+}
+
+.admin-sign-in-table td{
+border: 1px solid #d8d8d8;
+	}
+
+//admin/post-items/index.html
+.review-index-container{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.review-title{
+ text-align: center;
+}
+
+//admin/customers/index.html
+.customer-index-container{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.customer-index-title{
+  text-align: center;
+}
+
+//admin/categorys/index.html
+.category-container{
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.category-item{
+  margin-right: 20px;
+}
+
+.category-index-container table{
+  margin-top: 40px;
+}
+
+//admin/categorys/edit.html
+.customer-edit-title{
+  text-align: center;
+}

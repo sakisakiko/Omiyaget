@@ -1,20 +1,16 @@
-<div class="container">
-  <div class="admin-sign-in-card-container my-5 mx-auto pt-3">
-
-    <div  class="admin_sign-in-title">
-      <h4><strong>管理者ログイン</strong></h4>
-    </div>
-
-    <div class="admin-sign-in-card-body mx-auto my-5">
+<div class="container admin-sign-in-card-container">
+  <div class="admin-sign-in-box">
+    <h4 class="admin_sign-in-title"><strong>管理者ログイン</strong></h4>
+    <div class="admin-sign-in-card-body">
       <%=form_with model: @admin,url: admin_session_path do |f| %>
-      <table class="admin-sign-in-table table-bordered  mx-auto">
+      <table class="admin-sign-in-table table-bordered">
         <tbody>
           <tr>
-            <th><span class="ml-3">管理者用メールアドレス</span></th>
+            <th><span>管理者用メールアドレス</span></th>
             <td><%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control form-control-sm col-11 mx-auto" %></td>
           </tr>
           <tr>
-            <th><span class="ml-3">管理者用パスワード</span></th>
+            <th><span>管理者用パスワード</span></th>
             <td><%= f.password_field :password, autocomplete: "current-password",class: "form-control form-control-sm col-11 mx-auto" %></td>
           </tr>
         </tbody>
@@ -24,6 +20,5 @@
       </div>
       <% end %>
     </div>
-
   </div>
 </div>

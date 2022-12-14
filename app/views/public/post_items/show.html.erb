@@ -212,16 +212,13 @@
         <!--<div class="map_bar mx-auto">-->
           <div class="map-top">
             <h5><strong>お店の場所調べてみませんか？</strong></h5>
-            <input id="address" type="textbox" value= <%=@post_item.shop%>>
+            <input id="address" type="textbox" value= "<%=@post_item.shop%>">
             <input type="button" value="検索" onclick="codeAddress()">
           </div>
        <div id='map'></div>
 
        <!--マップのjavascript-->
           <script>
-          let map
-          let geocoder
-
           function initMap(){
             geocoder = new google.maps.Geocoder()
 
@@ -237,7 +234,6 @@
               draggable: true
             });
           }
-
 
           function codeAddress(){
             let inputAddress = document.getElementById('address').value;
@@ -257,7 +253,7 @@
           }
           </script>
           <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>&callback=initMap" async defer></script>
-        </div>
+        <!--</div>-->
       </div><!--col-4のdiv--> <!--マップ表示ここまで-->
   </div><!--rowここまで-->
 </div><!--containerここまで-->

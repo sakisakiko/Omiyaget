@@ -30,7 +30,6 @@
           <td>
             <%=link_to post_item_path(post_item.id) do %>
               <%=image_tag post_item.get_image.variant(gravity: :center, resize:"150x150^", crop:"150x150+0+0").processed%>
-              <%#=image_tag post_item.get_image(150,150) %>
             <% end %>
           </td>
         </tr>

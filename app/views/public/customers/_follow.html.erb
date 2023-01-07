@@ -2,8 +2,8 @@
     <table class="table table-hover  col-10 ">
       <thead>
         <tr>
-          <th>ユーザー</th>
           <th></th>
+          <th>ユーザー</th>
           <th></th>
         </tr>
       </thead>
@@ -12,20 +12,26 @@
       <tr>
         <td>
           <%=link_to customer_path(customer.id) do %>
-            <%=image_tag customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed,
-            class: "rounded-circle" %>
+            <%=image_tag customer.get_profile_image.variant(gravity: :center, resize:"80x80^", crop:"80x80+0+0").processed,class: "rounded-circle" %>
           <% end %>
-          <%=customer.name %>
         </td>
-        <td class="col-6"><%=customer.introduction %></td>
-        <td>
-        <% if customer.is_following_by?(current_customer) %>
-          <%=link_to customer_relationships_path(customer),method: :delete do %>
-            <button class="btn btn-secondary">フォロー解除</button>
+        <td >
+          <p><strong><%=customer.name %></strong></p>
+          <p class="follow_introduction"><%=customer.introduction %></p>
+          <% if customer.is_following_by?(current_customer) %>
+            <%=link_to customer_relationships_path(customer),method: :delete do %>
+              <button class="btn btn-secondary">フォロー解除</button>
+            <% end %>
+          <% else %>
+            <%=link_to customer_relationships_path(customer),method: :post do %>
+              <button class="btn btn-success">フォロー</button>
+            <% end %>
           <% end %>
-        <% else %>
-          <%=link_to customer_relationships_path(customer),method: :post do %>
-            <button class="btn btn-success">フォロー</button>
+        </td>
+        <td class="col-6">
+        <% customer.post_items.first(3).each do |post_item| %>
+          <%=link_to post_item_path(post_item.id) do%>
+            <span class="fw_post_img"><%=image_tag post_item.get_image.variant(gravity: :center, resize:"120x120^", crop:"120x120+0+0").processed,class: "rounded"%></span>
           <% end %>
         <% end %>
         </td>

@@ -3,7 +3,7 @@
           <table>
             <tbody>
               <tr>
-              <td>
+              <td style="height:48px;">
               <% if customer_signed_in? %>
                 <% if current_customer.email!='guest@examle.com' %>
                   <!--ログインしたユーザーがゲストユーザーでないときブックマークアイコン表示-->
@@ -12,7 +12,7 @@
                     <% if post_item.bookmarked_by?(current_customer) %>
                       <%=link_to post_item_bookmarks_path(post_item.id),method: :delete do %>
                             <%= image_tag 'bookmark_on.jpg',size: "30x30"%>
-                          <% end %>
+                      <% end %>
                     <% else %>
                       <%=link_to post_item_bookmarks_path(post_item.id),method: :post do %>
                         <%= image_tag 'bookmark_off.jpg',size: "30x30"%>
@@ -24,22 +24,34 @@
                 <% else %>
                 <% end %>
               <% else %>
-              <% end %>
+              <% end %></br>
+              <span style="font-size:14px; margin-bottom:0;"><strong><%=post_item.name %></strong></span>
               </td>
               </tr>
               <tr>
                 <td>
                   <%=link_to post_item_path(post_item.id) do %>
-                    <%=image_tag post_item.get_image.variant(gravity: :center, resize:"180x180^", crop:"180x180+0+0").processed%>
+                    <%=image_tag post_item.get_image.variant(gravity: :center, resize:"180x180^", crop:"180x180+0+0").processed,style:"padding-top:0;"%>
                   <% end %>
                 </td>
               </tr>
+             </tbody>
+             <tfoot>
+              <!--<tr>-->
+              <!--<td ></td>-->
+              <!--</tr>-->
               <tr>
                 <td>
-                  <p><%=post_item.name %></br>【<%=post_item.buy_prefecture.name %>】</p>
+                <span style="font-size:14px; margin-bottom:0;">【<%=post_item.buy_prefecture.name %>】</span>
                 </td>
               </tr>
-            </tbody>
+              <tr>
+                <td class="tag">
+                <% post_item.tags.each do |tag| %>
+                 <span style="font-size:13px; background-color:#778899; color:#FFF; padding:2px;">#<%=tag.tag_name%></span>
+                <% end %>
+                </td>
+              </tr>
           </table>
         <% end %>
   </div>

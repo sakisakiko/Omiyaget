@@ -3,7 +3,7 @@
           <table>
             <tbody>
               <tr>
-              <td style="height:48px;">
+              <td class="item_name-td">
               <% if customer_signed_in? %>
                 <% if current_customer.email!='guest@examle.com' %>
                   <!--ログインしたユーザーがゲストユーザーでないときブックマークアイコン表示-->
@@ -25,7 +25,7 @@
                 <% end %>
               <% else %>
               <% end %></br>
-              <span style="font-size:14px; margin-bottom:0;"><strong><%=post_item.name %></strong></span>
+              <span class="item-name"><strong><%=post_item.name %></strong></span>
               </td>
               </tr>
               <tr>
@@ -36,19 +36,15 @@
                 </td>
               </tr>
              </tbody>
-             <tfoot>
-              <!--<tr>-->
-              <!--<td ></td>-->
-              <!--</tr>-->
               <tr>
                 <td>
-                <span style="font-size:14px; margin-bottom:0;">【<%=post_item.buy_prefecture.name %>】</span>
+                <span class="item_name">【<%=post_item.buy_prefecture.name %>】</span>
                 </td>
               </tr>
               <tr>
-                <td class="tag">
+                <td class="index-tag-td">
                 <% post_item.tags.each do |tag| %>
-                 <span style="font-size:13px; background-color:#778899; color:#FFF; padding:2px;">#<%=tag.tag_name%></span>
+                 <span class="index-tag">#<%=tag.tag_name%></span>
                 <% end %>
                 </td>
               </tr>

@@ -23,7 +23,6 @@ class Public::PostItemsController < ApplicationController
   end
 
   def index
-   @post_item=PostItem.new
    @post_items =PostItem.where(release: true).order(created_at: :desc).page(params[:page]).per(9)
   # 表示されたお土産は公開ステータスがtrueである
   # ※ページネーション

@@ -79,12 +79,12 @@
       <div class="tag">
         <p class="tag-title"><strong>登録されたタグ</strong></p>
           <div class= "tag-box">
-              <% if @post_tags.present? %>
-                <% @post_tags.each do |tag| %>
-                 <p class="post-tag">#<%=tag.tag_name%></p>
+              <% if @post_item.tags.present? %>
+                <% @post_item.tags.each do |tag| %>
+                  <%= link_to "##{tag.tag_name}", search_post_items_path(keyword: tag.tag_name),class:"show-tag" %>
                 <% end %>
               <% else %>
-                <p class="no-post-tag">登録されているタグはありません</p>
+                <p class="no-show-tag">登録されているタグはありません</p>
             <% end %>
           </div>
       </div>

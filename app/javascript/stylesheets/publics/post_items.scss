@@ -135,11 +135,18 @@ text-align: center;
   padding: 15px;
 }
 
+.post-item-top-bar p{
+  font-size: 14px;
+}
+.post-item-top-bar h5{
+  font-size: 18px;
+}
+
 .top-bar-title{
   font-family: 'Zen Maru Gothic', sans-serif;;
 }
 
-.top-bar-title tag{
+.keyword{
  color: blue;
 }
 
@@ -174,11 +181,13 @@ text-align: center;
   height: 48px;
 }
 
-.index-tag{
+
+.index-tag,.index-tag:hover{
  font-size: 13px;
  background-color:#778899;
  color:#FFF;
  padding: 2px;
+ text-decoration: none
 }
 
 

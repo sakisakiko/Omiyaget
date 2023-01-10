@@ -23,16 +23,14 @@ class Public::PostItemsController < ApplicationController
   end
 
   def index
+      # 表示されたお土産は公開ステータスがtrue,1ページに表示されるお土産９個
    @post_items =PostItem.where(release: true).order(created_at: :desc).page(params[:page]).per(9)
-  # 表示されたお土産は公開ステータスがtrueである
-  # ※ページネーション
    @categories=Category.all
   end
 
 
   def search
     if params[:keyword].present?
-      # tag = Tag.find_by(tag_name: params[:keyword])
       @post_items=[]
       @keyword=""
       # 分割したキーワードごとに検索
@@ -43,13 +41,16 @@ class Public::PostItemsController < ApplicationController
           # タグモデルの中で検索したキーワードを含むものをtagsで定義
           # ヒットしたタグが現在投稿されているお土産に存在した場合、検索したタグを含むお土産を@post_itemsにいれていく
           tags = Tag.where('tag_name LIKE(?)', "%#{keyword}%")
-          tags.each do |tag|
-            if tag.present?
+
+          if tags.present?
+            tags.each do |tag|
               @post_items += tag.post_items.where(release: true)
               #重複を防ぐ
               @post_items.uniq!
             end
           end
+          @post_items += PostItem.where("name LIKE ?", "%#{keyword}%")
+          @post_items.uniq!
         end
         @post_items_amount=@post_items.count
         @post_items = Kaminari.paginate_array(@post_items).page(params[:page]).per(9)
@@ -88,7 +89,6 @@ class Public::PostItemsController < ApplicationController
 
   def show
     @post_item=PostItem.find(params[:id])
-    @post_tags=@post_item.tags
     @post_comment=PostComment.new
   end
 

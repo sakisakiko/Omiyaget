@@ -44,7 +44,7 @@
               <tr>
                 <td class="index-tag-td">
                 <% post_item.tags.each do |tag| %>
-                 <span class="index-tag">#<%=tag.tag_name%></span>
+                 <%= link_to "##{tag.tag_name}", search_post_items_path(keyword: tag.tag_name),class:"index-tag" %>
                 <% end %>
                 </td>
               </tr>

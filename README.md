@@ -4,7 +4,7 @@
 旅先などで実際に購入したお土産の情報を投稿し、共有できるサイトです。
 また、条件で絞り込み検索を行うことで日本全国のお土産を探すことができます。
 
-![Omiyaget_image](https://user-images.githubusercontent.com/108504337/204809567-13c6135c-dae9-4014-8bd8-285746b2a907.jpg)
+![Omiyaget_image](https://user-images.githubusercontent.com/108504337/212346784-24aa32e8-b547-4297-9929-f4c33afcc885.png)
 
 サイトはこちらから：[おみやGET!](http://35.170.123.8/)
 

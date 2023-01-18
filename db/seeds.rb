@@ -186,6 +186,8 @@ post_items = [
     shop: "宇治園 心斎橋本店",
     buy_prefecture_id: 27,
     release: true,
+    latitude: 35.68124,
+    longitude: 139.7671,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image1.jpg"), filename:"sample-post-image1.jpg")
   },
   {
@@ -198,6 +200,8 @@ post_items = [
     shop: "広島駅",
     buy_prefecture_id: 34,
     release: true,
+    latitude: 35.68124,
+    longitude: 139.7671,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image2.jpg"), filename:"sample-post-image2.jpg")
   },
   {
@@ -210,6 +214,8 @@ post_items = [
     shop: "小樽キャンドル工房",
     buy_prefecture_id: 1,
     release: true,
+    latitude: 35.68124,
+    longitude: 139.7671,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image3.jpg"), filename:"sample-post-image3.jpg")
   },
   {
@@ -222,6 +228,8 @@ post_items = [
     shop: "おみやげ処せんだい1号店",
     buy_prefecture_id: 45,
     release: true,
+    latitude: 35.68124,
+    longitude: 139.7671,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image4.jpg"), filename:"sample-post-image4.jpg")
   },
   {
@@ -234,6 +242,8 @@ post_items = [
     shop: "博多阪急地下 辛子明太子売場",
     buy_prefecture_id: 40,
     release: true,
+    latitude: 35.68124,
+    longitude: 139.7671,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image5.jpg"), filename:"sample-post-image5.jpg")
   },
   {
@@ -258,6 +268,8 @@ post_items = [
     shop: "JR新大阪駅中央口",
     buy_prefecture_id: 27,
     release: true,
+    latitude: 35.68124,
+    longitude: 139.7671,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image7.jpg"), filename:"sample-post-image7.jpg")
   },
   {
@@ -270,6 +282,8 @@ post_items = [
     shop: "菅久商店",
     buy_prefecture_id: 5,
     release: true,
+    latitude: 35.68124,
+    longitude: 139.7671,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image8.jpg"), filename:"sample-post-image8.jpg")
   },
   {
@@ -282,6 +296,8 @@ post_items = [
     shop: "おみやげshop MIU",
     buy_prefecture_id: 37,
     release: true,
+    latitude: 35.68124,
+    longitude: 139.7671,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image9.jpg"), filename:"sample-post-image9.jpg")
   },
   {
@@ -294,6 +310,8 @@ post_items = [
     shop: "福岡空港",
     buy_prefecture_id: 40,
     release: true,
+    latitude: 35.68124,
+    longitude: 139.7671,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image10.jpg"), filename:"sample-post-image10.jpg")
   },
   {
@@ -306,6 +324,8 @@ post_items = [
     shop: "GLASS GALLERY",
     buy_prefecture_id: 1,
     release: true,
+    latitude: 35.68124,
+    longitude: 139.7671,
     image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post-image11.jpg"), filename:"sample-post-image11.jpg")
   },
 ]

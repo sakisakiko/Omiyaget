@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2022_11_02_034420) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_11_02_034420) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+    t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -113,10 +113,10 @@ ActiveRecord::Schema.define(version: 2022_11_02_034420) do
     t.string "price", default: "", null: false
     t.string "shop", default: ""
     t.boolean "release", default: true, null: false
+    t.float "latitude", default: 35.68124
+    t.float "longitude", default: 139.7671
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "lat"
-    t.float "lng"
   end
 
   create_table "post_tags", force: :cascade do |t|

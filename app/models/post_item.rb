@@ -10,6 +10,11 @@ class PostItem < ApplicationRecord
     has_many :post_tags, dependent: :destroy
     has_many :tags,through: :post_tags
 
+  #モデル登録時と店名(shop)変更時にgeocoderが動いて緯度・経度のデータが登録・更新される
+    geocoded_by :shop
+    after_validation :geocode, if: :shop_changed?
+
+
   #画像を保つための記述
     has_one_attached :image
 

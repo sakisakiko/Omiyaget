@@ -213,47 +213,65 @@
           <div class="map-top">
             <h5><strong>お店の場所調べてみませんか？</strong></h5>
             <input id="address" type="textbox" value= "<%=@post_item.shop%>">
-            <input type="button" value="検索" onclick="codeAddress()">
+            <input id="submit" type="button" value="検索">
           </div>
        <div id='map'></div>
 
-       <!--マップのjavascript-->
-          <script>
-          function initMap(){
-            geocoder = new google.maps.Geocoder()
-
-            map = new google.maps.Map(document.getElementById('map'), {
-              center: {lat: 35.6812362, lng:139.7671248},
-              zoom: 15,
-              gestureHandling: 'greedy',
+        <!--マップのjavascript-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>&callback=initMap" async defer></script>
+        <script>
+          function initMap() {
+            var test ={lat: <%= @post_item.latitude %>, lng: <%= @post_item.longitude %>};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: test,
             });
 
-            marker = new google.maps.Marker({
-              position:  {lat: 35.6812362, lng:139.7671248},
-              map: map,
-              draggable: true
+            var transitLayer = new google.maps.TransitLayer();
+            transitLayer.setMap(map);
+
+            // ピンに吹き出しをつける
+            var contentString = '店名：<%= @post_item.shop %>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            // ピンの設定
+            var marker = new google.maps.Marker({
+                position:test,
+                map: map,
+                title: contentString
+            });
+
+
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+
+            var geocoder = new google.maps.Geocoder();
+
+            document.getElementById('submit').addEventListener('click', function() {
+              geocodeAddress(geocoder, map);
             });
           }
 
-          function codeAddress(){
-            let inputAddress = document.getElementById('address').value;
-
-
-            geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-              if (status == 'OK') {
-                map.setCenter(results[0].geometry.location);
+          // 手動検索をする場合（見つかった場合表示、見つからなかった場合それをアラートで表示）
+          function geocodeAddress(geocoder, resultsMap)
+          {
+            var shop = document.getElementById('address').value;
+            geocoder.geocode({'address': shop}, function(results, status) {
+              if (status === google.maps.GeocoderStatus.OK) {
+                resultsMap.setCenter(results[0].geometry.location);
                 var marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location
+                  map: resultsMap,
+                  position: results[0].geometry.location
                 });
               } else {
-                alert('該当する結果がありませんでした：' + status);
+                 alert('該当する結果がありませんでした');
               }
             });
           }
-          </script>
-          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>&callback=initMap" async defer></script>
-        <!--</div>-->
+        </script>
       </div><!--col-4のdiv--> <!--マップ表示ここまで-->
   </div><!--rowここまで-->
 </div><!--containerここまで-->

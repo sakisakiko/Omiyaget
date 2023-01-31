@@ -27,8 +27,18 @@
 旅行先などでお土産を検索することができる。自分が購入したお土産の情報を発信することができる。
 
 ## 実装機能一覧
+- ユーザー認証(devise)
+- いいね機能
+- コメント機能
+- フォロー機能
+- ブックマーク機能
+- 投稿に対するタグ付け
+- 検索、絞り込み機能
+- 星による５段階評価(jQuery)
+- 画像アップロード機能(ActiveStorage)
+- マップ表示(Google Maps API)
 
-- [実装機能](https://docs.google.com/spreadsheets/d/1PK4ZMlgzPtUXjw5JPEohkg76LgIGaD27McWG7Fa9zko/edit?usp=sharing)
+詳細はこちら：[実装機能](https://docs.google.com/spreadsheets/d/1PK4ZMlgzPtUXjw5JPEohkg76LgIGaD27McWG7Fa9zko/edit?usp=sharing)
 
 ## 設計書
 

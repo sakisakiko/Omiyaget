@@ -217,7 +217,6 @@
        <div id='map'></div>
 
         <!--マップのjavascript-->
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>&callback=initMap" async defer></script>
         <script>
           function initMap() {
             var test ={lat: <%= @post_item.latitude %>, lng: <%= @post_item.longitude %>};
@@ -271,6 +270,7 @@
             });
           }
         </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>&callback=initMap" async defer></script>
       </div><!--col-4のdiv--> <!--マップ表示ここまで-->
   </div><!--rowここまで-->
 </div><!--containerここまで-->

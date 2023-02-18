@@ -17,7 +17,17 @@
   <div class="display_body"  style="display: flex; flex-direction: column; min-height: 100vh;">
     <header class="shadow" style="background-color:#FAF0E6;">
       <nav class="navbar navbar-expand-lg navbar-light" >
-        <a class="logo ml-5" href="/"><%= image_tag 'omiyaget_logo.jpg'%></a><!--ロゴ-->
+        
+        <!--ロゴ-->
+        <!--ゲストユーザーの時のみ、ロゴをクリックしてトップに戻る際ログアウトされる-->
+        <% if customer_signed_in? && current_customer.email == 'guest@examle.com' %>
+          <%=link_to destroy_customer_session_path,method: :delete,class: " text-dark ml-5" do  %><%= image_tag 'omiyaget_logo.jpg'%><% end %>
+        <% else %>
+          <a class="logo ml-5" href="/"><%= image_tag 'omiyaget_logo.jpg'%></a>
+        <% end %>
+        <!--ロゴ-->
+
+
         <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -29,8 +39,9 @@
               <!--ゲストユーザー-->
               <ul class="navbar-nav mx-auto">
                 <li class="nav-item"><%=link_to post_items_path,class: " text-dark" do %><i class="fa-solid fa-gifts"></i> お土産ー覧<% end %></li>
-                <li class="nav-item"><%=link_to new_customer_registration_path,class: " text-dark" do %><i class="fa-solid fa-user-plus"></i>新規登録<% end %></li>
-                <li class="nav-item"><%=link_to destroy_customer_session_path,method: :delete,class: " text-dark" do  %><i class="fa-solid fa-right-from-bracket"></i> ログアウト<% end %></li>
+                <li class="nav-item"><%=link_to destroy_customer_session_path,method: :delete,class: " text-dark" do  %><i class="fa-solid fa-user-plus"></i> 新規登録<% end %></li>
+                <!--<li class="nav-item"><%#=link_to new_customer_registration_path,class: " text-dark" do %><i class="fa-solid fa-user-plus"></i>新規登録<%# end %></li>-->
+                <li class="nav-item"><%=link_to destroy_customer_session_path,method: :delete,class: " text-dark" do  %><i class="fa-solid fa-right-from-bracket"></i> トップへ戻る<% end %></li>
               </ul>
               <div class="header_icon">
                 <%= image_tag 'user_icon.jpg',size: "65x65", class: "rounded-circle" %>

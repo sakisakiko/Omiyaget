@@ -17,7 +17,7 @@
   <div class="display_body"  style="display: flex; flex-direction: column; min-height: 100vh;">
     <header class="shadow" style="background-color:#FAF0E6;">
       <nav class="navbar navbar-expand-lg navbar-light" >
-        
+
         <!--ロゴ-->
         <!--ゲストユーザーの時のみ、ロゴをクリックしてトップに戻る際ログアウトされる-->
         <% if customer_signed_in? && current_customer.email == 'guest@examle.com' %>
@@ -102,9 +102,9 @@
     <body>
       <%= yield %>
     </body>
-
+Sakiko Hanada
     <footer class="shadow" style="margin-top: auto; background-color:#FAF0E6; height:70px">
-     <p class="pt-4" style="font-size:13px; text-align:center;">©️2022 Sakiko Hanam</p>
+     <p class="pt-4" style="font-size:13px; text-align:center;">©️2022 Sakiko Hanada </p>
     </footer>
 
   </div>

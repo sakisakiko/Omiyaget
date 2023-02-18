@@ -15,7 +15,7 @@
   <% @post_items.each do |post_item| %>
     <tbody>
       <tr>
-        <td><%= post_item.id%></td>
+        <td><%= post_item.customer_id%></td>
         <td>
           <%=link_to customer_path(post_item.customer_id) do %>
             <%=image_tag post_item.customer.get_profile_image.variant(gravity: :center, resize:"50x50^", crop:"50x50+0+0").processed,
